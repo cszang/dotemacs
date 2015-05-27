@@ -222,6 +222,10 @@
   (setq ess-default-style 'OWN)
   (setq ess-indent-level 2))
 
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
 (use-package polymode
   :config
   (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
