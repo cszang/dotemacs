@@ -254,7 +254,8 @@
   :config
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
 
-(use-package auto-complete)
+(use-package auto-complete
+  :diminish auto-complete-mode)
 
 (use-package auto-complete-config
   :config
