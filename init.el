@@ -276,7 +276,7 @@
   :config
   (use-package deft)
   (setq deft-extension "txt")
-  (setq deft-directory "~/Dropbox/Deft")
+  (setq deft-directory "~/Dropbox/Zettelkasten")
   (setq deft-text-mode 'org-mode)
   (setq deft-use-filename-as-title t))
 
