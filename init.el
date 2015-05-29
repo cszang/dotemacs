@@ -428,3 +428,32 @@
   (setq exec-path (append exec-path '("C:/Python27")))
   (setq exec-path (append exec-path '("C:/Python27/Scripts")))
   ))
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Special functions ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+;; occur sections in R code like Rstudio does
+(defun cz-occur-R-sections ()
+  (interactive)
+  (occur "^#+.*-\\{3,\\}")
+  (other-window 1)
+  (next-line)
+  )
+
+;; insert new R section
+(defun cz-insert-R-section ()
+  (interactive)
+  (setq the-section-name (read-string "Section? "))
+  (move-beginning-of-line nil)
+  (message the-section-name)
+  (insert (concat "### " the-section-name " ---"))
+  (newline-and-indent)
+  )
+
+;; autocomplete tags in Zettelkasten
+(defun cz-complete-zetteltag ()
+  (interactive)
+  (shell-command "grep -horE '^(@|\+|\$).+' ~/Dropbox/Zettelkasten/ | sort | uniq > ~/.zetteltags")
+  ;; TODO: how to complete from this list of tags?
+  )
