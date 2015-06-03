@@ -57,8 +57,8 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/texbin"))
 (setq exec-path (append exec-path '("/usr/texbin")))
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups"))))
-(setq bookmark-default-file "~/Dropbox/Emacs/bookmarks")
-(setq diary-file "~/Dropbox/Emacs/diary")
+(setq bookmark-default-file "~/ownCloud/Emacs/bookmarks")
+(setq diary-file "~/ownCloud/Emacs/diary")
 
 ;;;;;;;;;;;;;
 ;; Browser ;;
@@ -276,7 +276,7 @@
   :config
   (use-package deft)
   (setq deft-extension "txt")
-  (setq deft-directory "~/Dropbox/Zettelkasten")
+  (setq deft-directory "~/ownCloud/Zettelkasten")
   (setq deft-text-mode 'org-mode)
   (setq deft-use-filename-as-title t))
 
@@ -290,8 +290,8 @@
   :config
   (setq org-hide-leading-stars t)
   (setq org-tags-column -70)
-  (setq org-directory "~/Dropbox/Org")
-  (setq org-archive-location "~/Dropbox/Org/gtd-archived.org::From %s")
+  (setq org-directory "~/ownCloud/Org")
+  (setq org-archive-location "~/ownCloud/Org/gtd-archived.org::From %s")
   (require 'ox-latex)
   (require 'ox-beamer)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -320,7 +320,7 @@
           ("CNCL" . "grey")
           ("PROH" . "grey")))
   (setq org-log-into-drawer t)
-  (setq org-agenda-files (quote ("~/Dropbox/Org/gtd-inbox.org" "~/Dropbox/Org/gtd-active.org" "~/Dropbox/Org/gtd-habits.org" "~/Dropbox/Org/gtd-anniversaries.org")))
+  (setq org-agenda-files (quote ("~/ownCloud/Org/gtd-inbox.org" "~/ownCloud/Org/gtd-active.org" "~/ownCloud/Org/gtd-habits.org" "~/ownCloud/Org/gtd-anniversaries.org")))
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-habit-preceding-days 0)
@@ -454,6 +454,6 @@
 ;; autocomplete tags in Zettelkasten
 (defun cz-complete-zetteltag ()
   (interactive)
-  (shell-command "grep -horE '^(@|\+|\$).+' ~/Dropbox/Zettelkasten/ | sort | uniq > ~/.zetteltags")
+  (shell-command "grep -horE '^(@|\+|\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
   ;; TODO: how to complete from this list of tags?
   )
