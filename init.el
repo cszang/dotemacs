@@ -293,6 +293,10 @@
   (setq org-directory "~/ownCloud/Org")
   (setq org-archive-location "~/ownCloud/Org/gtd-archived.org::From %s")
   (require 'ox-latex)
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
+  (setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
   (require 'ox-beamer)
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (org-babel-do-load-languages
