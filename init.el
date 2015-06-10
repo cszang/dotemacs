@@ -57,8 +57,8 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/texbin"))
 (setq exec-path (append exec-path '("/usr/texbin")))
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups"))))
-(setq bookmark-default-file "~/ownCloud/Emacs/bookmarks")
-(setq diary-file "~/ownCloud/Emacs/diary")
+(setq bookmark-default-file "~/ownCloud/Emacs/Lesezeichen")
+(setq diary-file "~/ownCloud/Emacs/Kalender")
 
 ;;;;;;;;;;;;;
 ;; Browser ;;
@@ -288,10 +288,11 @@
   ("\\.org$" . org-mode)
   ("\\.txt$" . org-mode)
   :config
+  (require 'org-protocol)
   (setq org-hide-leading-stars t)
   (setq org-tags-column -70)
   (setq org-directory "~/ownCloud/Org")
-  (setq org-archive-location "~/ownCloud/Org/gtd-archived.org::From %s")
+  (setq org-archive-location "~/ownCloud/Org/GTD-Archiv.org::Von %s")
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted)
@@ -310,67 +311,62 @@
      (ditaa . t)))
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
-  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)")
-                            (sequence "|" "CNCL(c@!)")
-                            (sequence "|" "DELG (e@/!)")
-                            (sequence "FXME(f)" "|" "FIXD(x!)")
-                            (sequence "PROJ(p!)" "PRSC(u)" "PROH(o)" "|" "PRDN(r!)" "PRCL(o@/!)")
-                            (sequence "LIST(l)" "|")
-                            (sequence "SDMB(s)" "|")))
+  (setq org-todo-keywords '((sequence "OFFEN(o)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
+                            (sequence "|" "STORNIERT(s@!)")
+                            (sequence "|" "DELIGIERT (d@/!)")
+                            (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
+                            (sequence "PROJEKT(p!)" "PR_FESTGEFAHREN(f)" "|" "PR_ERLEDIGT(i!)" "PR_STORNIERT(r@/!)")
+                            (sequence "LISTE(l)" "|")))
   (setq org-todo-keyword-faces
-        '(("PROJ" . "yellow")
-          ("LIST" . "pink")
-          ("WAIT" . "orange")
-          ("CNCL" . "grey")
-          ("PROH" . "grey")))
+        '(("PROJEKT" . "yellow")
+          ("LISTE" . "pink")
+          ("WARTEN" . "orange")
+          ("STORNIERT" . "grey")
+          ("PR_FESTGEFAHREN" . "grey")))
   (setq org-log-into-drawer t)
-  (setq org-agenda-files (quote ("~/ownCloud/Org/gtd-inbox.org" "~/ownCloud/Org/gtd-active.org" "~/ownCloud/Org/gtd-habits.org" "~/ownCloud/Org/gtd-anniversaries.org")))
+  (setq org-agenda-files (quote ("~/ownCloud/Org/GTD-Eingang.org" "~/ownCloud/Org/GTD-Aktiv.org" "~/ownCloud/Org/GTD-Gewohnheiten.org" "~/ownCloud/Org/GTD-Jahrestage.org")))
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-habit-preceding-days 0)
   (setq org-agenda-custom-commands
         ;; three day context
-        '(("O" "Three day context"
-           ((agenda "Due or scheduled within next three days"
+        '(("O" "3-Tages Ansicht"
+           ((agenda "Fällig oder geplant im Laufe der nächsten drei Tage"
                     ((org-agenda-ndays 3)
                      (org-agenda-start-on-weekday nil)
-                     (org-agenda-overriding-header "Due or scheduled within next three days")
+                     (org-agenda-overriding-header "Fällig oder geplant im Laufe der nächsten drei Tage")
                      ))
             ))
           ;; Review Group
-          ("r" . "GTD Review")
-          ("rd" "Daily Review"
+          ("r" . "GTD Überprüfung")
+          ("rd" "Tägliche Überprüfung"
            ((tags-todo "+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projects for Daily Review")))
+                       ((org-agenda-overriding-header "Projekte zur täglichen Überprüfung")))
             (todo "WAIT"
-                  ((org-agenda-overriding-header "Waiting for...")))))
+                  ((org-agenda-overriding-header "Warten auf...")))))
           
-          ("rw" "Weekly Review"
+          ("rw" "Wöchentliche Überprüfung"
            ((tags-todo "+REVIEW=\"weekly\"|+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projects for Weekly Review")))
+                       ((org-agenda-overriding-header "Projekte zur wöchentlichen Überprüfung")))
             (stuck ""
-                   ((org-agenda-overriding-header "Stuck Projects")))
-            (todo "SDMB"
-                  ((org-agenda-overriding-header "Open Loops")))
+                   ((org-agenda-overriding-header "Festgefahrene Projekte")))
             (todo "WAIT"
                   ((org-agenda-overriding-header "Waiting for...")))))
           
-          ("rm" "Monthly Review"
+          ("rm" "Monatliche Überprüfung"
            ((tags-todo "+REVIEW=\"monthly\"|+REVIEW=\"weekly\"|+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projects for Monthly Review")))
+                       ((org-agenda-overriding-header "Projekte zur monatlichen Überprüfung")))
             (stuck ""
-                   ((org-agenda-overriding-header "Stuck Projects")))
-            (todo "SDMB"
-                  ((org-agenda-overriding-header "Open Loops")))
+                   ((org-agenda-overriding-header "Festgefahrene Projekte")))
             (todo "WAIT"
-                  ((org-agenda-overriding-header "Waiting for...")))))
+                  ((org-agenda-overriding-header "Warten auf...")))))
           
           ;; list of projects
-          ("P" "Projects" tags-todo "LEVEL=1"
-           ((org-agenda-overriding-header "List of Projects")))
+          ("P" "Projekte" tags-todo "LEVEL=1"
+           ((org-agenda-overriding-header "Liste aller Projekte")))
           
           ;; List of upcoming deadlines
-          ("d" "Upcoming Deadlines" agenda ""
+          ("d" "Nächste Fristen" agenda ""
            ((org-agenda-ndays 1)
             (org-agenda-start-day nil)
             (org-agenda-time-grid nil)
@@ -381,14 +377,16 @@
   (setq org-agenda-include-diary t)
   (setq org-default-notes-file (concat org-directory "/gtd-inbox.org"))
   (setq org-capture-templates
-        '(("t" "Todo" entry (file+headline (concat org-directory "/gtd-inbox.org") "Inbox")
-           "* TODO %?\n  %i\n")
-          ("k" "Todo (link)" entry (file+headline (concat org-directory "/gtd-inbox.org") "Inbox")
-           "* TODO %?\n  %i\n  %a")
-          ("i" "Limbo" entry (file+headline (concat org-directory "/gtd-limbo.org") "Ideas")
+        '(("a" "Aufgabe" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
+           "* OFFEN %?\n  %i\n")
+          ("n" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
+           "* OFFEN %?\n  %i\n  %a")
+          ("l" "Lesezeichen" entry (file+headline (concat org-directory "/Lesezeichen.org"))
            "* %?\n  %i\n  %a")
-          ("f" "Fixme" entry (file+headline (concat org-directory "/gtd-inbox.org") "Inbox")
-           "* FXME %?\n  %i\n %a")
+          ("i" "Idee" entry (file+headline (concat org-directory "/GTD-Limbus.org") "Ideen")
+           "* %?\n  %i\n  %a")
+          ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
+           "* KAEFER %?\n  %i\n %a")
           ))
   (setq org-refile-targets (quote ((org-agenda-files :todo . "PROJ") (org-agenda-files :todo . "LIST") (org-agenda-files :todo . "PROH") (org-agenda-files :todo . "PRSC") (org-agenda-files :tag . "bucket"))))
   (setq org-refile-use-cache nil)
