@@ -424,7 +424,7 @@
   (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
   (setq browse-url-generic-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
   ;; make org-babel find R on Windows
-  (setq org-babel-R-command "C:/Progra~1/R/R-3.0.1/bin/x64/R.exe --slave --no-save")
+  (setq org-babel-R-command "C:/Progra~1/R/R-3.2.0/bin/x64/R.exe --slave --no-save")
   ;; use bigger font
   (set-face-attribute 'default nil :height 131 :font "Terminus")
   ;; add Python installation and scripts to the PATH
