@@ -475,3 +475,11 @@
   (shell-command "grep -horE '^(@|\+|\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
   ;; TODO: how to complete from this list of tags?
   )
+
+;; occur TODOs
+(defun cz-occur-TODOs ()
+  (interactive)
+  (occur "TODO\\|FIXME\\|FXME\\|KAEFER\\|OFFEN")
+  (other-window 1)
+  (next-line)
+  )
