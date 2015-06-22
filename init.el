@@ -215,12 +215,17 @@
   (add-hook 'ess-mode-hook 'smartparens-mode)
   (add-hook 'ess-mode-hook 'turn-on-auto-fill)
   (add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill)
+  (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
+  (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
   (setq ess-default-style 'OWN)
   (setq ess-indent-level 2))
 
 (use-package magit
   :bind
-  ("C-x g" . magit-status))
+  ("C-x g" . magit-status)
+  :config
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  )
 
 (use-package polymode
   :config
@@ -420,7 +425,7 @@
   (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
   (setq browse-url-generic-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
   ;; make org-babel find R on Windows
-  (setq org-babel-R-command "C:/Progra~1/R/R-3.0.1/bin/x64/R.exe --slave --no-save")
+  (setq org-babel-R-command "C:/Progra~1/R/R-3.2.0/bin/x64/R.exe --slave --no-save")
   ;; use bigger font
   (set-face-attribute 'default nil :height 131 :font "Terminus")
   ;; add Python installation and scripts to the PATH
@@ -450,9 +455,27 @@
   (newline-and-indent)
   )
 
+;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil region)))
+
+;; Handy key definition
+(define-key global-map "\M-Q" 'unfill-paragraph)
+
 ;; autocomplete tags in Zettelkasten
 (defun cz-complete-zetteltag ()
   (interactive)
   (shell-command "grep -horE '^(@|\+|\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
   ;; TODO: how to complete from this list of tags?
+  )
+
+;; occur TODOs
+(defun cz-occur-TODOs ()
+  (interactive)
+  (occur "TODO\\|FIXME\\|FXME\\|KAEFER\\|OFFEN")
+  (other-window 1)
+  (next-line)
   )
