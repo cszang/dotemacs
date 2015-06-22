@@ -14,13 +14,13 @@
         dired-details
         ess
         expand-region
-        helm
         js2-mode
         macro-math
         magit
         markdown-mode
         polymode
         smartparens
+        smex
         smooth-scrolling
         zenburn-theme
         ))
@@ -165,19 +165,15 @@
 ;; Packages ;;
 ;;;;;;;;;;;;;;
 
-(use-package helm
-  :config
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
-  (require 'helm-config)
-  (setq helm-quick-update                     t
-        helm-split-window-in-side-p           t
-        helm-buffers-fuzzy-matching           t)
+(use-package ido
   :bind
-  ("C-x b" . helm-mini)
-  ("C-c h o" . helm-occur)
-  ("M-x" . helm-M-x)
-  ("C-x C-f" . helm-find-files))
+  ("C-x f" . ido-find-file)
+  :config
+  (ido-mode))
+
+(use-package smex
+  :bind
+  ("M-x" . smex))
 
 (use-package anzu
   :diminish anzu-mode
