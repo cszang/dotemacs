@@ -114,6 +114,9 @@
 
 (setq global-visual-line-mode t)
 
+(display-time-mode 1)
+(setq display-time-24h-format 1)
+
 ;;;;;;;;;;;;;
 ;; Editing ;;
 ;;;;;;;;;;;;;
@@ -173,7 +176,9 @@
 
 (use-package smex
   :bind
-  ("M-x" . smex))
+  ("M-x" . smex)
+  :config
+  (setq smex-save-file (concat user-emacs-directory ".smex-items")))
 
 (use-package anzu
   :diminish anzu-mode
