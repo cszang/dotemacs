@@ -160,6 +160,11 @@
 
 (set-default 'indent-tabs-mode nil)
 
+;; ido
+(require 'ido)
+(ido-mode t)
+(global-set-key (kbd "C-x f") 'ido-find-file)
+
 ;; Hippie expand
 (dolist (f '(try-expand-line try-expand-list try-complete-file-name-partially))
   (delete f hippie-expand-try-functions-list))
@@ -170,12 +175,6 @@
 ;;;;;;;;;;;;;;
 ;; Packages ;;
 ;;;;;;;;;;;;;;
-
-(use-package ido
-  :bind
-  ("C-x f" . ido-find-file)
-  :config
-  (ido-mode))
 
 (use-package smex
   :bind
