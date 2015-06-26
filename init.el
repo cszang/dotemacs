@@ -14,6 +14,7 @@
         dired-details
         ess
         expand-region
+        f
         js2-mode
         macro-math
         magit
@@ -283,9 +284,8 @@
   ("<f9>" . deft)
   :config
   (use-package deft)
-  (setq deft-extension "txt")
+  (setq deft-extension "zkn")
   (setq deft-directory "~/ownCloud/Zettelkasten")
-  (setq deft-text-mode 'org-mode)
   (setq deft-use-filename-as-title t))
 
 (use-package org
@@ -413,9 +413,47 @@
   (add-hook 'markdown-mode-hook 'flyspell-mode)
   (add-hook 'markdown-mode-hook 'auto-fill-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;
-;; Special functions ;;
-;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;
+;; Zettelkasten ;;
+;;;;;;;;;;;;;;;;;;
+
+(defun zettelkasten-complete-tag ()
+  "completes zettelkasten tags from all previously used tags"
+  (interactive)
+  (require 'f)
+  (shell-command "grep -horE '^(@|\\+|\\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
+  (setq zettelkasten-tag-list
+        (s-split "\n" (f-read "~/.zetteltags") t))
+  (insert (ido-completing-read "Schlagwort? " zettelkasten-tag-list))
+  )
+
+(defun zettelkasten-complete-structure ()
+  "completes structural elements for Zettelkasten system"
+  (interactive)
+  (setq zettelkasten-structures (list "*Literatur*" "*Schlagwörter*"))
+  (insert (ido-completing-read "Struktur? " zettelkasten-structures))
+  (newline-and-indent)
+)
+  
+(define-minor-mode zettelkasten-mode
+  "Zettelkasten org-enhancement"
+  :lighter " Zkn"
+  :keymap (let ((map (make-sparse-keymap)))
+            (progn
+              (define-key map (kbd "@") 'zettelkasten-complete-tag)
+              (define-key map (kbd "*") 'zettelkasten-complete-structure)
+              )
+            map)
+  (auto-fill-mode)
+  (turn-on-orgstruct++)
+  )
+
+(add-to-list 'auto-mode-alist '("\\.zkn" . zettelkasten-mode))
+
+;;;;;;;;;;;;;;;;;;
+;; R Navigation ;;
+;;;;;;;;;;;;;;;;;;
 
 ;; occur sections in R code like Rstudio does
 (defun cz-occur-R-sections ()
@@ -435,6 +473,10 @@
   (newline-and-indent)
   )
 
+;;;;;;;;;;;;;;;;;
+;; Convenience ;;
+;;;;;;;;;;;;;;;;;
+
 ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
 (defun unfill-paragraph (&optional region)
   "Takes a multi-line paragraph and makes it into a single line of text."
@@ -444,13 +486,6 @@
 
 ;; Handy key definition
 (define-key global-map "\M-Q" 'unfill-paragraph)
-
-;; autocomplete tags in Zettelkasten
-(defun cz-complete-zetteltag ()
-  (interactive)
-  (shell-command "grep -horE '^(@|\+|\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
-  ;; TODO: how to complete from this list of tags?
-  )
 
 ;; occur TODOs
 (defun cz-occur-TODOs ()
