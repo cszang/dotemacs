@@ -66,7 +66,7 @@
 ;;;;;;;;;;;;;
 
 (setq browse-url-browser-function 'browse-url-generic)
-(setq browse-url-generic-program "firefox")
+(setq browse-url-generic-program "iceweasel")
 
 ;;;;;;;;;;;;;;;;
 ;; Appearance ;;
@@ -90,11 +90,11 @@
 (display-time-mode 1)
 (setq display-time-24h-format 1)
 
-(if (string< "bloom" system-name)
-    (progn (set-face-attribute 'default nil :height 131 :font "Terminus")
-           (setq-default line-spacing 5))
-  (progn (set-face-attribute 'default nil :height 121 :font "Terminus")
-         (setq-default line-spacing 3)))
+(if (string= "buck" system-name)
+    (progn (set-face-attribute 'default nil :height 121 :font "Terminus")
+           (setq-default line-spacing 3))
+  (progn (set-face-attribute 'default nil :height 131 :font "Terminus")
+         (setq-default line-spacing 5)))
 
 (load-theme 'zenburn)
 
@@ -284,6 +284,7 @@
   :config
   (use-package deft)
   (setq deft-extension "zkn")
+  (setq deft-text-mode 'zettelkasten-mode)
   (setq deft-directory "~/ownCloud/Zettelkasten")
   (setq deft-use-filename-as-title t))
 
@@ -425,6 +426,7 @@
   (setq zettelkasten-tag-list
         (s-split "\n" (f-read "~/.zetteltags") t))
   (insert (ido-completing-read "Schlagwort? " zettelkasten-tag-list))
+  (newline-and-indent)
   )
 
 (defun zettelkasten-complete-structure ()
@@ -445,7 +447,7 @@
               )
             map)
   (auto-fill-mode)
-  (turn-on-orgstruct++)
+  (turn-on-orgstruct)
   )
 
 (add-to-list 'auto-mode-alist '("\\.zkn" . zettelkasten-mode))
