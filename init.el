@@ -20,6 +20,7 @@
         magit
         markdown-mode
         polymode
+        scratch
         smartparens
         smex
         smooth-scrolling
