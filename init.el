@@ -429,7 +429,8 @@
   "completes zettelkasten tags from all previously used tags"
   (interactive)
   (require 'f)
-  (setq zetteltags-shell-cmd (concat "grep -horE '^(@|\\+|\\$).+'" zettelkasten-directory "| sort | uniq > ~/.zetteltags"))
+  (setq zetteltags-shell-cmd (concat "grep -horE '^(@|\\+|\\$).+' " zettelkasten-directory " | sort | uniq > ~/.zetteltags"))
+  (shell-command zetteltags-shell-cmd)
   (setq zettelkasten-tag-list
         (s-split "\n" (f-read "~/.zetteltags") t))
   (insert (ido-completing-read "Schlagwort? " zettelkasten-tag-list))
@@ -440,8 +441,11 @@
   "completes structural elements for Zettelkasten system"
   (interactive)
   (setq zettelkasten-structures (list "*Literatur*" "*Schlagwörter*"))
-  (insert (ido-completing-read "Struktur? " zettelkasten-structures))
+  (setq zettelkasten-structure (ido-completing-read "Struktur? " zettelkasten-structures))
+  (insert zettelkasten-structure)
   (newline-and-indent)
+  (cond ((string= "*Schlagwörter*" zettelkasten-structure) (zettelkasten-complete-tag))
+        ((string= "*Literatur*" zettelkasten-structure) (yank)))
   )
 
 (defun zettelkasten-new-zettel ()
