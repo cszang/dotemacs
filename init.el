@@ -279,16 +279,6 @@
   (setq ac-auto-start 2)
   (ac-flyspell-workaround))
 
-(use-package deft
-  :bind
-  ("<f9>" . deft)
-  :config
-  (use-package deft)
-  (setq deft-extension "zkn")
-  (setq deft-text-mode 'zettelkasten-mode)
-  (setq deft-directory "~/ownCloud/Zettelkasten")
-  (setq deft-use-filename-as-title t))
-
 (use-package org
   :bind
   ("C-c a" . org-agenda)
@@ -419,11 +409,27 @@
 ;; Zettelkasten ;;
 ;;;;;;;;;;;;;;;;;;
 
+(setq zettelkasten-directory "~/ownCloud/Zettelkasten")
+
+;; Zettelkasten is built on top of Deft mode for quick filtering, the
+;; rest is custom made
+(use-package deft
+  :bind
+  ("<f9>" . deft)
+  ("C-c C-z" . zettelkasten-new-zettel)
+  ("C-c n" . zettelkasten-new-zettel)
+  :config
+  (use-package deft)
+  (setq deft-extension "zkn")
+  (setq deft-text-mode 'zettelkasten-mode)
+  (setq deft-directory zettelkasten-directory)
+  (setq deft-use-filename-as-title t))
+
 (defun zettelkasten-complete-tag ()
   "completes zettelkasten tags from all previously used tags"
   (interactive)
   (require 'f)
-  (shell-command "grep -horE '^(@|\\+|\\$).+' ~/ownCloud/Zettelkasten/ | sort | uniq > ~/.zetteltags")
+  (setq zetteltags-shell-cmd (concat "grep -horE '^(@|\\+|\\$).+'" zettelkasten-directory "| sort | uniq > ~/.zetteltags"))
   (setq zettelkasten-tag-list
         (s-split "\n" (f-read "~/.zetteltags") t))
   (insert (ido-completing-read "Schlagwort? " zettelkasten-tag-list))
@@ -436,15 +442,37 @@
   (setq zettelkasten-structures (list "*Literatur*" "*Schlagwörter*"))
   (insert (ido-completing-read "Struktur? " zettelkasten-structures))
   (newline-and-indent)
-)
+  )
+
+(defun zettelkasten-new-zettel ()
+  "create a new zettelkasten-zettel and visit the file"
+  (interactive)
+  (require 'cl)
+  (require 'f)
+  (setq zettelkasten-new-number
+        (+ 1
+           (reduce #'max
+                   (mapcar 'string-to-number
+                           (mapcar 'file-name-sans-extension
+                                   (directory-files zettelkasten-directory nil "^\[0-9\]\\{4\\}")
+                                   )))))
+  (setq new-number-preceeding-zeros
+        (cond ((>= zettelkasten-new-number 1000 ) ""   )
+              ((>= zettelkasten-new-number 100  ) "0"  )
+              ((>= zettelkasten-new-number 10   ) "00" )
+              ((>= zettelkasten-new-number 0    ) "000")))
+  (setq new-zettel-file-name
+        (concat (f-slash zettelkasten-directory) new-number-preceeding-zeros (number-to-string zettelkasten-new-number) ".zkn"))
+  (find-file new-zettel-file-name))
   
 (define-minor-mode zettelkasten-mode
-  "Zettelkasten org-enhancement"
+  "Zettelkasten management"
   :lighter " Zkn"
   :keymap (let ((map (make-sparse-keymap)))
             (progn
               (define-key map (kbd "@") 'zettelkasten-complete-tag)
               (define-key map (kbd "*") 'zettelkasten-complete-structure)
+              (define-key map (kbd "C-c C-n") 'zettelkasten-new-zettel)
               )
             map)
   (auto-fill-mode)
@@ -452,6 +480,7 @@
   )
 
 (add-to-list 'auto-mode-alist '("\\.zkn" . zettelkasten-mode))
+(global-set-key (kbd "C-c z") 'zettelkasten-new-zettel)
 
 ;;;;;;;;;;;;;;;;;;
 ;; R Navigation ;;
