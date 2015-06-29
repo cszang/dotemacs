@@ -440,7 +440,7 @@
 (defun zettelkasten-complete-structure ()
   "completes structural elements for Zettelkasten system"
   (interactive)
-  (setq zettelkasten-structures (list "*Literatur*" "*Schlagwörter*"))
+  (setq zettelkasten-structures (list "*Schlagwörter*" "*Literatur*" "*Verknüpfungen*"))
   (setq zettelkasten-structure (ido-completing-read "Struktur? " zettelkasten-structures))
   (insert zettelkasten-structure)
   (newline-and-indent)
