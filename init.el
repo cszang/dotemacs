@@ -226,7 +226,7 @@
   (add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill)
   (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
   (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
-  (ess-set-style 'RStudio))
+  (setq ess-default-style 'RStudio))
 
 (use-package magit
   :bind
