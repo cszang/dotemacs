@@ -6,6 +6,7 @@
       '(use-package
         ace-jump-mode
         anzu
+        atom-one-dark-theme
         auctex
         auto-complete
         autopair
@@ -20,11 +21,11 @@
         magit
         markdown-mode
         polymode
+        powerline
         scratch
         smartparens
         smex
         smooth-scrolling
-        zenburn-theme
         ))
 
 (when (>= emacs-major-version 24)
@@ -92,12 +93,15 @@
 (setq display-time-24h-format 1)
 
 (if (string= "buck" system-name)
-    (progn (set-face-attribute 'default nil :height 121 :font "Terminus")
+    (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
-  (progn (set-face-attribute 'default nil :height 131 :font "Terminus")
+  (progn (set-face-attribute 'default nil :height 151 :font "Inconsolata")
          (setq-default line-spacing 5)))
 
-(load-theme 'zenburn)
+(load-theme 'atom-one-dark)
+
+(require 'powerline)
+(powerline-default-theme)
 
 (setq shift-select-mode nil)
 
