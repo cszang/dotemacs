@@ -382,12 +382,8 @@
   (setq org-capture-templates
         '(("a" "Aufgabe" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "* OFFEN %?\n  %i\n")
-          ("n" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
+          ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "* OFFEN %?\n  %i\n  %a")
-          ("l" "Lesezeichen" entry (file (concat org-directory "/Lesezeichen.org"))
-           "* %a %^g\n  %?")
-          ("i" "Idee" entry (file+headline (concat org-directory "/GTD-Limbus.org") "Ideen")
-           "* %?\n  %i\n  %a")
           ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "* KAEFER %?\n  %i\n %a")
           ("b" "Buch" plain (file "~/ownCloud/Notizen/Buecher.txt"))
