@@ -44,6 +44,12 @@
         (package-install package))) my-packages))
 (require 'use-package)
 
+;; OS X
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
 ;; Set and load custom file
 
 (setq custom-file "~/.emacs.d/custom.el")
@@ -59,6 +65,7 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/texbin"))
 (setq exec-path (append exec-path '("/usr/texbin")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups"))))
 (setq bookmark-default-file "~/ownCloud/Emacs/Lesezeichen")
 (setq diary-file "~/ownCloud/Emacs/Kalender")
