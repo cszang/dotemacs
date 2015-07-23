@@ -6,7 +6,6 @@
       '(use-package
         ace-jump-mode
         anzu
-        atom-one-dark-theme
         auctex
         auto-complete
         autopair
@@ -20,8 +19,8 @@
         macro-math
         magit
         markdown-mode
+        minimal-theme
         polymode
-        powerline
         scratch
         smartparens
         smex
@@ -70,13 +69,6 @@
 (setq bookmark-default-file "~/ownCloud/Emacs/Lesezeichen")
 (setq diary-file "~/ownCloud/Emacs/Kalender")
 
-;;;;;;;;;;;;;
-;; Browser ;;
-;;;;;;;;;;;;;
-
-(setq browse-url-browser-function 'browse-url-generic)
-(setq browse-url-generic-program "iceweasel")
-
 ;;;;;;;;;;;;;;;;
 ;; Appearance ;;
 ;;;;;;;;;;;;;;;;
@@ -92,7 +84,9 @@
 (mouse-wheel-mode t)
 
 (tool-bar-mode -1)
-(menu-bar-mode -1)
+(if (string= "darwin" system-type)
+    (menu-bar-mode 1)
+  (menu-bar-mode -1))
 (tooltip-mode -1)
 (scroll-bar-mode -1)
 
@@ -102,13 +96,10 @@
 (if (string= "buck" system-name)
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
-  (progn (set-face-attribute 'default nil :height 151 :font "Inconsolata")
+  (progn (set-face-attribute 'default nil :height 171 :font "Inconsolata")
          (setq-default line-spacing 5)))
 
-(load-theme 'atom-one-dark)
-
-(require 'powerline)
-(powerline-default-theme)
+(load-theme 'minimal-light)
 
 (setq shift-select-mode nil)
 
