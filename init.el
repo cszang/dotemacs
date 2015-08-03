@@ -540,7 +540,7 @@
   (setq the-section-name (read-string "Section? "))
   (move-beginning-of-line nil)
   (message the-section-name)
-  (insert (concat "### " the-section-name " ---"))
+  (insert (concat "### " the-section-name " ----"))
   (newline-and-indent)
   )
 
