@@ -98,6 +98,8 @@
            "* OFFEN %?\n  %i\n")
           ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "* OFFEN %?\n  %i\n  %a")
+          ("o" "Logbuch" entry (file+datetree (concat org-directory "/GTD-Logbuch.org"))
+             "* %?\nHinzugefügt am %U\n  %i\n")
           ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "* KAEFER %?\n  %i\n %a")
           ("b" "Buch" plain (file "~/ownCloud/Notizen/Buecher.txt"))
