@@ -21,7 +21,7 @@
 (if (string= "buck" system-name)
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
-  (progn (set-face-attribute 'default nil :height 161 :font "Inconsolata")
+  (progn (set-face-attribute 'default nil :height 121 :font "Monoid")
          (setq-default line-spacing 5)))
 
 (load-theme 'atom-one-dark)
