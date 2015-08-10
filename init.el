@@ -8,7 +8,6 @@
         atom-one-dark-theme
         diminish
         dired-details
-        ess
         expand-region
         git-gutter
         js2-mode
@@ -25,7 +24,7 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
   (package-initialize)
   ;; Fetch packages from melpa/elpa if not present:
   (defvar refreshed nil)
@@ -59,4 +58,5 @@
 (require 'init-markdown)
 (require 'init-r-navigation)
 (require 'init-convenience)
+(require 'init-dired)
 (require 'init-platforms)

@@ -28,7 +28,6 @@
   (add-hook 'ess-mode-hook 'turn-on-auto-fill)
   (add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill)
   (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
-  (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
-  (setq ess-default-style 'RStudio))
+  (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections))
 
 (provide 'init-ess)
