@@ -15,6 +15,7 @@
         macro-math
         magit
         markdown-mode
+        org
         polymode
         smartparens
         smex
