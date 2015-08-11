@@ -10,6 +10,7 @@
         dired-details
         expand-region
         git-gutter
+        hl-todo
         js2-mode
         macro-math
         magit
