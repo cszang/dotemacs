@@ -6,6 +6,7 @@
         auto-complete
         autopair
         atom-one-dark-theme
+        deft
         diminish
         dired-details
         expand-region
@@ -61,3 +62,4 @@
 (require 'init-convenience)
 (require 'init-dired)
 (require 'init-platforms)
+(require 'init-zettelkasten)
