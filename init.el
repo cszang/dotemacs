@@ -6,11 +6,9 @@
         auto-complete
         autopair
         atom-one-dark-theme
-        deft
         diminish
         dired-details
         expand-region
-        f
         git-gutter
         hl-todo
         js2-mode
@@ -19,7 +17,6 @@
         markdown-mode
         org
         polymode
-        s
         smartparens
         smex
         smooth-scrolling
