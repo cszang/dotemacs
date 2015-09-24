@@ -61,4 +61,3 @@
 (require 'init-convenience)
 (require 'init-dired)
 (require 'init-platforms)
-(require 'init-zettelkasten)
