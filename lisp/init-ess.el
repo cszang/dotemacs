@@ -1,5 +1,5 @@
 (use-package ess-site
-  :load-path "site-lisp/ess/lisp/"
+  :load-path "~/lisp/ess/lisp/"
   :commands R
   :mode ("\\.R\\'" . R-mode)
   :config
@@ -27,6 +27,9 @@
   (add-hook 'ess-mode-hook 'smartparens-mode)
   (add-hook 'ess-mode-hook 'turn-on-auto-fill)
   (add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill)
+  (defun myindent-ess-hook ()
+    (setq ess-indent-level 2))
+  (add-hook 'ess-mode-hook 'myindent-ess-hook)
   (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
   (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections))
 

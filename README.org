@@ -1,3 +1,9 @@
 My configuration file for [[https://www.gnu.org/software/emacs/][Emacs]].
 
 [[http://ess.r-project.org][ESS]] is installed as described in the [[http://ess.r-project.org][instructions]], and not from MELPA!
+
+So, this is:
+
+#+begin_src sh
+git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
+#+end_src
