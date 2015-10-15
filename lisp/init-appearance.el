@@ -29,7 +29,8 @@
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-(setq visible-bell t)
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 (blink-cursor-mode -1)
 (set-default 'indicate-empty-lines t)
 
