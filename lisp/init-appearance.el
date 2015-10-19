@@ -45,4 +45,7 @@
 (display-time-mode 1)
 (setq display-time-24h-format 1)
 
+(setq frame-title-format '("Servus, Du schaust auf " "%b in Emacs " emacs-version "!"))
+(setq smex-prompt-string "I love you. ")
+
 (provide 'init-appearance)
