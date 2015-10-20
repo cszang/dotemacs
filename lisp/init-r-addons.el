@@ -24,4 +24,11 @@
   (newline-and-indent)
   )
 
-(provide 'init-r-navigation)
+;; insert magrittr pipe
+(defun cz-insert-magrittr-pipe ()
+  (interactive)
+  (just-one-space)
+  (insert "%>%")
+  )
+
+(provide 'init-r-addons)

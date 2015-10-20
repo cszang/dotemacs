@@ -30,6 +30,7 @@
   (setq ess-default-style 'RStudio)
   (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
   (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
-  (define-key ess-mode-map (kbd "C-c m") "%>%"))
+  (define-key ess-mode-map (kbd "C-c m") 'cz-insert-magrittr-pipe)
+  )
 
 (provide 'init-ess)

@@ -57,7 +57,7 @@
 (require 'init-tex)
 (require 'init-org)
 (require 'init-markdown)
-(require 'init-r-navigation)
+(require 'init-r-addons)
 (require 'init-convenience)
 (require 'init-dired)
 (require 'init-platforms)
