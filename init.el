@@ -7,7 +7,6 @@
         autopair
         atom-one-dark-theme
         diminish
-        dired-details
         expand-region
         git-gutter
         hl-todo
@@ -61,3 +60,4 @@
 (require 'init-convenience)
 (require 'init-dired)
 (require 'init-platforms)
+(require 'init-diminish)
