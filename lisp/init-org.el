@@ -37,7 +37,7 @@
                             (sequence "LISTE(l)" "|")))
   (setq org-todo-keyword-faces
         '(("PROJEKT" . "yellow")
-          ("LISTE" . "pink")
+          ("LISTE" . "yellow")
           ("WARTEN" . "orange")
           ("STORNIERT" . "grey")
           ("PR_FESTGEFAHREN" . "grey")))
