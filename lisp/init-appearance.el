@@ -15,9 +15,6 @@
 (tooltip-mode -1)
 (scroll-bar-mode -1)
 
-(display-time-mode 1)
-(setq display-time-24h-format 1)
-
 (if (string= "buck" system-name)
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
