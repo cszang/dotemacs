@@ -23,6 +23,7 @@
      (sh . t)
      (R . t)
      (python . t)
+     (julia . t)
      (js . t)
      (haskell . t)
      (ditaa . t)))
@@ -79,7 +80,7 @@
                   ((org-agenda-overriding-header "Warten auf...")))))
           
           ;; list of projects
-          ("P" "Projekte" tags-todo "LEVEL=1"
+          ("P" "Projekte" tags-todo "LEVEL=2"
            ((org-agenda-overriding-header "Liste aller Projekte")))
           
           ;; List of upcoming deadlines
@@ -92,21 +93,21 @@
             ))
           ))
   (setq org-agenda-include-diary t)
-  (setq org-default-notes-file (concat org-directory "/gtd-inbox.org"))
+  (setq org-default-notes-file (concat org-directory "/GTD-Eingang.org"))
   (setq org-capture-templates
         '(("a" "Aufgabe" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
-           "* OFFEN %?\n  %i\n")
+           "** OFFEN %?\n  %i\n")
           ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
-           "* OFFEN %?\n  %i\n  %a")
+           "** OFFEN %?\n  %i\n  %a")
           ("o" "Logbuch" entry (file+datetree (concat org-directory "/GTD-Logbuch.org"))
              "* %?\n     Hinzugefügt am %U\n  %i\n")
           ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
-           "* KAEFER %?\n  %i\n %a")
+           "** KAEFER %?\n  %i\n %a")
           ("b" "Buch" plain (file "~/ownCloud/Notizen/Buecher.txt"))
           ))
   (setq org-refile-targets (quote ((org-agenda-files :todo . "PROJEKT") (org-agenda-files :todo . "LISTE") (org-agenda-files :todo . "PR_FESTGEFAHREN") (org-agenda-files :tag . "eimer"))))
   (setq org-refile-use-cache nil)
-  (setq org-stuck-projects (quote ("+LEVEL=1/+PROJEKT-PR_ERLEDIGT-PR_FESTGEFAHREN" ("OFFEN" "KAEFER") nil "")))
+  (setq org-stuck-projects (quote ("+LEVEL=2/+PROJEKT-PR_ERLEDIGT-PR_FESTGEFAHREN" ("OFFEN" "KAEFER") nil "")))
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt")))
