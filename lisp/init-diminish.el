@@ -1,2 +1,6 @@
-(diminish 'auto-fill-function "α")
+(diminish 'auto-fill-function " α")
+(defun cz-diminish-modes ()
+  (diminish 'smartparens-mode)
+  (diminish 'eldoc-mode))
+(add-hook 'ess-mode-hook 'cz-diminish-modes)
 (provide 'init-diminish)
