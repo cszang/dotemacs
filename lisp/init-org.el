@@ -23,7 +23,6 @@
      (sh . t)
      (R . t)
      (python . t)
-     (julia . t)
      (js . t)
      (haskell . t)
      (ditaa . t)))
