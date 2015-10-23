@@ -14,7 +14,9 @@
         macro-math
         magit
         markdown-mode
+        olivetti
         org
+        palimpsest
         polymode
         smartparens
         smex
@@ -61,3 +63,4 @@
 (require 'init-dired)
 (require 'init-platforms)
 (require 'init-diminish)
+(require 'init-olivetti)

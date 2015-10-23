@@ -4,6 +4,7 @@
   :mode ("\\.R\\'" . R-mode)
   :config
   (setq ess-language "R")
+  (setq-default ess-dialect "R")
   (setq ess-ask-for-ess-directory nil)
   (setq ess-local-process-name "R")
   (setq ess-R-font-lock-keywords
