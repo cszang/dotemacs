@@ -51,6 +51,7 @@
   (server-start))
 
 (require 'init-helm)
+(require 'init-swiper)
 (require 'init-path)
 (require 'init-custom)
 (require 'init-appearance)
@@ -68,4 +69,3 @@
 (require 'init-platforms)
 (require 'init-diminish)
 (require 'init-olivetti)
-(require 'init-swiper)
