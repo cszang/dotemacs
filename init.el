@@ -1,14 +1,16 @@
 (setq my-packages
       '(use-package
-        ace-jump-mode
         anzu
         auctex
         auto-complete
         autopair
         atom-one-dark-theme
+        avy
         diminish
         expand-region
         git-gutter
+        helm
+        helm-swoop
         hl-todo
         js2-mode
         macro-math
@@ -18,9 +20,11 @@
         org
         palimpsest
         polymode
+        projectile
         smartparens
-        smex
         smooth-scrolling
+        swiper
+        swiper-helm
         ))
 
 (when (>= emacs-major-version 24)
@@ -44,13 +48,13 @@
 
 (require 'server)
 (unless (server-running-p)
-    (server-start))
+  (server-start))
 
+(require 'init-helm)
 (require 'init-path)
 (require 'init-custom)
 (require 'init-appearance)
 (require 'init-editing)
-(require 'init-smex)
 (require 'init-anzu)
 (require 'init-ess)
 (require 'init-git)
@@ -64,3 +68,4 @@
 (require 'init-platforms)
 (require 'init-diminish)
 (require 'init-olivetti)
+(require 'init-swiper)
