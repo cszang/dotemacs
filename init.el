@@ -10,7 +10,7 @@
         expand-region
         git-gutter
         helm
-        helm-swoop
+        helm-projectile
         hl-todo
         js2-mode
         macro-math
