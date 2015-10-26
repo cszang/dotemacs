@@ -23,6 +23,7 @@
         smex
         smooth-scrolling
         swiper
+        zenburn-theme
         ))
 
 (when (>= emacs-major-version 24)
