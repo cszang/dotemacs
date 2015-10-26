@@ -9,8 +9,6 @@
         diminish
         expand-region
         git-gutter
-        helm
-        helm-projectile
         hl-todo
         js2-mode
         macro-math
@@ -22,9 +20,9 @@
         polymode
         projectile
         smartparens
+        smex
         smooth-scrolling
         swiper
-        swiper-helm
         ))
 
 (when (>= emacs-major-version 24)
@@ -50,12 +48,12 @@
 (unless (server-running-p)
   (server-start))
 
-(require 'init-helm)
 (require 'init-swiper)
 (require 'init-path)
 (require 'init-custom)
 (require 'init-appearance)
 (require 'init-editing)
+(require 'init-smex)
 (require 'init-anzu)
 (require 'init-ess)
 (require 'init-git)
