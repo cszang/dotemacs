@@ -17,11 +17,16 @@
 ;; insert new R section
 (defun cz-insert-R-section ()
   (interactive)
-  (setq the-section-name (read-string "Section? "))
+  (setq the-section-name
+        (concat "### " (read-string "Section? ") " "))
   (move-beginning-of-line nil)
-  (message the-section-name)
-  (insert (concat "### " the-section-name " ----"))
-  (newline-and-indent)
+  (insert
+   (concat the-section-name
+           (make-string
+            (- 69 (string-width the-section-name)) ?-)
+           ))
+  (newline 2)
+  (open-line)
   )
 
 ;; insert magrittr pipe
