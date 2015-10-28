@@ -29,6 +29,7 @@
   (interactive)
   (just-one-space)
   (insert "%>%")
+  (just-one-space)
   )
 
 (provide 'init-r-addons)
