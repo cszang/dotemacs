@@ -70,3 +70,4 @@
 (require 'init-diminish)
 (require 'init-olivetti)
 (require 'init-pretty)
+(require 'init-spelling)
