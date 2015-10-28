@@ -9,6 +9,7 @@
         beacon
         diminish
         expand-region
+        flycheck
         git-gutter
         hl-todo
         js2-mode
