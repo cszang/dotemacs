@@ -42,4 +42,6 @@
 (setq frame-title-format '("Servus, Du schaust auf " "%b in Emacs " emacs-version "!"))
 (setq smex-prompt-string "I love you. ")
 
+(beacon-mode 1)
+
 (provide 'init-appearance)

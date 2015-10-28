@@ -6,6 +6,7 @@
         autopair
         atom-one-dark-theme
         avy
+        beacon
         diminish
         expand-region
         git-gutter
