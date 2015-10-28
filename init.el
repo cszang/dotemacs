@@ -68,3 +68,4 @@
 (require 'init-platforms)
 (require 'init-diminish)
 (require 'init-olivetti)
+(require 'init-pretty)
