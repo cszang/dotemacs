@@ -1,6 +1,7 @@
 (diminish 'auto-fill-function " α")
 (diminish 'visual-line-mode)
 (diminish 'ivy-mode)
+(diminish 'beacon-mode)
 (defun cz-ess-diminish-modes ()
   (diminish 'smartparens-mode)
   (diminish 'eldoc-mode))
