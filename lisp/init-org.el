@@ -119,6 +119,7 @@
   (require 'org-crypt)
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt")))
-  (setq org-crypt-key nil))
+  (setq org-crypt-key nil)
+  (setq org-ellipsis "⤵"))
 
 (provide 'init-org)
