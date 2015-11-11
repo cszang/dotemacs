@@ -111,7 +111,7 @@
           ("m" "Motto" entry (file "~/ownCloud/Org/Mottos.org")
            "* %?")
           ("n" "Notiz" entry (file "~/ownCloud/Org/Notizen.org")
-           "* %?\n  %U\n")
+           "\n* %?\n  %U\n")
           ))
   (setq org-refile-targets (quote ((org-agenda-files :todo . "PROJEKT") (org-agenda-files :todo . "LISTE") (org-agenda-files :todo . "PR_FESTGEFAHREN") (org-agenda-files :tag . "eimer"))))
   (setq org-refile-use-cache nil)
