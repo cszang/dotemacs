@@ -58,4 +58,7 @@
   (setq ac-auto-start 2)
   (ac-flyspell-workaround))
 
+(global-set-key (kbd "C-c b ,") 'goto-last-change)
+(global-set-key (kbd "C-c b .") 'goto-last-change-reverse)
+
 (provide 'init-editing)

@@ -11,6 +11,7 @@
         expand-region
         flycheck
         git-gutter
+        goto-chg
         hl-todo
         js2-mode
         macro-math
