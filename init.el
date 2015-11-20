@@ -4,7 +4,7 @@
         auctex
         auto-complete
         autopair
-        arjen-grey
+        arjen-grey-theme
         avy
         beacon
         diminish

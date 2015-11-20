@@ -16,9 +16,12 @@
               (push '("PR_FESTGEFAHREN" . ?❄) prettify-symbols-alist)
               (push '("OFFEN" . ?⚪) prettify-symbols-alist)
               (push '("HABIT" . ?♺) prettify-symbols-alist)
+              (push '("JAHRESTAG" . ?★) prettify-symbols-alist)
+              (push '("LOVE" . ?❤) prettify-symbols-alist)
               (push '("ERLEDIGT" . ?✓) prettify-symbols-alist)
               (push '("STORNIERT" . ?✗) prettify-symbols-alist)
               (push '("WARTEN" . ?➾) prettify-symbols-alist)
+              (push '("AREA" . ?⧉) prettify-symbols-alist)
               ))
   (global-prettify-symbols-mode +1))
 

@@ -31,6 +31,8 @@
   (setq org-todo-keywords '((sequence "OFFEN(o)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
                             (sequence "|" "STORNIERT(s@!)")
                             (sequence "HABIT" "|" "ERLEDIGT")
+                            (sequence "JAHRESTAG" "|" "ERLEDIGT")
+                            (sequence "LOVE" "|" "LOVED")
                             (sequence "|" "DELIGIERT (d@/!)")
                             (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
                             (sequence "PROJEKT(p!)" "PR_FESTGEFAHREN(f)" "|" "PR_ERLEDIGT(i!)" "PR_STORNIERT(r@/!)")
@@ -46,52 +48,21 @@
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-habit-preceding-days 0)
+
   (setq org-agenda-custom-commands
-        ;; three day context
-        '(("O" "3-Tages Ansicht"
-           ((agenda "Fällig oder geplant im Laufe der nächsten drei Tage"
-                    ((org-agenda-ndays 3)
-                     (org-agenda-start-on-weekday nil)
-                     (org-agenda-overriding-header "Fällig oder geplant im Laufe der nächsten drei Tage")
-                     ))
-            ))
-          ;; Review Group
-          ("r" . "GTD Überprüfung")
-          ("rd" "Tägliche Überprüfung"
-           ((tags-todo "+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projekte zur täglichen Überprüfung")))
-            (todo "WAIT"
-                  ((org-agenda-overriding-header "Warten auf...")))))
-          
-          ("rw" "Wöchentliche Überprüfung"
-           ((tags-todo "+REVIEW=\"weekly\"|+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projekte zur wöchentlichen Überprüfung")))
-            (stuck ""
-                   ((org-agenda-overriding-header "Festgefahrene Projekte")))
-            (todo "WAIT"
-                  ((org-agenda-overriding-header "Waiting for...")))))
-          
-          ("rm" "Monatliche Überprüfung"
-           ((tags-todo "+REVIEW=\"monthly\"|+REVIEW=\"weekly\"|+REVIEW=\"daily\""
-                       ((org-agenda-overriding-header "Projekte zur monatlichen Überprüfung")))
-            (stuck ""
-                   ((org-agenda-overriding-header "Festgefahrene Projekte")))
-            (todo "WAIT"
-                  ((org-agenda-overriding-header "Warten auf...")))))
-          
-          ;; list of projects
-          ("P" "Projekte" tags-todo "LEVEL=2"
-           ((org-agenda-overriding-header "Liste aller Projekte")))
-          
-          ;; List of upcoming deadlines
-          ("d" "Nächste Fristen" agenda ""
-           ((org-agenda-ndays 1)
-            (org-agenda-start-day nil)
-            (org-agenda-time-grid nil)
-            (org-deadline-warning-days 365)
-            (org-agenda-entry-types '(:deadline))
-            ))
-          ))
+        '(("o" agenda "Is' was, Doc?"
+           ((org-agenda-tag-filter-preset '("-@daheim" "-@familie"))
+            (org-agenda-ndays 3)
+            (org-agenda-start-on-weekday nil)
+            (org-agenda-overriding-header "Is' was, Doc?")))
+          ("d" agenda "Daheim so..."
+           ((org-agenda-tag-filter-preset '("-@büro" "-@büroleute" "-@campus"))
+            (org-agenda-ndays 3)
+            (org-agenda-start-on-weekday nil)
+            (org-agenda-overriding-header "Daheim so...")))
+          )
+        )
+
   (setq org-agenda-include-diary t)
   (setq org-default-notes-file (concat org-directory "/GTD-Eingang.org"))
   (setq org-capture-templates
