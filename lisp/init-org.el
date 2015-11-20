@@ -30,6 +30,7 @@
   (setq org-src-tab-acts-natively t)
   (setq org-todo-keywords '((sequence "OFFEN(o)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
                             (sequence "|" "STORNIERT(s@!)")
+                            (sequence "HABIT" "|" "ERLEDIGT")
                             (sequence "|" "DELIGIERT (d@/!)")
                             (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
                             (sequence "PROJEKT(p!)" "PR_FESTGEFAHREN(f)" "|" "PR_ERLEDIGT(i!)" "PR_STORNIERT(r@/!)")
@@ -120,6 +121,10 @@
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt")))
   (setq org-crypt-key nil)
-  (setq org-ellipsis "⤵"))
+  (setq org-ellipsis "⤵")
+  ;; turn on org-bullets-mode for org-files
+  (setq org-bullets-bullet-list '(" "))
+  (add-hook 'org-mode-hook 'org-bullets-mode)
+  )
 
 (provide 'init-org)

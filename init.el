@@ -19,6 +19,7 @@
         markdown-mode
         olivetti
         org
+        org-bullets
         palimpsest
         polymode
         projectile
