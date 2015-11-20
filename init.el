@@ -4,7 +4,7 @@
         auctex
         auto-complete
         autopair
-        atom-one-dark-theme
+        arjen-grey
         avy
         beacon
         diminish
@@ -27,7 +27,6 @@
         smex
         smooth-scrolling
         swiper
-        zenburn-theme
         ))
 
 (when (>= emacs-major-version 24)

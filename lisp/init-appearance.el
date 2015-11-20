@@ -21,7 +21,8 @@
   (progn (set-face-attribute 'default nil :height 131 :font "Monoid")
          (setq-default line-spacing 5)))
 
-(load-theme 'atom-one-dark)
+(load-theme 'arjen-grey)
+(setq font-lock-builtin-face '(t :foreground "controlShadowColor"))
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
