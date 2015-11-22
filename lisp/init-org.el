@@ -37,17 +37,15 @@
                             (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
                             (sequence "PROJEKT(p!)" "PR_FESTGEFAHREN(f)" "|" "PR_ERLEDIGT(i!)" "PR_STORNIERT(r@/!)")
                             (sequence "LISTE(l)" "|")))
+
   (setq org-todo-keyword-faces
-        '(("PROJEKT" . "yellow")
-          ("LISTE" . "yellow")
-          ("WARTEN" . "orange")
-          ("STORNIERT" . "grey")
-          ("PR_FESTGEFAHREN" . "grey")))
+        '(("PROJEKT" . "#529dff")
+          ("LISTE" . "#529dff")
+          ("WARTEN" . "#de8485")
+          ("STORNIERT" . "#999999")
+          ("PR_FESTGEFAHREN" . "#999999")))
+  
   (setq org-fontify-done-headline t)
-  (custom-set-faces
-   '(org-headline-done 
-     ((((class color) (min-colors 16) (background dark)) 
-       (:foreground "#4f4f4f" :strike-through t)))))
   (setq org-log-into-drawer t)
   (setq org-agenda-files (quote ("~/ownCloud/Org/GTD-Eingang.org" "~/ownCloud/Org/GTD-Aktiv.org" "~/ownCloud/Org/GTD-Gewohnheiten.org" "~/ownCloud/Org/GTD-Jahrestage.org")))
   (setq org-agenda-skip-scheduled-if-done t)
@@ -59,6 +57,7 @@
            ((org-agenda-tag-filter-preset '("-@daheim" "-@familie"))
             (org-agenda-ndays 3)
             (org-agenda-start-on-weekday nil)
+            (org-show-context-detail 'minimal)
             (org-agenda-overriding-header "Is' was, Doc?")))
           ("d" agenda "Daheim so..."
            ((org-agenda-tag-filter-preset '("-@büro" "-@büroleute" "-@campus"))
@@ -67,6 +66,12 @@
             (org-agenda-overriding-header "Daheim so...")))
           )
         )
+
+  (setq org-agenda-category-icon-alist
+        '(("Inbox" "~/.emacs.d/img/inbox.png" nil nil :ascent center)
+          ("Habits" "~/.emacs.d/img/habits.png" nil nil :ascent center)
+          ("Projects" "~/.emacs.d/img/projects.png" nil nil :ascent center)
+          ("Anniv" "~/.emacs.d/img/anniv.png" nil nil :ascent center)))
 
   (setq org-agenda-include-diary t)
   (setq org-default-notes-file (concat org-directory "/GTD-Eingang.org"))
