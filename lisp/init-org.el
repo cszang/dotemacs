@@ -43,6 +43,11 @@
           ("WARTEN" . "orange")
           ("STORNIERT" . "grey")
           ("PR_FESTGEFAHREN" . "grey")))
+  (setq org-fontify-done-headline t)
+  (custom-set-faces
+   '(org-headline-done 
+     ((((class color) (min-colors 16) (background dark)) 
+       (:foreground "#4f4f4f" :strike-through t)))))
   (setq org-log-into-drawer t)
   (setq org-agenda-files (quote ("~/ownCloud/Org/GTD-Eingang.org" "~/ownCloud/Org/GTD-Aktiv.org" "~/ownCloud/Org/GTD-Gewohnheiten.org" "~/ownCloud/Org/GTD-Jahrestage.org")))
   (setq org-agenda-skip-scheduled-if-done t)
