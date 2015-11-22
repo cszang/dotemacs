@@ -52,6 +52,8 @@
 (unless (server-running-p)
   (server-start))
 
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
+
 (require 'init-swiper)
 (require 'init-path)
 (require 'init-custom)
@@ -74,3 +76,4 @@
 (require 'init-spelling)
 (require 'init-projectile)
 (require 'init-diminish)
+
