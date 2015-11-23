@@ -33,15 +33,15 @@
  `(menu ((t (:foreground ,base1 :background ,paper))))
  `(minibuffer-prompt ((t (:foreground ,blue1))))
  `(mode-line
-   ((t (:foreground ,base1 :background ,paper
-		    :box (:line-width 1 :color ,base1)))))
+   ((t (:foreground ,paper :background ,grey1
+		    :box (:line-width 1 :color ,grey1)))))
  `(mode-line-buffer-id ((t (:foreground ,base1))))
  `(mode-line-inactive
-   ((t (:foreground ,base1  :background ,paper
-		    :box (:line-width 1 :color ,paper)))))
+   ((t (:foreground ,grey1  :background ,paper
+		    :box (:line-width 1 :color ,grey1)))))
  `(region ((t (:background ,lightblue2))))
  `(secondary-selection ((t (:background ,paper :inverse-video: t))))
- `(vertical-border ((t (:foreground ,base1))))
+ `(vertical-border ((t (:foreground ,grey1))))
 
  ;; h-line-mode
  `(hl-line ((t (:background ,paper-hl))))
