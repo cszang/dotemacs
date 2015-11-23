@@ -7,6 +7,7 @@
         arjen-grey-theme
         avy
         beacon
+        deft
         diminish
         expand-region
         flycheck
@@ -55,6 +56,7 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 
 (require 'init-swiper)
+(require 'init-deft)
 (require 'init-path)
 (require 'init-custom)
 (require 'init-appearance)
