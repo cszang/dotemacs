@@ -39,7 +39,7 @@
 
 (setq global-visual-line-mode t)
 
-(setq frame-title-format '("Servus, Du schaust auf " "%b in Emacs " emacs-version "!"))
+(setq frame-title-format '("%b"))
 (setq smex-prompt-string "I love you. ")
 
 (beacon-mode 1)
