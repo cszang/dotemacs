@@ -78,4 +78,3 @@
 (require 'init-spelling)
 (require 'init-projectile)
 (require 'init-diminish)
-
