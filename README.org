@@ -24,3 +24,11 @@ separately. On OS X:
   mv en_GB.* ~/Library/Spelling/
   cd .. && rm -rf dictdl
 #+end_src
+
+We also need in =~/.latexmkrc=:
+
+#+begin_src
+$pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
+$pdf_previewer = 'open -a skim';
+$clean_ext = 'bbl rel %R-blx.bib %R.synctex.gz';
+#+end_src

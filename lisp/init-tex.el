@@ -22,6 +22,23 @@
 (use-package tex-site
   :ensure auctex
   :config
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex))
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq-default TeX-PDF-mode t)
+  (add-hook 'TeX-mode-hook
+            (lambda ()
+              (add-to-list 'TeX-output-view-style
+                           '("^pdf$" "."
+                             "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b")))
+            )
+  (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+  (setq TeX-view-program-list
+        '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+  (add-hook 'LaTeX-mode-hook (lambda ()
+                               (push
+                                '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+                                  :help "Run latexmk on file")
+                                TeX-command-list)))
+  (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+  )
 
 (provide 'init-tex)
