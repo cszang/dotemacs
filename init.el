@@ -15,6 +15,7 @@
         goto-chg
         hl-todo
         js2-mode
+        julia-mode
         macro-math
         magit
         markdown-mode

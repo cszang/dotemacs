@@ -7,6 +7,7 @@
   (setq-default ess-dialect "R")
   (setq ess-ask-for-ess-directory nil)
   (setq ess-local-process-name "R")
+  (load "~/lisp/ess/lisp/ess-site")
   (setq ess-R-font-lock-keywords
       (quote
        ((ess-R-fl-keyword:modifiers . t)
@@ -20,6 +21,7 @@
         (ess-fl-keyword:delimiters . t)
         (ess-fl-keyword:=)
         (ess-R-fl-keyword:F&T))))
+  (setq inferior-julia-program-name "/usr/local/bin/julia")
   (ess-toggle-underscore nil)
   (setq ansi-color-for-comint-mode 'filter)
   (add-hook 'ess-mode-hook 'auto-complete-mode)
