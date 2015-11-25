@@ -74,7 +74,7 @@
  `(org-hide ((t (:foreground ,paper :background ,paper))))
  `(org-document-title ((t (:foreground ,lightblue1 :bold t :height 1.1 :underline nil))))
  `(org-document-info ((t (:foreground ,base1 :bold nil :height 1.0 :underline nil))))
- `(org-link ((t (:foreground ,lightblue1))))
+ `(org-link ((t (:foreground ,lightblue1 :underline t))))
  `(org-code ((t (:foreground ,grey1))))
  `(org-headline-done ((t (:strike-through t :foreground ,grey1))))
  `(org-special-keyword ((t (:foreground ,grey1))))
