@@ -51,7 +51,7 @@
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-skip-deadline-if-done t)
   (setq org-habit-preceding-days 0)
-  (setq org-agenda-window-setup 'other-frame)
+  (setq org-agenda-window-setup 'current-window)
 
   (setq org-agenda-custom-commands
         '(("o" agenda "Is' was, Doc?"
