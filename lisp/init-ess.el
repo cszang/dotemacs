@@ -7,7 +7,7 @@
   (setq-default ess-dialect "R")
   (setq ess-ask-for-ess-directory nil)
   (setq ess-local-process-name "R")
-  (load "~/lisp/ess/lisp/ess-site")
+  ;; (load "~/lisp/ess/lisp/ess-site")
   (setq ess-R-font-lock-keywords
       (quote
        ((ess-R-fl-keyword:modifiers . t)
