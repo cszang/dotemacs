@@ -107,6 +107,9 @@
  `(org-time-grid ((t (:foreground ,grey1))))
  `(org-agenda-diary ((t (:foreground ,base1 :italic t))))
 
+ ;; dired
+ `(dired-directory ((t (:foreground ,lightblue1 :bold t))))
+
  ;; deft
  `(deft-title-face ((t (:inherit nil :foreground ,lightblue1 :bold t))))
  `(deft-summary-face ((t (:inherit nil :foreground ,base1 :italic t))))
