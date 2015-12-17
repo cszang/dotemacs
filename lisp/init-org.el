@@ -82,7 +82,7 @@
           ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "** OFFEN %?\n  %i\n  %a")
           ("e" "Lesezeichen" entry (file "~/ownCloud/Org/Lesezeichen.org")
-	   "* [[%^{prompt|Link}][%^{prompt|Beschreibung}]]\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%?" :empty-lines 1)
+	   "* %^{prompt|Beschreibung}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%^{prompt|Link}\n\n%?" :empty-lines 1)
           ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "** KAEFER %?\n  %i\n %a")
           ("z" "Zitat" entry (file "~/ownCloud/Org/Zitate.org")
