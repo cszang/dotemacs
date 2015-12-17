@@ -7,6 +7,7 @@
         arjen-grey-theme
         avy
         beacon
+        dash
         deft
         diminish
         expand-region
@@ -25,6 +26,7 @@
         palimpsest
         polymode
         projectile
+        s
         smartparens
         smex
         smooth-scrolling
