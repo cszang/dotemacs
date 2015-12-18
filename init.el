@@ -12,6 +12,7 @@
         diminish
         expand-region
         flycheck
+        fountain-mode
         git-gutter
         goto-chg
         hl-todo
@@ -81,3 +82,4 @@
 (require 'init-spelling)
 (require 'init-projectile)
 (require 'init-diminish)
+(require 'init-fountain)
