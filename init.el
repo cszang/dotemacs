@@ -32,6 +32,7 @@
         smex
         smooth-scrolling
         swiper
+        tldr
         ))
 
 (when (>= emacs-major-version 24)
