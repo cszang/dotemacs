@@ -12,6 +12,31 @@
   (setq org-archive-location "~/ownCloud/Org/GTD-Archiv.org::Von %s")
   (require 'ox-latex)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (add-to-list 'org-latex-classes
+               '("tuftebook"
+                 "\\documentclass{tufte-book}\n
+\\usepackage{color}
+\\usepackage{amssymb}
+\\usepackage{gensymb}
+\\usepackage{nicefrac}
+\\usepackage{units}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (add-to-list 'org-latex-classes
+               '("tuftehandout"
+                 "\\documentclass{tufte-handout}
+\\usepackage{color}
+\\usepackage{amssymb}
+\\usepackage{amsmath}
+\\usepackage{gensymb}
+\\usepackage{nicefrac}
+\\usepackage{units}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (setq org-latex-listings 'minted)
   (setq org-latex-pdf-process
       '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
