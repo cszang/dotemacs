@@ -21,6 +21,8 @@
         macro-math
         magit
         markdown-mode
+        neotree
+        nyan-mode
         olivetti
         org
         org-bullets

@@ -43,5 +43,6 @@
 (setq smex-prompt-string "I love you. ")
 
 (beacon-mode 1)
+(nyan-mode 1)
 
 (provide 'init-appearance)
