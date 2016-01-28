@@ -78,6 +78,8 @@
 (defun nv-insert-tagline ()
   (interactive)
   (nv-get-tag-list)
+  (backward-page)
+  (open-line 2)
   (insert (concat "tags: " (ido-completing-read "Schlagwort? " nv-tag-list) " " )))
 
 (define-minor-mode nvalt-mode
