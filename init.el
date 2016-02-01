@@ -67,6 +67,7 @@
 (require 'init-path)
 (require 'init-custom)
 (require 'init-appearance)
+(require 'init-oblique)
 (require 'init-editing)
 (require 'init-smex)
 (require 'init-anzu)

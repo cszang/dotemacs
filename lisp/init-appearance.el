@@ -39,7 +39,6 @@
 
 (setq global-visual-line-mode t)
 
-(setq frame-title-format '("%b"))
 (setq smex-prompt-string "I love you. ")
 
 (beacon-mode 1)
