@@ -57,10 +57,9 @@
                             (sequence "|" "STORNIERT(s@!)")
                             (sequence "HABIT" "|" "ERLEDIGT")
                             (sequence "JAHRESTAG" "|" "ERLEDIGT")
-                            (sequence "LOVE" "|" "LOVED")
                             (sequence "|" "DELIGIERT (d@/!)")
                             (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
-                            (sequence "PROJEKT(p!)" "PR_FESTGEFAHREN(f)" "|" "PR_ERLEDIGT(i!)" "PR_STORNIERT(r@/!)")
+                            (sequence "PROJEKT(p!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(g!)" "PR_STORNIERT(r@/!)")
                             (sequence "LISTE(l)" "|")))
 
   (setq org-todo-keyword-faces
@@ -68,7 +67,7 @@
           ("LISTE" . "#529dff")
           ("WARTEN" . "#de8485")
           ("STORNIERT" . "#999999")
-          ("PR_FESTGEFAHREN" . "#999999")))
+          ("PR_INAKTIV" . "#999999")))
   
   (setq org-fontify-done-headline t)
   (setq org-log-into-drawer t)
@@ -132,10 +131,6 @@
   (org-crypt-use-before-save-magic)
   (setq org-tags-exclude-from-inheritance (quote ("crypt")))
   (setq org-crypt-key nil)
-  (setq org-ellipsis "⤵")
-  ;; turn on org-bullets-mode for org-files
-  (setq org-bullets-bullet-list '(" "))
-  (add-hook 'org-mode-hook 'org-bullets-mode)
   )
 
 (provide 'init-org)
