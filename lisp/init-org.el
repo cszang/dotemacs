@@ -92,12 +92,6 @@
           )
         )
 
-  (setq org-agenda-category-icon-alist
-        '(("Inbox" "~/.emacs.d/img/inbox.png" nil nil :ascent center)
-          ("Habits" "~/.emacs.d/img/habits.png" nil nil :ascent center)
-          ("Projects" "~/.emacs.d/img/projects.png" nil nil :ascent center)
-          ("Anniv" "~/.emacs.d/img/anniv.png" nil nil :ascent center)))
-
   (setq org-agenda-include-diary t)
   (setq org-default-notes-file (concat org-directory "/GTD-Eingang.org"))
   (setq org-capture-templates
