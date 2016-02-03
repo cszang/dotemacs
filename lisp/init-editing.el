@@ -38,6 +38,8 @@
 (require 'ido)
 (ido-mode t)
 (global-set-key (kbd "C-x f") 'ido-find-file)
+(setq ido-case-fold t)
+(setq ido-everywhere t)
 
 ;; Hippie expand
 (dolist (f '(try-expand-line try-expand-list try-complete-file-name-partially))
