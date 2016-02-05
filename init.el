@@ -4,7 +4,6 @@
         auctex
         auto-complete
         autopair
-        arjen-grey-theme
         avy
         beacon
         dash
@@ -12,9 +11,7 @@
         diminish
         expand-region
         flycheck
-        fountain-mode
         git-gutter
-        goto-chg
         hl-todo
         js2-mode
         julia-mode
@@ -22,11 +19,8 @@
         magit
         markdown-mode
         neotree
-        nyan-mode
         olivetti
         org
-        org-bullets
-        palimpsest
         polymode
         projectile
         s

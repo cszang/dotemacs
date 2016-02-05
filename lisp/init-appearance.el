@@ -21,7 +21,8 @@
   (progn (set-face-attribute 'default nil :height 131 :font "Monoid")
          (setq-default line-spacing 5)))
 
-(load-theme 'writer)
+(load-theme 'acme)
+(global-font-lock-mode 0)
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
@@ -42,6 +43,5 @@
 (setq smex-prompt-string "I love you. ")
 
 (beacon-mode 1)
-(nyan-mode 1)
 
 (provide 'init-appearance)
