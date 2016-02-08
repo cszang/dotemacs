@@ -22,7 +22,6 @@
          (setq-default line-spacing 5)))
 
 (load-theme 'acme)
-(global-font-lock-mode 0)
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)

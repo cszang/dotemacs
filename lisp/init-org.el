@@ -79,13 +79,13 @@
 
   (setq org-agenda-custom-commands
         '(("o" agenda "Is' was, Doc?"
-           ((org-agenda-tag-filter-preset '("-@daheim" "-@familie"))
+           ((org-agenda-tag-filter-preset '("-@daheim"))
             (org-agenda-ndays 3)
             (org-agenda-start-on-weekday nil)
             (org-show-context-detail 'minimal)
             (org-agenda-overriding-header "Is' was, Doc?")))
           ("d" agenda "Daheim so..."
-           ((org-agenda-tag-filter-preset '("-@büro" "-@büroleute" "-@campus"))
+           ((org-agenda-tag-filter-preset '("-@büro" "-@campus"))
             (org-agenda-ndays 3)
             (org-agenda-start-on-weekday nil)
             (org-agenda-overriding-header "Daheim so...")))
@@ -99,6 +99,8 @@
            "** OFFEN %?\n  %i\n")
           ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
            "** OFFEN %?\n  %i\n  %a")
+          ("i" "Projektidee" plain (file (concat org-directory "/Projektideen.org"))
+           "%?\n")
           ("e" "Lesezeichen" entry (file (concat org-directory "/Lesezeichen.org"))
 	   "* %^{prompt|Beschreibung}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%^{prompt|Link}\n\n%?" :empty-lines 1)
           ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
@@ -111,7 +113,7 @@
            "* %?")
           ("p" "Phrase" plain (file (concat org-directory "/Phrasen.org"))
            "\n\n%?\n")
-          ("b" "Buch" entry (file (concat org-directory "~/Buecher.org"))
+          ("b" "Buch" entry (file (concat org-directory "/Buecher.org"))
            "* LESEN %?\n  %U\n")
           ("o" "Motto" entry (file (concat org-directory "/Mottos.org"))
            "* %?")
