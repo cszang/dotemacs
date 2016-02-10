@@ -119,6 +119,10 @@
            "* %?")
           ("n" "Notiz" entry (file (concat org-directory "/Notizen.org"))
            "\n* %?\n  %U\n")
+          ("v" "Vokabel" entry
+           (file+headline (concat org-directory "/Vokabeln.org")
+                          "Vocabulary")
+           "* %^{Das Wort} :drill:\n %t\n %^{Erweiterung} \n** Antwort \n%^{Die Antwort}")
           ))
   (setq org-refile-targets (quote ((org-agenda-files :todo . "PROJEKT") (org-agenda-files :todo . "LISTE") (org-agenda-files :todo . "PR_FESTGEFAHREN") (org-agenda-files :tag . "eimer"))))
   (setq org-refile-use-cache nil)

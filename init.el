@@ -29,6 +29,7 @@
         smooth-scrolling
         swiper
         tldr
+        zenburn-theme
         ))
 
 (when (>= emacs-major-version 24)
