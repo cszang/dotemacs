@@ -1,4 +1,4 @@
-(diminish 'auto-fill-function " α")
+(diminish 'auto-fill-function " af")
 (diminish 'visual-line-mode)
 (diminish 'ivy-mode)
 (diminish 'beacon-mode)
