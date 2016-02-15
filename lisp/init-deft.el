@@ -1,44 +1,45 @@
-(setq deft-directory "~/ownCloud/Notizen")
+(setq deft-directory "~/ownCloud/Zettelkasten")
 (setq deft-use-filename-as-title t)
 (setq deft-use-filter-string-for-filename t)
 (setq deft-extensions '("txt", "md", "org"))
-(add-to-list 'auto-mode-alist '("/Notizen/.*\\.txt\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("/Zettelkasten/.*\\.txt\\'" . markdown-mode))
 (global-set-key (kbd "C-c C-d") 'deft)
 (provide 'init-deft)
 
-;; a minor mode for making working with deft a bit more like nvAlt
+;; a minor mode for making working with deft the ultimate zettelkasten
+;; experience
 
 (require 's)
 (require 'dash)
 
-(defun nv-follow-internal-link ()
+(defun zk-follow-internal-link ()
   (interactive)
-  (setq nv-search-string (word-at-point))
+  (setq zk-search-string (word-at-point))
   (deft)
-  (setq deft-filter-regexp (list nv-search-string))
+  (setq deft-filter-regexp (list zk-search-string))
   (deft-filter-update)
   (deft-refresh-browser)
   )
 
-(defun nv-insert-timestamp ()
+(defun zk-insert-timestamp ()
   (interactive)
   (insert (format-time-string "%Y%m%d%k%M"))
   )
 
-(defun nv-new-with-timestamp ()
+(defun zk-new-with-timestamp ()
   (interactive)
-  (setq nv-time-string (format-time-string "%Y%m%d%k%M"))
+  (setq zk-time-string (format-time-string "%Y%m%d%k%M"))
   (deft)
-  (setq deft-filter-regexp (list nv-time-string))
+  (setq deft-filter-regexp (list zk-time-string))
   (deft-filter-update)
   (deft-refresh-browser)
   )
 
-(defun nv-insert-timestamp-for-internal-link ()
+(defun zk-insert-timestamp-for-internal-link ()
   (interactive)
-  (setq nv-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
-  (setq nv-link-file (ido-completing-read "Link? " nv-all-dated-files))
-  (insert (concat "§" (car (s-match "^[0-9]\\{12\\}" nv-link-file))))
+  (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
+  (setq zk-link-file (ido-completing-read "Link? " zk-all-dated-files))
+  (insert (concat "§" (car (s-match "^[0-9]\\{12\\}" zk-link-file))))
   )
 
 (defun flatten (mylist)
@@ -48,53 +49,53 @@
    (t
     (append (flatten (car mylist)) (flatten (cdr mylist))))))
 
-(defun nv-match-tag-in-buffer (f)
+(defun zk-match-tag-in-buffer (f)
   "append all matches of tags in a buffer to a list"
   (save-excursion
-    (setq nv-tagline-regex "^tags:.*$")
-    (setq nv-tag-regex "#\\w+")
+    (setq zk-tagline-regex "^tags:.*$")
+    (setq zk-tag-regex "#\\w+")
     (find-file f)
-    (setq nv-tagline (car (s-match nv-tagline-regex (buffer-string))))
-    (setq nv-tags-in-note (s-match-strings-all nv-tag-regex nv-tagline))
-    (setq nv-tag-list (append nv-tag-list nv-tags-in-note))
+    (setq zk-tagline (car (s-match zk-tagline-regex (buffer-string))))
+    (setq zk-tags-in-note (s-match-strings-all zk-tag-regex zk-tagline))
+    (setq zk-tag-list (append zk-tag-list zk-tags-in-note))
     (kill-buffer (current-buffer))))
 
-(defun nv-get-tag-list ()
+(defun zk-get-tag-list ()
   "gets all tags from all notes"
   (interactive)
-  (setq nv-start-buffer buffer-file-name)
-  (setq nv-scan-files (-remove (lambda (f) (string= nv-start-buffer f))
+  (setq zk-start-buffer buffer-file-name)
+  (setq zk-scan-files (-remove (lambda (f) (string= zk-start-buffer f))
                                  (directory-files deft-directory t ".txt$")))
-  (setq nv-tag-list '(()))
-  (mapc 'nv-match-tag-in-buffer nv-scan-files)
-  (setq nv-tag-list (-distinct (flatten nv-tag-list)))
+  (setq zk-tag-list '(()))
+  (mapc 'zk-match-tag-in-buffer zk-scan-files)
+  (setq zk-tag-list (-distinct (flatten zk-tag-list)))
   )
 
-(defun nv-complete-tag ()
+(defun zk-complete-tag ()
   "completes tags from all previously used tags"
   (interactive)
-  (insert (concat (ido-completing-read "Schlagwort? " nv-tag-list) " " )))
+  (insert (concat (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
-(defun nv-insert-tagline ()
+(defun zk-insert-tagline ()
   (interactive)
-  (nv-get-tag-list)
+  (zk-get-tag-list)
   (backward-page)
   (open-line 2)
-  (insert (concat "tags: " (ido-completing-read "Schlagwort? " nv-tag-list) " " )))
+  (insert (concat "tags: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
-(define-minor-mode nvalt-mode
+(define-minor-mode zk-mode
   "Some functionality described by Sascha Fast and Christian
 Tietze about their nvAlt Zettelkasten workflow."
-  :lighter " nv"
+  :lighter " zk"
   :keymap (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "C-c o") 'nv-follow-internal-link)
-            (define-key map (kbd "C-c d") 'nv-new-with-timestamp)
-            (define-key map (kbd "C-c l") 'nv-insert-timestamp-for-internal-link)
-            (define-key map (kbd "C-c t") 'nv-insert-tagline)
-            (define-key map (kbd "C-c #") 'nv-complete-tag)
+            (define-key map (kbd "C-c o") 'zk-follow-internal-link)
+            (define-key map (kbd "C-c d") 'zk-new-with-timestamp)
+            (define-key map (kbd "C-c l") 'zk-insert-timestamp-for-internal-link)
+            (define-key map (kbd "C-c t") 'zk-insert-tagline)
+            (define-key map (kbd "C-c #") 'zk-complete-tag)
             map)
   )
 
-(add-hook 'deft-mode-hook 'nvalt-mode)
-(add-hook 'deft-mode-hook (lambda () (nv-get-tag-list)))
-(add-hook 'markdown-mode-hook 'nvalt-mode)
+(add-hook 'deft-mode-hook 'zk-mode)
+(add-hook 'deft-mode-hook (lambda () (zk-get-tag-list)))
+(add-hook 'markdown-mode-hook 'zk-mode)
