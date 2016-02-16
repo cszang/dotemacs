@@ -81,4 +81,5 @@
 (require 'init-spelling)
 (require 'init-projectile)
 (require 'init-diminish)
-(require 'init-fountain)
+(require 'init-flycheck)
+
