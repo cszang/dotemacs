@@ -21,6 +21,7 @@
         neotree
         olivetti
         org
+        org-tree-slide
         polymode
         projectile
         s
