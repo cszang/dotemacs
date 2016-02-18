@@ -94,6 +94,7 @@ Tietze about their nvAlt Zettelkasten workflow."
             (define-key map (kbd "C-c t") 'zk-insert-tagline)
             (define-key map (kbd "C-c #") 'zk-complete-tag)
             map)
+  (auto-fill-mode)
   )
 
 (add-hook 'deft-mode-hook 'zk-mode)
