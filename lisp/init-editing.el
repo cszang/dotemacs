@@ -48,17 +48,13 @@
 (add-to-list 'hippie-expand-try-functions-list 'try-complete-file-name-partially t)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(use-package auto-complete
-  :diminish auto-complete-mode)
 
-(use-package auto-complete-config
-  :config
-  (global-auto-complete-mode t)
-  (setq ac-modes (append ac-modes '(org-mode R-mode))) 
-  (ac-config-default)
-  (define-key ac-complete-mode-map [tab] 'ac-expand)
-  (setq ac-auto-start 2)
-  (ac-flyspell-workaround))
+(global-auto-complete-mode t)
+(setq ac-modes (append ac-modes '(org-mode R-mode))) 
+(ac-config-default)
+(define-key ac-complete-mode-map [tab] 'ac-expand)
+(setq ac-auto-start 2)
+(ac-flyspell-workaround)
 
 (global-set-key (kbd "C-c b ,") 'goto-last-change)
 (global-set-key (kbd "C-c b .") 'goto-last-change-reverse)

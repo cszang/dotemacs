@@ -2,6 +2,8 @@
 (diminish 'visual-line-mode)
 (diminish 'ivy-mode)
 (diminish 'beacon-mode)
+(diminish 'anzu-mode)
+(diminish 'auto-complete-mode)
 (defun cz-ess-diminish-modes ()
   (diminish 'smartparens-mode)
   (diminish 'eldoc-mode))

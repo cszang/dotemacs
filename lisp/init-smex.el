@@ -1,7 +1,4 @@
-(use-package smex
-  :bind
-  ("M-x" . smex)
-  :config
-  (setq smex-save-file (concat user-emacs-directory ".smex-items")))
+(global-set-key (kbd "M-x") 'smex)
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
 
 (provide 'init-smex)

@@ -1,6 +1,5 @@
 (setq my-packages
-      '(use-package
-        anzu
+      '(anzu
         auctex
         auto-complete
         autopair
