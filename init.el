@@ -29,6 +29,7 @@
         smooth-scrolling
         swiper
         tldr
+        wgrep
         zenburn-theme
         ))
 
