@@ -120,6 +120,8 @@
          "\n* %?\n  %U\n")
         ("v" "Vokabel" entry (file (concat org-directory "/Vokabeln.org"))
          "* %^{Das Wort}\n** %^{Übersetzung}")
+        ("w" "Workflow" entry (file (concat org-directory "/Workflow.org"))
+         "* %^{Was?}\n  %?")
         ))
 (setq org-refile-targets (quote ((org-agenda-files :todo . "PROJEKT") (org-agenda-files :todo . "LISTE") (org-agenda-files :todo . "PR_FESTGEFAHREN") (org-agenda-files :tag . "eimer"))))
 (setq org-refile-use-cache nil)
