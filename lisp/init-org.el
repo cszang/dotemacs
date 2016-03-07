@@ -1,5 +1,6 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c C-+") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-store-link)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 (require 'org-protocol)
