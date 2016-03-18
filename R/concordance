@@ -1,0 +1,55 @@
+#!/usr/local/bin/Rscript --vanilla
+
+args <- commandArgs(TRUE)
+
+sim_id <- paste0("id", args[1])
+
+F <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$",
+                full.names = TRUE)
+f <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$")
+n <- length(f)
+
+strip_concord <- function(conc, id) {
+    conc <- t(sapply(strsplit(conc, "\\s+"), function(x) x[2:3]))
+    concd <- data.frame(count = as.numeric(conc[,1]),
+                        word = conc[,2],
+                        id = id)
+    concd$word <- as.character(concd$word)
+    concd <- na.omit(concd)
+    concd <- concd[nchar(concd$word) > 1,]
+    ord <- order(concd$word)
+    concd[ord,]
+}
+
+concs <- list()
+
+for (i in 1:n) {
+    ccall <- paste0("cat '", F[i],
+    "' | tr ' ' '\n' | sed 's/[^[:alpha:]]//g' | sort | uniq -c")
+    conc <- system(ccall, intern = TRUE)
+    id <- paste0("id", substr(f[i], 1, 12))
+    concs[[id]] <- strip_concord(conc, id)
+}
+
+all_words <- sort(unique(unlist(sapply(concs, function(x) x[,2]))))
+wc <- length(all_words)
+ids <- unique(names(concs))
+W <- matrix(0, ncol = wc, nrow = n)
+
+for (i in 1:n) {
+    conc <- concs[[i]]
+    id <- ids[i]
+    W[i, all_words %in% conc$word] <- conc$count
+}
+
+rownames(W) <- ids
+d <- as.matrix(dist(W))
+
+id_pos <- which(ids == sim_id)
+the_row <- d[id_pos,]
+the_row <- the_row[-c(which(names(the_row) == sim_id))]
+similar <- gsub("id", "", names(the_row)[order(the_row)][1:10])
+titles <- gsub("\\.txt$", "",
+               gsub("^[0-9]{12}\\s+", "",
+                    f[substr(f, 1, 12) != args[1]]))[order(the_row)][1:10]
+cat(paste0("§", similar, " :: ", titles, "\n"))

@@ -83,6 +83,17 @@
   (open-line 2)
   (insert (concat "tags: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
+(defun zk-find-similar ()
+  (interactive)
+  (setq zk-this-file (file-name-base))
+  (setq zk-id-this-file (car (s-match "^[0-9]\\{12\\}" zk-this-file)))
+  (setq zk-similar (shell-command-to-string (concat "~/.emacs.d/R/concordance " zk-id-this-file)))
+  (other-window 1)
+  (switch-to-buffer-other-window "*Ähnliche Notizen*")
+  (insert "Ähnliche Notizen:\n" zk-similar)
+  (zk-mode)
+  )
+
 (define-minor-mode zk-mode
   "Some functionality described by Sascha Fast and Christian
 Tietze about their nvAlt Zettelkasten workflow."
@@ -93,6 +104,7 @@ Tietze about their nvAlt Zettelkasten workflow."
             (define-key map (kbd "C-c l") 'zk-insert-timestamp-for-internal-link)
             (define-key map (kbd "C-c t") 'zk-insert-tagline)
             (define-key map (kbd "C-c #") 'zk-complete-tag)
+            (define-key map (kbd "C-c s") 'zk-find-similar)
             map)
   (auto-fill-mode)
   )
