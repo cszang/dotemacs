@@ -97,8 +97,6 @@
          "** OFFEN %?\n  %i\n")
         ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
          "** OFFEN %?\n  %i\n  %a")
-        ("t" "Tagebuch" entry (file+datetree (concat org-directory "/Tagebuch.org"))
-         "**** %U %?\n")
         ("i" "Projektidee" plain (file (concat org-directory "/Projektideen.org"))
          "%?\n")
         ("e" "Lesezeichen" entry (file (concat org-directory "/Lesezeichen.org"))

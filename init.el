@@ -82,5 +82,5 @@
 (require 'init-projectile)
 (require 'init-diminish)
 (require 'init-flycheck)
-(require 'init-nagging)
+
 
