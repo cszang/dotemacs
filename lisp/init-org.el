@@ -3,6 +3,8 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
+(load "~/lisp/ob-julia/ob-julia.el")
+
 (require 'org-protocol)
 (setq org-hide-leading-stars t)
 (setq org-tags-column -70)
@@ -48,6 +50,7 @@
    (python . t)
    (js . t)
    (haskell . t)
+   (julia . t)
    (ditaa . t)))
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)

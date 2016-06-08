@@ -8,6 +8,13 @@ So, this is:
 git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 #+end_src
 
+Org-babel support for Julia is added via ob-julia.el. This uses an
+external repository:
+
+#+begin_src sh
+git clone https://github.com/gjkerns/ob-julia.git ~/lisp/ob-julia
+#+end_src
+
 Spell checking is done using =hunspell= which has to be installed
 separately. On OS X:
 
