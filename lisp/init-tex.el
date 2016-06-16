@@ -21,4 +21,6 @@
                               ("begin{frame}" . -3)))
 (setq reftex-default-bibliography '("~/Library/texmf/bibtex/bib/local/zotero.bib"))
 
+(setq LaTeX-verbatim-environments-local '("Rcode" "bashcode" "juliacode" "cppcode" "lstlisting"))
+
 (provide 'init-tex)
