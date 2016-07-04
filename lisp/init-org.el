@@ -3,6 +3,56 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
+;; Change the ellipsis that indicates hidden content
+;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
+(setq org-ellipsis " ⬎") ;; ⤵ ↴ ⬎ ⤷
+
+;; org-entities displays \alpha etc. as Unicode characters.
+(setq org-pretty-entities t)
+
+;; Hide the /italics/ and *bold* markers
+(setq org-hide-emphasis-markers t)
+
+;; Hit return on a link to open it in a browser
+(setq org-return-follows-link t)
+
+;; Allow a) b) c) lists
+(setq org-list-allow-alphabetical t)
+
+;; "Single keys can be made to execute commands when the cursor is at
+;; the beginning of a headline, i.e., before the first star."
+(setq org-use-speed-commands t)
+
+;; Embed an image with [[file:foo.png]] and then C-c C-x C-v to view
+(setq org-display-inline-images t)
+
+;; Automatically refresh inline images that are generated from Babel blocks
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+
+;; Display images when a file is loaded (I can always toggle them off if I don't want them)
+(add-hook 'org-mode-hook (lambda () (org-toggle-inline-images)))
+
+;; imenu integration
+(add-hook 'org-mode-hook
+	  (lambda () (imenu-add-to-menubar "Imenu")))
+
+;; Preview LaTeX equations in buffers by showing images (C-c C-x C-l)
+;; Details: http://orgmode.org/worg/org-tutorials/org-latex-preview.html
+(setq org-latex-create-formula-image-program 'imagemagick)
+
+;; Turn ' and " into ‘posh’ “quotes”
+(setq org-export-with-smart-quotes t)
+
+;; Hooks for prettify-symbols-mode
+;; See also https://pank.eu/blog/pretty-babel-src-blocks.html for some cool stuff
+(add-hook 'org-mode-hook
+ 	  (lambda ()
+ 	    (push '("<=" . ?≤) prettify-symbols-alist)
+ 	    (push '(">=" . ?≥) prettify-symbols-alist)
+ 	    (push '("#+BEGIN_SRC" . ?✎) prettify-symbols-alist)
+ 	    (push '("#+END_SRC" . ?□) prettify-symbols-alist)
+ 	    ))
+
 (load "~/lisp/ob-julia/ob-julia.el")
 
 (require 'org-protocol)
