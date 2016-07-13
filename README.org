@@ -1,5 +1,11 @@
 My configuration file for [[https://www.gnu.org/software/emacs/][Emacs]].
 
+First, get more recent org-mode from MELPA like this
+
+#+BEGIN_SRC sh
+emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"
+#+END_SRC
+
 [[http://ess.r-project.org][ESS]] is installed as described in the [[http://ess.r-project.org][instructions]], and not from MELPA!
 
 So, this is:
