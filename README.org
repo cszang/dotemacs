@@ -1,10 +1,21 @@
 My configuration file for [[https://www.gnu.org/software/emacs/][Emacs]].
 
-First, get more recent org-mode from MELPA like this
+* Org
+
+Get more recent org-mode from MELPA like this
 
 #+BEGIN_SRC sh
 emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"
 #+END_SRC
+
+Org-babel support for Julia is added via ob-julia.el. This uses an
+external repository:
+
+#+begin_src sh
+git clone https://github.com/gjkerns/ob-julia.git ~/lisp/ob-julia
+#+end_src
+
+* ESS
 
 [[http://ess.r-project.org][ESS]] is installed as described in the [[http://ess.r-project.org][instructions]], and not from MELPA!
 
@@ -14,12 +25,11 @@ So, this is:
 git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 #+end_src
 
-Org-babel support for Julia is added via ob-julia.el. This uses an
-external repository:
+* mu4e
 
-#+begin_src sh
-git clone https://github.com/gjkerns/ob-julia.git ~/lisp/ob-julia
-#+end_src
+Install mu(4e) (and offlineimap) from homebrew.
+
+* Spellchecking
 
 Spell checking is done using =hunspell= which has to be installed
 separately. On OS X:
@@ -37,6 +47,8 @@ separately. On OS X:
   mv en_GB.* ~/Library/Spelling/
   cd .. && rm -rf dictdl
 #+end_src
+
+* Synctex
 
 We also need in =~/.latexmkrc=:
 
