@@ -29,6 +29,7 @@
         smooth-scrolling
         swiper
         tldr
+        twittering-mode
         wgrep
         zenburn-theme
         ))
