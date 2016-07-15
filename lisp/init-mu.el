@@ -108,4 +108,28 @@
          (:from . 22)
          (:subject . nil)))
 
+;; easy refiling options
+(setq mu4e-refile-folder
+  (lambda (msg)
+    (cond
+     ;; messages to the itrdb mailing list go to the /Job folder
+     ((mu4e-message-contact-field-matches msg :to
+                                          "itrdbfor@itrdbfor.org")
+      "/Job")
+     ;; messages sent directly to me go to /Job
+     ;; also `mu4e-user-mail-address-regexp' can be used
+     ((mu4e-message-contact-field-matches msg :to "christian.zang@wzw.tum.de")
+      "/Job")
+     ;; messages sent directly to me go to /Privat
+     ;; also `mu4e-user-mail-address-regexp' can be used
+     ((mu4e-message-contact-field-matches msg :to "zang@posteo.de")
+      "/Privat")
+     ;; messages sent directly to me go to /Privat
+     ;; also `mu4e-user-mail-address-regexp' can be used
+     ((mu4e-message-contact-field-matches msg :to "zang_konsum@posteo.de")
+      "/Konsum")
+     ;; everything else goes to /Job
+     ;; important to have a catch-all at the end!
+     (t "/Job"))))
+
 (provide 'init-mu)
