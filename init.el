@@ -5,6 +5,7 @@
         autopair
         avy
         beacon
+        calfw
         dash
         deft
         diminish
@@ -62,6 +63,7 @@
 (require 'init-swiper)
 (require 'init-deft)
 (require 'init-path)
+(require 'init-calendar)
 (require 'init-custom)
 (require 'init-appearance)
 (require 'init-oblique)

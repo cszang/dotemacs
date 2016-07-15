@@ -4,6 +4,5 @@
 (setq exec-path (append exec-path '("/Library/TeX/texbin")))
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups"))))
 (setq bookmark-default-file "~/ownCloud/Emacs/Lesezeichen")
-(setq diary-file "~/ownCloud/Emacs/Kalender")
 
 (provide 'init-path)
