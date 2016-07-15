@@ -130,16 +130,10 @@
 
 (setq org-agenda-custom-commands
       '(("o" agenda "Is' was, Doc?"
-         ((org-agenda-tag-filter-preset '("-@daheim"))
-          (org-agenda-ndays 3)
+         ((org-agenda-ndays 3)
           (org-agenda-start-on-weekday nil)
           (org-show-context-detail 'minimal)
           (org-agenda-overriding-header "Is' was, Doc?")))
-        ("d" agenda "Daheim so..."
-         ((org-agenda-tag-filter-preset '("-@büro" "-@campus"))
-          (org-agenda-ndays 3)
-          (org-agenda-start-on-weekday nil)
-          (org-agenda-overriding-header "Daheim so...")))
         )
       )
 
@@ -153,7 +147,7 @@
         ("i" "Projektidee" plain (file (concat org-directory "/Projektideen.org"))
          "%?\n")
         ("e" "Lesezeichen" entry (file (concat org-directory "/Lesezeichen.org"))
-         "* %^{prompt|Beschreibung}\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n%^{prompt|Link}\n\n%?" :empty-lines 1)
+         "* %c\n%U\n%i\n" :empty-lines 1)
         ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
          "** KAEFER %?\n  %i\n %a")
         ("z" "Zitat" entry (file (concat org-directory "/Zitate.org"))
