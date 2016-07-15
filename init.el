@@ -9,6 +9,7 @@
         dash
         deft
         diminish
+        elfeed
         expand-region
         flycheck
         git-gutter
@@ -18,6 +19,7 @@
         macro-math
         magit
         markdown-mode
+        mu4e-alert
         neotree
         olivetti
         org
@@ -86,5 +88,4 @@
 (require 'init-diminish)
 (require 'init-flycheck)
 (require 'init-mu)
-
 
