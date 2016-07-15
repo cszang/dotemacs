@@ -21,7 +21,7 @@
       smtpmail-stream-type 'starttls
       smtpmail-smtp-service 587
       user-mail-address "christian.zang@wzw.tum.de"
-      user-full-name "Christian S. Zang"
+      user-full-name "Christian Zang"
       ;; mu4e-use-fancy-chars t
       mu4e-attachment-dir "~/Downloads"
       message-kill-buffer-on-exit t
@@ -97,10 +97,8 @@
 (add-to-list 'mu4e-bookmarks
              '("maildir:/inbox" "Inbox" ?i))
 
-;; (setq mu4e-html2text-command
-;;   "textutil -stdin -format html -convert txt -stdout")
-
-(setq mu4e-html2text-command "html2text")
+(setq mu4e-html2text-command
+  "textutil -stdin -format html -convert txt -stdout")
 
 (setq mu4e-headers-fields
       '((:date . 25)
@@ -131,5 +129,10 @@
      ;; everything else goes to /Job
      ;; important to have a catch-all at the end!
      (t "/Job"))))
+
+;; alerting of new mail
+(mu4e-alert-set-default-style 'notifier)
+(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 
 (provide 'init-mu)
