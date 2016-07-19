@@ -17,6 +17,7 @@
       mu4e-sent-folder   "/Sent"
       mu4e-trash-folder  "/Trash"
       mu4e-get-mail-command "offlineimap"
+      mu4e-update-interval 300
       mu4e-headers-include-related t
       message-send-mail-function 'smtpmail-send-it
       smtpmail-smtp-server "posteo.de"
