@@ -28,7 +28,7 @@
 (add-hook 'ess-mode-hook 'smartparens-mode)
 (add-hook 'ess-mode-hook 'turn-on-auto-fill)
 (add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill)
-(setq ess-default-style 'RRR)
+(setq ess-default-style 'RStudio)
 
 ;; visit topic and kill Occur buffer
 (defun cz-goto-R-section ()
