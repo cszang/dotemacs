@@ -2,6 +2,8 @@
 (require 'mu4e)
 (require 'org-mu4e)
 
+(setq mail-user-agent 'mu4e-user-agent)
+
 ;; http://xahlee.blogspot.com/2010/09/elisp-read-file-content-in-one-shot.html
 ;; we’ll use this to read your different signatures from files
 (defun get-string-from-file (filePath)
