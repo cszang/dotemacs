@@ -142,4 +142,7 @@
 (add-hook 'message-mode-hook 'turn-on-orgstruct)
 (add-hook 'message-mode-hook 'turn-on-orgstruct++)
 
+;; check spelling
+(add-hook 'message-mode-hook 'turn-on-flyspell)
+
 (provide 'init-mu)
