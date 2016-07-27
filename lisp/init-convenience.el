@@ -21,4 +21,6 @@
   (next-line)
   )
 
+(global-set-key (kbd "S-SPC") 'other-frame)
+
 (provide 'init-convenience)
