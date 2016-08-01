@@ -1,11 +1,11 @@
 (setq my-packages
-      '(anzu
+      '(annotate
+        anzu
         auctex
         auto-complete
         autopair
         avy
         beacon
-        calfw
         dash
         deft
         diminish
@@ -19,7 +19,6 @@
         macro-math
         magit
         markdown-mode
-        mu4e-alert
         neotree
         olivetti
         org
@@ -32,7 +31,6 @@
         smooth-scrolling
         swiper
         tldr
-        twittering-mode
         wgrep
         zenburn-theme
         ))
@@ -87,5 +85,3 @@
 (require 'init-projectile)
 (require 'init-diminish)
 (require 'init-flycheck)
-(require 'init-mu)
-
