@@ -25,9 +25,7 @@ So, this is:
 git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 #+end_src
 
-* mu4e
-
-Install mu(4e) (and offlineimap) from homebrew.
+Then, checkout appropriate tag, if wanted.
 
 * Spellchecking
 
