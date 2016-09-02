@@ -29,6 +29,7 @@
         smartparens
         smex
         smooth-scrolling
+        sr-speedbar
         swiper
         tldr
         wgrep
