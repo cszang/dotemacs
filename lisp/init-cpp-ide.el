@@ -16,3 +16,18 @@
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
 (setq speedbar-show-unknown-files t)
+
+(add-hook 'after-init-hook 'global-company-mode)
+(delete 'company-semantic company-backends)
+(define-key c-mode-map  [(tab)] 'company-complete)
+(define-key c++-mode-map  [(tab)] 'company-complete)
+(add-to-list 'company-backends 'company-c-headers)
+
+;; setup GDB
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
