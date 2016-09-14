@@ -21,7 +21,7 @@
   (progn (set-face-attribute 'default nil :height 130 :font "Monoid")
          (setq-default line-spacing 5)))
 
-(load-theme 'arjen-grey)
+(load-theme 'zenburn)
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
