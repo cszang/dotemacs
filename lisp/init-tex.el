@@ -23,4 +23,10 @@
 
 (setq LaTeX-verbatim-environments-local '("Rcode" "bashcode" "juliacode" "cppcode" "lstlisting"))
 
+;; use ESS like R eval in TeX buffers (useful for presentations with code blocks)
+(defun r-eval-latex-hook ()
+ (local-set-key [(control return)] 'ess-eval-region-or-line-and-step))
+
+(add-hook 'LaTeX-mode-hook 'r-eval-latex-hook)
+
 (provide 'init-tex)
