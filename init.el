@@ -33,6 +33,7 @@
         swiper
         tldr
         wgrep
+        xah-lookup
         zenburn-theme
         ))
 
