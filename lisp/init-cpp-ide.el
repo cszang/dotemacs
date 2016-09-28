@@ -1,10 +1,17 @@
-;; some C++ functionality for Emacs; mostly taken from
-;; http://tuhdo.github.io/c-ide.html
-
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-              (ggtags-mode 1))))
+(add-hook 'c-mode-hook #'ggtags-mode)
+(add-hook 'c++-mode-hook #'ggtags-mode)
+(setq-default c-basic-offset 2)
+(setq c-default-style "linux")
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(setq xah-lookup-browser-function 'eww)
+(defun xah-lookup-cppreference (&optional word)
+  "Lookup definition of current word or text selection in URL."
+  (interactive)
+  (xah-lookup-word-on-internet
+   word
+   "http://en.cppreference.com/mwiki/index.php?search=�"
+   xah-lookup-browser-function))
+(define-key c++-mode-map (kbd "C-c d") #'xah-lookup-cppreference)
 
 (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
 (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
