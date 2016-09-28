@@ -6,6 +6,7 @@
         autopair
         avy
         beacon
+        bm
         dash
         deft
         diminish
