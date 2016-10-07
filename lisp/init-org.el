@@ -5,7 +5,7 @@
 
 ;; Change the ellipsis that indicates hidden content
 ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
-(setq org-ellipsis " ⬎") ;; ⤵ ↴ ⬎ ⤷
+;; (setq org-ellipsis " ⬎") ;; ⤵ ↴ ⬎ ⤷
 
 ;; org-entities displays \alpha etc. as Unicode characters.
 (setq org-pretty-entities t)
