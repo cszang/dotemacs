@@ -26,6 +26,7 @@
         org-tree-slide
         polymode
         projectile
+        realgud
         s
         smartparens
         smex
@@ -91,4 +92,4 @@
 (require 'init-diff)
 
 (load-file "~/.emacs.d/lisp/gud.el")
-
+(load-file "~/lisp/realgud-lldb/realgud-lldb.el")

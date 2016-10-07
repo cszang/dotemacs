@@ -57,7 +57,24 @@ $clean_ext = 'bbl rel %R-blx.bib %R.synctex.gz';
 #+end_src
 * LLDB Support
 
+  LLDB support for built-in GUD:
+
 #+BEGIN_SRC sh
 curl http://opensource.apple.com//source/lldb/lldb-76/utils/emacs/gud.el?txt > ~/.emacs.d/lisp/gud.el
 #+END_SRC
 
+  LLDB support for realgud:
+
+#+BEGIN_SRC sh
+  git clone https://github.com/realgud/realgud-lldb.git ~/lisp/realgud-lldb
+#+END_SRC
+
+  Then, in Emacs under =~/lisp/realgud-lldb= (changing =--with-emacs
+  /usr/local/bin/emacs= as required):
+
+#+BEGIN_SRC emacs-lisp
+  (compile (format "EMACSLOADPATH=:%s:%s ./autogen.sh --with-emacs /usr/local/bin/emacs" (file-name-directory (locate-library "test-simple.elc")) (file-name-directory (locate-library "realgud.elc"))))
+#+END_SRC
+
+  It may be necessary to manually stop the compile process after a
+  while.
