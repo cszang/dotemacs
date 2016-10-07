@@ -13,6 +13,7 @@
         elfeed
         expand-region
         flycheck
+        ggtags
         git-gutter
         hl-todo
         js2-mode
