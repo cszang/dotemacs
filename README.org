@@ -55,3 +55,9 @@ $pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
 $pdf_previewer = 'open -a skim';
 $clean_ext = 'bbl rel %R-blx.bib %R.synctex.gz';
 #+end_src
+* LLDB Support
+
+#+BEGIN_SRC sh
+curl http://opensource.apple.com//source/lldb/lldb-76/utils/emacs/gud.el?txt > ~/.emacs.d/lisp/gud.el
+#+END_SRC
+

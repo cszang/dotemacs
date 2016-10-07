@@ -53,7 +53,7 @@
           (setq refreshed t))
         (package-install package))) my-packages))
 
-(require 'use-package)
+;(require 'use-package)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -89,3 +89,5 @@
 (require 'init-diminish)
 (require 'init-flycheck)
 (require 'init-diff)
+
+(load-file "~/.emacs.d/lisp/gud.el")
