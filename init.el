@@ -22,6 +22,8 @@
         magit
         markdown-mode
         neotree
+        nyan-mode
+        nyan-prompt
         olivetti
         org
         org-tree-slide

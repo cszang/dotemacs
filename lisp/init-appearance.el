@@ -43,4 +43,7 @@
 
 (beacon-mode 1)
 
+(nyan-mode 1)
+(add-hook 'eshell-load-hook 'nyan-prompt-enable)
+
 (provide 'init-appearance)
