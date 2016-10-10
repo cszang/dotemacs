@@ -38,6 +38,7 @@
         swiper
         tldr
         wgrep
+        yaml-mode
         xah-lookup
         zenburn-theme
         ))
