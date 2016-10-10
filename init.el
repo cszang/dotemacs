@@ -94,6 +94,7 @@
 (require 'init-diminish)
 (require 'init-flycheck)
 (require 'init-diff)
+(require 'init-elfeed)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
