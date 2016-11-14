@@ -26,6 +26,7 @@
         nyan-prompt
         olivetti
         org
+        org-board
         org-tree-slide
         polymode
         projectile
