@@ -69,8 +69,18 @@
   (just-one-space)
   )
 
+;; insert Rmd code chunk; from
+;; http://emacs.stackexchange.com/questions/27405/insert-code-chunk-in-r-markdown-with-yasnippet-and-polymode
+(defun cz-insert-r-chunk (header) 
+  "Insert an r-chunk in markdown mode. Necessary due to interactions between polymode and yas snippet" 
+  (interactive "sHeader: ") 
+  (insert (concat "```{r " header "}\n\n```")) 
+  (forward-line -1))
+
 (define-key ess-mode-map (kbd "C-c C-a") 'cz-insert-R-section)
 (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
 (define-key ess-mode-map (kbd "C-c m") 'cz-insert-magrittr-pipe)
+;; (define-key markdown-mode-map (kbd "C-c r") 'cz-insert-r-chunk)
+
 
 (provide 'init-ess)
