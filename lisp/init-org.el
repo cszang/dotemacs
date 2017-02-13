@@ -1,3 +1,7 @@
+(setq calendar-latitude 48.4029)
+(setq calendar-longitude 11.7412)
+(setq calendar-location-name "Freising, BY")
+
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c C-+") 'org-capture)
 (global-set-key (kbd "C-c l") 'org-store-link)
