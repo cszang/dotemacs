@@ -28,6 +28,7 @@
         org
         org-board
         org-tree-slide
+        org-wc
         polymode
         projectile
         realgud
@@ -38,6 +39,7 @@
         sr-speedbar
         swiper
         tldr
+        wc-mode
         wgrep
         yaml-mode
         xah-lookup
