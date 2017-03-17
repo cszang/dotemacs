@@ -149,6 +149,9 @@
          "** OFFEN %?\n  %i\n")
         ("l" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
          "** OFFEN %?\n  %i\n  %a")
+        ("t" "Termin" entry
+         (file+datetree+prompt (concat org-directory "/Termine.org"))
+         "* %^{Bezeichnung}\n<%(org-read-date nil nil org-read-date-final-answer)>\n%i\n%?\n")
         ("i" "Projektidee" plain (file (concat org-directory "/Projektideen.org"))
          "%?\n")
         ("k" "Käfer" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
