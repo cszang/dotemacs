@@ -28,7 +28,7 @@
 
 (defun zk-new-with-timestamp ()
   (interactive)
-  (setq zk-time-string (format-time-string "%Y%m%d%k%M"))
+  (setq zk-time-string (format-time-string "%Y%m%d%H%M"))
   (deft)
   (setq deft-filter-regexp (list zk-time-string))
   (deft-filter-update)
