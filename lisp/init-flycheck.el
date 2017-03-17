@@ -11,4 +11,6 @@
 
 (add-to-list 'flycheck-checkers 'proselint)
 
+(global-flycheck-mode 1)
+
 (provide 'init-flycheck)
