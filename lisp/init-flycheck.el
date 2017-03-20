@@ -10,7 +10,7 @@
   :modes (text-mode markdown-mode gfm-mode))
 
 (add-to-list 'flycheck-checkers 'proselint)
-
+(setq flycheck-global-modes '(not org-mode))
 (global-flycheck-mode 1)
 
 (provide 'init-flycheck)
