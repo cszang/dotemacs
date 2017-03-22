@@ -42,6 +42,7 @@
         sr-speedbar
         swiper
         tldr
+        undo-tree
         wc-mode
         wgrep
         yaml-mode
@@ -102,6 +103,7 @@
 (require 'init-flycheck)
 (require 'init-diff)
 (require 'init-elfeed)
+(require 'init-undo)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
