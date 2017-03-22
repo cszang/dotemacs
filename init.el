@@ -104,6 +104,7 @@
 (require 'init-diff)
 (require 'init-elfeed)
 (require 'init-undo)
+(require 'init-cpp-ide)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
