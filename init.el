@@ -10,6 +10,7 @@
         dash
         deft
         diminish
+        dired-quick-sort
         elfeed
         expand-region
         flycheck
