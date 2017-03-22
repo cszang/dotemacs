@@ -16,6 +16,8 @@
         flycheck
         ggtags
         git-gutter
+        helm
+        helm-projectile
         hl-todo
         js2-mode
         julia-mode
@@ -81,6 +83,7 @@
 (require 'init-oblique)
 (require 'init-editing)
 (require 'init-smex)
+(require 'init-helm)
 (require 'init-anzu)
 (require 'init-ess)
 (require 'init-git)
