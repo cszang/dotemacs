@@ -1,5 +1,6 @@
-(setq ispell-program-name (executable-find "hunspell"))
+(setq ispell-program-name "hunspell")
 
+(setenv "LANG" "en_GB")
 (setq ispell-dictionary "en_GB")
 
 ;; this works for ispell-message
