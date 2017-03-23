@@ -1,24 +1,24 @@
-(setq ispell-program-name "hunspell")
+(setq ispell-program-name "aspell")
 
-(setenv "LANG" "en_GB")
-(setq ispell-dictionary "en_GB")
+(setenv "LANG" "en_GB.UTF-8")
+(setq ispell-dictionary "en")
 
 ;; this works for ispell-message
 (setq ispell-message-dictionary-alist
-      '(("^^To:[^\n,]+\\.com[ \t\n,>]" . "en_GB")
-        ("^^To:[^\n,]+\\.uk[ \t\n,>]" . "en_GB")
-        ("^To:[^\n,]+\\.de[ \t\n,>]" . "de_DE_frami")))
+      '(("^^To:[^\n,]+\\.com[ \t\n,>]" . "en")
+        ("^^To:[^\n,]+\\.uk[ \t\n,>]" . "en")
+        ("^To:[^\n,]+\\.de[ \t\n,>]" . "de")))
 
 ;; general toggling between English and German
 (defun cz-toggle-dictionary ()
   (interactive)
   (setq the-dict ispell-dictionary)
   (cond
-   ((string-equal the-dict "en_GB")
-    (progn (ispell-change-dictionary "de_DE_frami")
+   ((string-equal the-dict "en")
+    (progn (ispell-change-dictionary "de")
            (message "changed dictionary from English to German")))
-   ((string-equal the-dict "de_DE_frami")
-    (progn (ispell-change-dictionary "en_GB")
+   ((string-equal the-dict "de")
+    (progn (ispell-change-dictionary "en")
            (message "changed dictionary from German to English")))))
 
 (global-set-key (kbd "C-c C-x l") 'cz-toggle-dictionary)

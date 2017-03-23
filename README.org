@@ -29,21 +29,11 @@ Then, checkout appropriate tag, if wanted.
 
 * Spellchecking
 
-Spell checking is done using =hunspell= which has to be installed
+Spell checking is done using =aspell= which has to be installed
 separately. On OS X:
 
 #+begin_src sh
-  brew install wget hunspell
-  mkdir dictdl && cd dictdl
-  wget http://downloads.sourceforge.net/project/aoo-extensions/1075/13/dict-de_de-frami_2013-12-06.oxt
-  unzip dict-de_de*
-  mv de_DE_frami/de_DE_frami* ~/Library/Spelling/
-  ln -s de_DE_frami/de_DE_frami.aff ~/Library/Spelling/default.aff
-  ln -s de_DE_frami/de_DE_frami.dic ~/Library/Spelling/default.dic
-  wget http://downloads.sourceforge.net/project/aoo-extensions/17102/21/dict-en.oxt
-  unzip dict-en.oxt
-  mv en_GB.* ~/Library/Spelling/
-  cd .. && rm -rf dictdl
+  brew install aspell --with-lang-de --with-lang-en
 #+end_src
 
 * Synctex
