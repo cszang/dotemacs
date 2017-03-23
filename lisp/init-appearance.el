@@ -18,7 +18,7 @@
 (if (string= "buck" system-name)
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
-  (progn (set-face-attribute 'default nil :height 130 :font "Monoid")
+  (progn (set-face-attribute 'default nil :height 151 :font "Input")
          (setq-default line-spacing 5)))
 
 (load-theme 'zenburn)
