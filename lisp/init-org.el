@@ -116,10 +116,12 @@
                           (sequence "|" "DELIGIERT (d@/!)")
                           (sequence "KAEFER(k)" "|" "ERSCHLAGEN(a!)")
                           (sequence "PROJEKT(p!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(g!)" "PR_STORNIERT(r@/!)")
+                          (sequence "PROJEKT_ICH(c!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(g!)" "PR_STORNIERT(r@/!)")
                           (sequence "LISTE(l)" "|")))
 
 (setq org-todo-keyword-faces
       '(("PROJEKT" . "#529dff")
+        ("PROJEKT_ICH" . "#529dff")
         ("LISTE" . "#529dff")
         ("WARTEN" . "#de8485")
         ("STORNIERT" . "#999999")
