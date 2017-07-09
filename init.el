@@ -16,8 +16,6 @@
         flycheck
         ggtags
         git-gutter
-        helm
-        helm-projectile
         hl-todo
         js2-mode
         julia-mode
@@ -43,11 +41,13 @@
         swiper
         tldr
         undo-tree
+;        visual-fill-column-mode
         wc-mode
         wgrep
         yaml-mode
         xah-lookup
         zenburn-theme
+        zerodark-theme
         ))
 
 (when (>= emacs-major-version 24)
@@ -84,7 +84,6 @@
 (require 'init-oblique)
 (require 'init-editing)
 (require 'init-smex)
-(require 'init-helm)
 (require 'init-anzu)
 (require 'init-ess)
 (require 'init-git)

@@ -15,13 +15,14 @@
 (tooltip-mode -1)
 (scroll-bar-mode -1)
 
-(if (string= "buck" system-name)
+(if (string= "buck" (system-name))
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
   (progn (set-face-attribute 'default nil :height 151 :font "Input")
          (setq-default line-spacing 5)))
 
-(load-theme 'zenburn)
+(load-theme 'zerodark)                  ; nord is also nice
+(zerodark-setup-modeline-format)
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
@@ -42,8 +43,5 @@
 (setq smex-prompt-string "I love you. ")
 
 (beacon-mode 1)
-
-(nyan-mode 1)
-(add-hook 'eshell-load-hook 'nyan-prompt-enable)
 
 (provide 'init-appearance)
