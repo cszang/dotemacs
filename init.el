@@ -12,6 +12,7 @@
         diminish
         dired-quick-sort
         elfeed
+        ess
         expand-region
         flycheck
         ggtags
