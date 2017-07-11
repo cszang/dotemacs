@@ -1,5 +1,7 @@
 (setq my-packages
-      '(annotate
+      '(        
+
+        annotate
         anzu
         auctex
         auto-complete
@@ -32,20 +34,23 @@
         org-tree-slide
         org-wc
         polymode
+        powerline
         projectile
         realgud
         s
         smartparens
         smex
         smooth-scrolling
+        spaceline
+        spaceline-all-the-icons
         sr-speedbar
         swiper
         tldr
         undo-tree
-;        visual-fill-column-mode
         wc-mode
         wgrep
         yaml-mode
+        yahoo-weather
         xah-lookup
         zenburn-theme
         zerodark-theme
