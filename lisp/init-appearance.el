@@ -23,22 +23,14 @@
 
 (load-theme 'nord)
 
-;; modeline enhancements
+;; ;; modeline enhancements
 (require 'powerline)
 (setq powerline-image-apple-rgb t)
 (require 'spaceline-config)
-(require 'spaceline-all-the-icons)
-(spaceline-all-the-icons-theme)
-(setq spaceline-all-the-icons-separator-type "arrow")
-(spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
-(spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
-(spaceline-all-the-icons--setup-git-ahead)       ;; Enable # of commits ahead of upstream in git
-(spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
-(require 'yahoo-weather)
-(yahoo-weather-mode t)
-(setq yahoo-weather-location "Freising")
-(setq spaceline-all-the-icons-clock-always-visible nil)
-(spaceline-toggle-all-the-icons-weather-on)
+(spaceline-spacemacs-theme)
+(spaceline-toggle-minor-modes-off)
+(spaceline-toggle-hud-off)
+(spaceline-toggle-buffer-encoding-abbrev-off)
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
