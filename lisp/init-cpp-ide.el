@@ -25,8 +25,6 @@
         "/Library/Developer/CommandLineTools/usr/include"
         "/usr/include"))
 
-(global-flycheck-mode 1)
-
 (require 'rtags)
 (require 'company-rtags)
 
@@ -36,5 +34,7 @@
     'company-backends 'company-rtags))
 (setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
+
+(add-hook 'c++-mode-hook 'company-mode)
 
 (provide 'init-cpp-ide)
