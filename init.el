@@ -1,7 +1,5 @@
 (setq my-packages
-      '(        
-
-        annotate
+      '(annotate
         anzu
         auctex
         auto-complete
@@ -14,7 +12,6 @@
         diminish
         dired-quick-sort
         elfeed
-        ess
         expand-region
         flycheck
         ggtags

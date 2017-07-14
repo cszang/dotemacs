@@ -24,6 +24,18 @@ separately. On OS X:
   brew install aspell --with-lang-de --with-lang-en
 #+end_src
 
+* ESS
+
+[[http://ess.r-project.org][ESS]] is installed as described in the [[http://ess.r-project.org][instructions]], and not from MELPA!
+
+So, this is:
+
+#+begin_src sh
+git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
+#+end_src
+
+Then, checkout appropriate tag, if wanted.
+
 * Synctex
 
 We also need in =~/.latexmkrc=:
