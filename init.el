@@ -7,6 +7,7 @@
         avy
         beacon
         bm
+        bongo
         dash
         deft
         diminish
@@ -111,6 +112,7 @@
 (require 'init-cpp-ide)
 (require 'init-company)
 (require 'init-tea)
+(require 'init-eyebrowse)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
