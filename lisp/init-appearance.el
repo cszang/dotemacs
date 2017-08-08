@@ -27,12 +27,31 @@
 (require 'powerline)
 (setq powerline-image-apple-rgb t)
 (require 'spaceline-config)
-(spaceline-spacemacs-theme)
-(spaceline-toggle-minor-modes-off)
-(spaceline-toggle-hud-off)
-(spaceline-toggle-buffer-encoding-abbrev-off)
 (display-time-mode 1)
 (setq display-time-format "%H:%M")
+(setq spaceline-window-numbers-unicode t)
+(setq spaceline-workspace-numbers-unicode t)
+(setq-default
+   powerline-default-separator 'arrow
+   spaceline-flycheck-bullet "❖ %s"
+   spaceline-separator-dir-left '(right . right)
+   spaceline-separator-dir-right '(left . left))
+(spaceline-install
+    'main
+    '((workspace-number :face highlight-face)
+      (buffer-modified)
+      ((remote-host buffer-id) :face region)
+      (major-mode)
+      (projectile-root)
+      (process :when active))
+    '((selection-info :face region :when mark-active)
+      ((flycheck-error flycheck-warning flycheck-info) :when active)
+      (which-function)
+      (version-control :when active)
+      (line-column)
+      (global :when active)
+      (buffer-position)))
+(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
