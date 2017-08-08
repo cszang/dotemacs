@@ -13,6 +13,7 @@
         dired-quick-sort
         elfeed
         expand-region
+        eyebrowse
         flycheck
         function-args
         ggtags
