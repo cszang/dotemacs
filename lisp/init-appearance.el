@@ -31,6 +31,8 @@
 (spaceline-toggle-minor-modes-off)
 (spaceline-toggle-hud-off)
 (spaceline-toggle-buffer-encoding-abbrev-off)
+(display-time-mode 1)
+(setq display-time-format "%H:%M")
 
 (setq shift-select-mode nil)
 (setq uniquify-buffer-name-style 'forward)
