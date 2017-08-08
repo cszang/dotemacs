@@ -1,10 +1,5 @@
 (setq speedbar-show-unknown-files t)
 
-;; (add-hook 'after-init-hook 'global-company-mode)
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
-;; (add-to-list 'company-backends 'company-c-headers)
-
 ;; setup GDB
 (setq
  ;; use gdb-many-windows by default
@@ -35,6 +30,10 @@
 (setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 (add-hook 'c++-mode-hook 'company-mode)
+
+(fa-config-default)
 
 (provide 'init-cpp-ide)

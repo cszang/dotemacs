@@ -13,7 +13,16 @@
 
 (add-to-list 'flycheck-checkers 'proselint)
 
-(setq flycheck-global-modes '(not org-mode))
+(defun setup-flycheck-clang-project-path ()
+  (let ((root (ignore-errors (projectile-project-root))))
+    (when root
+      (add-to-list 
+       (make-variable-buffer-local 'flycheck-clang-include-path)
+       root))))
+
+(add-hook 'c++-mode-hook 'setup-flycheck-clang-project-path)
+
+(setq flycheck-global-modes '(c++-mode ess-mode))
 (global-flycheck-mode 1)
 
 (provide 'init-flycheck)

@@ -14,6 +14,7 @@
         elfeed
         expand-region
         flycheck
+        function-args
         ggtags
         git-gutter
         hl-todo
