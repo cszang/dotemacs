@@ -108,6 +108,7 @@
 (require 'init-undo)
 (require 'init-cpp-ide)
 (require 'init-company)
+(require 'init-tea)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
