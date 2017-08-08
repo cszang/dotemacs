@@ -4,9 +4,9 @@ args <- commandArgs(TRUE)
 
 sim_id <- paste0("id", args[1])
 
-F <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$",
+F <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.org$",
                 full.names = TRUE)
-f <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$")
+f <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.org$")
 n <- length(f)
 
 strip_concord <- function(conc, id) {

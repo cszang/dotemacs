@@ -1,8 +1,7 @@
 (setq deft-directory "~/ownCloud/Zettelkasten")
 (setq deft-use-filename-as-title t)
 (setq deft-use-filter-string-for-filename t)
-(setq deft-extensions '("txt", "md", "org"))
-(add-to-list 'auto-mode-alist '("/Zettelkasten/.*\\.txt\\'" . markdown-mode))
+(setq deft-extensions '("org"))
 (global-set-key (kbd "C-c C-d") 'deft)
 (provide 'init-deft)
 
@@ -52,7 +51,7 @@
 (defun zk-match-tag-in-buffer (f)
   "append all matches of tags in a buffer to a list"
   (save-excursion
-    (setq zk-tagline-regex "^tags:.*$")
+    (setq zk-tagline-regex "^#\\+ZKTAGS:.*$")
     (setq zk-tag-regex "#\\w+")
     (find-file f)
     (setq zk-tagline (car (s-match zk-tagline-regex (buffer-string))))
@@ -65,7 +64,7 @@
   (interactive)
   (setq zk-start-buffer buffer-file-name)
   (setq zk-scan-files (-remove (lambda (f) (string= zk-start-buffer f))
-                                 (directory-files deft-directory t ".txt$")))
+                                 (directory-files deft-directory t ".org$")))
   (setq zk-tag-list '(()))
   (mapc 'zk-match-tag-in-buffer zk-scan-files)
   (setq zk-tag-list (-distinct (flatten zk-tag-list)))
@@ -81,7 +80,7 @@
   (zk-get-tag-list)
   (backward-page)
   (open-line 2)
-  (insert (concat "tags: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
+  (insert (concat "#+ZKTAGS: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
 (defun zk-find-similar ()
   (interactive)
