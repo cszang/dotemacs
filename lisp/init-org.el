@@ -152,7 +152,7 @@
 (setq org-agenda-include-diary t)
 (setq org-default-notes-file (concat org-directory "/Eingang.org"))
 (setq org-capture-templates
-      '(("a" "Aufgabe" entry (file+headline (concat org-directory "/Eingang.org") "Eingang")
+      '(("a" "Aufgabe" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
          "** OFFEN %?\n  %i\n")
         ("l" "Labnotebook" entry
          (file+datetree (concat org-directory "/Labnotebook.org"))
@@ -162,7 +162,7 @@
         ("t" "Termin" entry
          (file+datetree+prompt (concat org-directory "/GTD-Termine.org"))
          "* %^{Bezeichnung}\n<%(org-read-date nil nil org-read-date-final-answer)>\n%i\n%?\n")
-        ("k" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/Eingang.org") "Eingang")
+        ("k" "Aufgabe (mit Link)" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
          "** OFFEN %?\n  %i\n  %a")
         ("i" "Projektidee" plain (file (concat org-directory "/Projektideen.org"))
          "%?\n")
