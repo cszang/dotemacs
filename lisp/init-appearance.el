@@ -21,7 +21,7 @@
   (progn (set-face-attribute 'default nil :height 151 :font "Input")
          (setq-default line-spacing 5)))
 
-(load-theme 'nord)
+(load-theme 'zenburn)
 
 ;; ;; modeline enhancements
 (require 'powerline)
