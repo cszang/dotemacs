@@ -133,13 +133,13 @@
 
 (setq org-agenda-custom-commands
       '(("o" agenda "Is' was, Doc?"
-         ((org-agenda-ndays 3)
+         ((org-agenda-span 3)
           (org-agenda-start-on-weekday nil)
           (org-show-context-detail 'minimal)
           (org-agenda-overriding-header "Is' was, Doc?")))
         ("d" "Is' heute was, Doc?"
          ((agenda ""
-                  ((org-agenda-ndays 1)
+                  ((org-agenda-span 1)
                    (org-agenda-skip-function
                     '(org-agenda-skip-entry-if 'regexp ":abends:"))
                    (org-show-context-detail 'minimal)
