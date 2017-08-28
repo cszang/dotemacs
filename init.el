@@ -33,6 +33,7 @@
         org-board
         org-tree-slide
         org-wc
+        org-sticky-header
         polymode
         powerline
         projectile
@@ -59,7 +60,7 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+               '("melpa" . "http://melpa.org/packages/") t)
   (package-initialize)
   ;; Fetch packages from melpa/elpa if not present:
   (defvar refreshed nil)
@@ -70,8 +71,6 @@
           (package-refresh-contents)
           (setq refreshed t))
         (package-install package))) my-packages))
-
-;(require 'use-package)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
