@@ -18,7 +18,7 @@
 (if (string= "buck" (system-name))
     (progn (set-face-attribute 'default nil :height 131 :font "Inconsolata")
            (setq-default line-spacing 3))
-  (progn (set-face-attribute 'default nil :height 151 :font "Fira Code ")
+  (progn (set-face-attribute 'default nil :height 151 :font "Fira Code")
          (setq-default line-spacing 5)))
 
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
@@ -56,13 +56,14 @@
 ;; ;; modeline enhancements
 (require 'powerline)
 (setq powerline-image-apple-rgb t)
+(setq ns-use-srgb-colorspace nil)
 (require 'spaceline-config)
 (display-time-mode 1)
 (setq display-time-format "%H:%M")
 (setq spaceline-window-numbers-unicode t)
 (setq spaceline-workspace-numbers-unicode t)
 (setq-default
-   powerline-default-separator 'arrow
+   powerline-default-separator 'utf-8
    spaceline-flycheck-bullet "❖ %s"
    spaceline-separator-dir-left '(right . right)
    spaceline-separator-dir-right '(left . left))
