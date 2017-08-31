@@ -47,16 +47,6 @@
 ;; Turn ' and " into ‘posh’ “quotes”
 (setq org-export-with-smart-quotes t)
 
-;; Hooks for prettify-symbols-mode
-;; See also https://pank.eu/blog/pretty-babel-src-blocks.html for some cool stuff
-(add-hook 'org-mode-hook
- 	  (lambda ()
- 	    (push '("<=" . ?≤) prettify-symbols-alist)
- 	    (push '(">=" . ?≥) prettify-symbols-alist)
- 	    (push '("#+BEGIN_SRC" . ?✎) prettify-symbols-alist)
- 	    (push '("#+END_SRC" . ?□) prettify-symbols-alist)
- 	    ))
-
 (load "~/lisp/ob-julia/ob-julia.el")
 
 (require 'org-protocol)

@@ -100,7 +100,6 @@
 (require 'init-dired)
 (require 'init-platforms)
 (require 'init-olivetti)
-(require 'init-pretty)
 (require 'init-spelling)
 (require 'init-projectile)
 (require 'init-diminish)
