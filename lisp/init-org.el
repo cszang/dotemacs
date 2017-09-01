@@ -11,6 +11,16 @@
 ;; http://endlessparentheses.com/changing-the-org-mode-ellipsis.html
 ;; (setq org-ellipsis " ⬎") ;; ⤵ ↴ ⬎ ⤷
 
+;; Hooks for prettify-symbols-mode
+;; See also https://pank.eu/blog/pretty-babel-src-blocks.html for some cool stuff
+(add-hook 'org-mode-hook
+ 	  (lambda ()
+ 	    (push '("<=" . ?≤) prettify-symbols-alist)
+ 	    (push '(">=" . ?≥) prettify-symbols-alist)
+ 	    (push '("#+BEGIN_SRC" . ?✎) prettify-symbols-alist)
+ 	    (push '("#+END_SRC" . ?□) prettify-symbols-alist)
+ 	    ))
+
 ;; org-entities displays \alpha etc. as Unicode characters.
 (setq org-pretty-entities t)
 

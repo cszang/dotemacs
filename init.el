@@ -112,6 +112,7 @@
 (require 'init-company)
 (require 'init-tea)
 (require 'init-eyebrowse)
+(require 'init-pretty)
 (require 'init-mail)
 
 (load-file "~/.emacs.d/lisp/gud.el")
