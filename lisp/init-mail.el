@@ -65,7 +65,6 @@
      (smtpmail-local-domain "mail.wzw.tum.de")
      (smtpmail-default-smtp-server "mail.wzw.tum.de")
      (smtpmail-smtp-server "mail.wzw.tum.de")
-     (smtpmail-smtp-service 465)
      )
     ("Posteo"
      (mu4e-sent-folder "/Posteo/sent")
@@ -74,7 +73,6 @@
      (smtpmail-local-domain "posteo.de")
      (smtpmail-default-smtp-server "posteo.de")
      (smtpmail-smtp-server "posteo.de")
-     (smtpmail-smtp-service 587)
      )
     ))
 
