@@ -51,6 +51,7 @@
       (version-control :when active)
       (line-column)
       (global :when active)
+      (mu4e-alert-segment :when active)
       (buffer-position)))
 (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
 
