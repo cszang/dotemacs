@@ -25,7 +25,6 @@
         macro-math
         magit
         markdown-mode
-        mu4e-alert
         neotree
         nyan-mode
         nyan-prompt
@@ -113,7 +112,6 @@
 (require 'init-tea)
 (require 'init-eyebrowse)
 (require 'init-pretty)
-(require 'init-mail)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
