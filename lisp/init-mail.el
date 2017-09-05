@@ -130,7 +130,7 @@
 (setq mu4e-confirm-quit nil)
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-compose-format-flowed t)
-(setq mu4e-compose-in-new-frame t)
+(setq mu4e-compose-in-new-frame nil)
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 (setq mu4e-view-show-addresses 't)
 (setq mu4e-headers-fields
@@ -138,4 +138,11 @@
        (:flags               .   6)
        (:from                .  22)
        (:subject          .  nil)))
+
+;; org-related
+(require 'org-mu4e)
+(setq org-mu4e-link-query-in-headers-mode nil)
+(add-hook 'message-mode-hook 'turn-on-orgtbl)
+(add-hook 'message-mode-hook 'turn-on-orgstruct++)
+
 (provide 'init-mail)
