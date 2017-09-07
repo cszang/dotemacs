@@ -31,6 +31,22 @@ separately. On OS X:
   brew install aspell --with-lang-de --with-lang-en
 #+end_src
 
+* Dictionary
+
+  Install and use Webster's dictionary.
+
+#+BEGIN_SRC sh
+  brew install sdcv
+  mkdir -p ~/.stardict/dic/
+  wget https://s3.amazonaws.com/jsomers/dictionary.zip
+  unzip dictionary.zip
+  cd dictionary
+  tar jxf stardict-dictd-web1913-2.4.2.tar.bz2
+  mv stardict-dictd-web1913-2.4.2/* ~/.stardict/dic/
+#+END_SRC
+
+  with point on word, do =M-x sdcv-search=
+
 * ESS
 
 [[http://ess.r-project.org][ESS]] is installed as described in the [[http://ess.r-project.org][instructions]], and not from MELPA!
