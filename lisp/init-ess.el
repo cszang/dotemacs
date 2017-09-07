@@ -81,5 +81,8 @@
 (define-key ess-mode-map (kbd "C-c m") 'cz-insert-magrittr-pipe)
 ;; (define-key markdown-mode-map (kbd "C-c r") 'cz-insert-r-chunk)
 
+(setq flycheck-lintr-linters
+   "default_linters[-which(names(default_linters) %in% c(\"trailing_whitespace_linter\",\"commented_code_linter\"))]") 
+
 
 (provide 'init-ess)
