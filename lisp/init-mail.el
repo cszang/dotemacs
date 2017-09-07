@@ -136,8 +136,13 @@
 (setq mu4e-headers-fields
     '( (:human-date          .  25)
        (:flags               .   6)
-       (:from                .  22)
-       (:subject          .  nil)))
+       (:from-or-to          .  22)
+       (:subject             .  60)
+       (:maildir             .  20)
+       ))
+(add-to-list 'mu4e-view-actions '("ViewInBrowser"
+                                  . mu4e-action-view-in-browser) t)
+(setq mu4e-hide-index-messages t)
 
 ;; org-related
 (require 'org-mu4e)
