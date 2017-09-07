@@ -15,3 +15,8 @@
 tramp
 /var/
 .org-id-locations
+/.emacs.desktop.lock
+/abbrev_defs
+/emacs-desktop
+/network-security.data
+/semanticdb/
