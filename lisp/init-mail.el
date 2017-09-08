@@ -129,7 +129,13 @@
 ;; Don't ask to quit
 (setq mu4e-confirm-quit nil)
 (setq mu4e-get-mail-command "offlineimap")
-(setq mu4e-compose-format-flowed t)
+(setq mu4e-compose-format-flowed nil)
+(add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
+(add-hook 'mu4e-compose-mode-hook 'visual-fill-column-mode)
+(defun no-auto-fill ()
+  "Turn off auto-fill-mode."
+  (auto-fill-mode -1))
+(add-hook 'mu4e-compose-mode-hook #'no-auto-fill)
 (setq mu4e-compose-in-new-frame nil)
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
 (setq mu4e-view-show-addresses 't)
