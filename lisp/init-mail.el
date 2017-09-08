@@ -130,6 +130,9 @@
 (setq mu4e-confirm-quit nil)
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-compose-format-flowed nil)
+(setq mu4e-compose-dont-reply-to-self t)
+(setq mu4e-user-mail-address-list
+      '("christian.zang@wzw.tum.de" "zang@posteo.de"))
 (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
 (add-hook 'mu4e-compose-mode-hook 'visual-fill-column-mode)
 (add-hook 'mu4e-view-mode 'visual-line-mode)
