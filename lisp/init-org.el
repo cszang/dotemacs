@@ -108,7 +108,7 @@
    (ditaa . t)))
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
-(setq org-todo-keywords '((sequence "OFFEN(o)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
+(setq org-todo-keywords '((sequence "OFFEN(o)" "GESTARTET(g)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
                           (sequence "|" "STORNIERT(s@!)")
                           (sequence "HABIT" "|" "ERLEDIGT")
                           (sequence "JAHRESTAG" "|" "ERLEDIGT")
@@ -121,6 +121,7 @@
         ("PROJEKT" (:foreground "#529dff" :inverse-video t))
         ("PR_INAKTIV" (:foreground "#999999" :inverse-video t))
         ("WARTEN" . "#de8485")
+        ("GESTARTET" . "#DFAF8F")
         ("STORNIERT" . "#999999")))
 
 (setq org-fontify-done-headline t)
