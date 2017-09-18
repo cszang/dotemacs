@@ -212,4 +212,10 @@
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
 (setq org-crypt-key nil)
 
+(add-to-list 'org-modules 'org-mac-link)
+(add-hook 'org-mode-hook (lambda () 
+                           (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+
+
+
 (provide 'init-org)
