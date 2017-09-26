@@ -114,6 +114,7 @@
 (require 'init-eyebrowse)
 (require 'init-pretty)
 (require 'init-tramp)
+(require 'init-ibuffer)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
