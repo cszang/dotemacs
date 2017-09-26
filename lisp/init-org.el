@@ -151,6 +151,7 @@
       ))
 
 (setq org-agenda-include-diary t)
+(setq org-agenda-show-future-repeats nil)
 (setq org-default-notes-file (concat org-directory "/Eingang.org"))
 (setq org-capture-templates
       '(("a" "Aufgabe" entry (file+headline (concat org-directory "/GTD-Eingang.org") "Eingang")
@@ -216,6 +217,6 @@
 (add-hook 'org-mode-hook (lambda () 
                            (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
-
+(setq org-highlight-latex-and-related '(latex))
 
 (provide 'init-org)
