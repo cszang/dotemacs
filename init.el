@@ -30,6 +30,7 @@
         nyan-mode
         nyan-prompt
         olivetti
+        omnisharp
         org
         org-board
         org-tree-slide
@@ -115,6 +116,7 @@
 (require 'init-pretty)
 (require 'init-tramp)
 (require 'init-ibuffer)
+(require 'init-csharp)
 
 (load-file "~/.emacs.d/lisp/gud.el")
 (load-file "~/lisp/realgud-lldb/realgud-lldb.el")
