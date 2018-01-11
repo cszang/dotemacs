@@ -1,5 +1,13 @@
 My configuration file for [[https://www.gnu.org/software/emacs/][Emacs]].
 
+* General
+
+Enable trashing of files from dired on macOS.
+
+#+BEGIN_SRC sh
+brew install trash
+#+END_SRC
+
 * Org
 
 Get more recent org-mode from MELPA like this

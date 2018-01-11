@@ -30,11 +30,17 @@
         nyan-mode
         nyan-prompt
         olivetti
+<<<<<<< HEAD
+=======
+        omnisharp
+        pdf-tools
+>>>>>>> c9c5e46... make trashing files from dired work on macOS
         org
         org-board
         org-tree-slide
         org-wc
         org-sticky-header
+        osx-trash
         polymode
         powerline
         projectile
@@ -116,5 +122,5 @@
 (require 'init-tramp)
 (require 'init-ibuffer)
 
-(load-file "~/.emacs.d/lisp/gud.el")
-(load-file "~/lisp/realgud-lldb/realgud-lldb.el")
+;; (load-file "~/.emacs.d/lisp/gud.el")
+;; (load-file "~/lisp/realgud-lldb/realgud-lldb.el")

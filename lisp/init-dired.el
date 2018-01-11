@@ -1,3 +1,5 @@
+(when (eq system-type 'darwin)
+  (osx-trash-setup))
 (setq delete-by-moving-to-trash t)
 (require 'dired-x)
 (setq-default dired-omit-files-p t) ; Buffer-local variable
