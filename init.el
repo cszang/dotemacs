@@ -9,6 +9,7 @@
         bm
         bongo
         dash
+        default-text-scale
         deft
         diminish
         dired-quick-sort
@@ -30,11 +31,7 @@
         nyan-mode
         nyan-prompt
         olivetti
-<<<<<<< HEAD
-=======
-        omnisharp
         pdf-tools
->>>>>>> c9c5e46... make trashing files from dired work on macOS
         org
         org-board
         org-tree-slide

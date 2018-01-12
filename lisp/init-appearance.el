@@ -75,4 +75,7 @@
 
 (beacon-mode 1)
 
+;; binds C-M-= to increasing and C-M-- to decreasing
+(default-text-scale-mode 1)
+
 (provide 'init-appearance)
