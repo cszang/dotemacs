@@ -108,11 +108,10 @@
    (ditaa . t)))
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
-(setq org-todo-keywords '((sequence "OFFEN(o)" "GESTARTET(g)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)")
+(setq org-todo-keywords '((sequence "OFFEN(o)" "GESTARTET(g)" "WARTEN(w@/!)" "|" "ERLEDIGT(e!)" "DELIGIERT(d@/!)")
                           (sequence "|" "STORNIERT(s@!)")
                           (sequence "HABIT" "|" "ERLEDIGT")
                           (sequence "JAHRESTAG" "|" "ERLEDIGT")
-                          (sequence "|" "DELIGIERT (d@/!)")
                           (sequence "PROJEKT(p!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(g!)" "PR_STORNIERT(r@/!)")
                           (sequence "LISTE(l)" "|")))
 
