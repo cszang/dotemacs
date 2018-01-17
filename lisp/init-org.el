@@ -125,7 +125,7 @@
 
 (setq org-fontify-done-headline t)
 (setq org-log-into-drawer t)
-(setq org-agenda-files (quote ("~/ownCloud/Org/GTD-Termine.org" "~/ownCloud/Org/GTD-Eingang.org" "~/ownCloud/Org/GTD-Aktiv.org" "~/ownCloud/Org/GTD-Planung.org" "~/ownCloud/Org/GTD-Irgendwann.org" "~/ownCloud/Org/GTD-Jahrestage.org" "~/ownCloud/Org/GTD-Habits.org")))
+(setq org-agenda-files (quote ("~/ownCloud/Org/GTD-Termine.org" "~/ownCloud/Org/GTD-Eingang.org" "~/ownCloud/Org/GTD-Aktiv.org" "~/ownCloud/Org/GTD-Planung.org" "~/ownCloud/Org/GTD-Irgendwann.org" "~/ownCloud/Org/GTD-Jahrestage.org" "~/ownCloud/Org/GTD-Habits.org" "~/ownCloud/Org/Muell.org")))
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-agenda-skip-deadline-if-done t)
 (setq org-habit-preceding-days 0)
@@ -217,5 +217,8 @@
                            (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
 (setq org-highlight-latex-and-related '(latex))
+
+;; to allow for global image etc. settings on per-file basis
+(setq org-export-allow-bind-keywords t)
 
 (provide 'init-org)
