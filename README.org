@@ -60,6 +60,17 @@ git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 
 Then, checkout appropriate tag, if wanted.
 
+* ycmd
+
+Install daemon and build for C++ support:
+
+#+begin_src sh
+git clone https://github.com/Valloric/ycmd.git ~/lisp/ycmd
+cd ~/lisp/ycmd
+git submodule update --init --recursive
+./build.py --clang-completer
+#+end_src
+
 * Synctex
 
 We also need in =~/.latexmkrc=:

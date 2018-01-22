@@ -1,10 +1,4 @@
-(setq deft-directory "~/ownCloud/Zettelkasten")
-(setq deft-use-filename-as-title t)
-(setq deft-use-filter-string-for-filename t)
-(setq deft-extensions '("org"))
-(global-set-key (kbd "C-c C-d") 'deft)
-(provide 'init-deft)
-
+;; ZETTELKASTEN
 ;; a minor mode for making working with deft the ultimate zettelkasten
 ;; experience
 
@@ -110,4 +104,3 @@ Tietze about their nvAlt Zettelkasten workflow."
 
 (add-hook 'deft-mode-hook 'zk-mode)
 (add-hook 'deft-mode-hook (lambda () (zk-get-tag-list)))
-(add-hook 'markdown-mode-hook 'zk-mode)
