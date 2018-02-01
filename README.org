@@ -71,6 +71,12 @@ git submodule update --init --recursive
 ./build.py --clang-completer
 #+end_src
 
+* Universal ctags
+
+#+BEGIN_SRC sh
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+#+END_SRC
+
 * Synctex
 
 We also need in =~/.latexmkrc=:

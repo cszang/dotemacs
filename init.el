@@ -9,8 +9,9 @@
 ;; -– Neal Stephenson, In the Beginning was the Command Line (1998)
 ;;
 ;; This config takes inspiration from other configs, most notably:
+;; - 
 ;; - https://gist.github.com/nilsdeppe/7645c096d93b005458d97d6874a91ea9#file-emacs-el
-;;
+;; - https://onze.io/emacs/c++/2017/03/16/emacs-cpp.html
 
 ;;;;;;;;;;
 ;; Meta ;;
@@ -76,16 +77,18 @@
 (package-initialize)
 ;; packages to install
 (defvar package-list
-  '(
+  '(ag
     auctex
     autopair
     company
+    company-ycmd
     counsel
     default-text-scale
     deft
     dired-quick-sort
     eyebrowse
     flycheck
+    flycheck-ycmd
     git-gutter
     google-c-style
     magit
@@ -97,11 +100,12 @@
     powerline
     projectile
     s
+    smex
     spaceline
     swiper
     yaml-mode
-    zenburn-theme
-    )
+    ycmd
+    zenburn-theme)
   )
 ;; fetch the list of packages available
 (unless package-archive-contents
@@ -170,8 +174,8 @@
             )
           )
 
-;; Set default font to Input
-(set-face-attribute 'default nil :height 141 :font "Input")
+;; Set default font to Input or IBM Plex Mono
+(set-face-attribute 'default nil :height 141 :font "IBM Plex Mono")
 
 ;; Make line spacing a bit wider than default
 (setq-default line-spacing 5)
@@ -232,6 +236,10 @@
 ;; Show parens
 (show-paren-mode 1)
 
+;; Change frame name to oblique strategy and change every 15 minutes
+(load-file "~/.emacs.d/lisp/oblique.el")
+(run-with-timer 0 900 'cz-display-oblique)
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; General editing ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -286,6 +294,18 @@
 ;; Completion ;;
 ;;;;;;;;;;;;;;;;
 
+;; ycmd setup for C++
+(require 'ycmd)
+(setq ycmd-startup-timeout 5)
+(add-hook 'c++-mode-hook #'ycmd-mode)
+(set-variable 'ycmd-server-command '("python" "/Users/christian/lisp/ycmd/ycmd"))
+(set-variable 'ycmd-global-config (expand-file-name "~/lisp/ycmd/examples/.ycm_extra_conf.py"))
+(set-variable 'ycmd-extra-conf-whitelist '("~/repos/*" "~/LPJ-GUESS/4.0.1"))
+(setq ycmd-force-semantic-completion t)
+
+;; Use eldoc info for function arguments
+(add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+
 ;; Use company for all completion
 (require 'company)
 
@@ -306,12 +326,92 @@
 ;; Activate globally
 (add-hook 'after-init-hook 'global-company-mode)
 
+(require 'company-ycmd)
+(company-ycmd-setup)
+
+;;;;;;;;;;
+;; Tags ;;
+;;;;;;;;;;
+
+;; Use universal ctags to build the tags database for the project.
+;; When you first want to build a TAGS database run 'touch TAGS' in
+;; the root directory of your project.
+(require 'counsel-etags)
+
+;; set ctags programm to Universal Ctags
+(setq counsel-etags-tags-program "/usr/local/bin/ctags")
+
+;; Ignore files above 800kb
+(setq counsel-etags-max-file-size 800)
+
+;; Ignore build directories for tagging
+(add-to-list 'counsel-etags-ignore-directories '"build*")
+(add-to-list 'counsel-etags-ignore-directories '".vscode")
+(add-to-list 'counsel-etags-ignore-directories '".idea")
+(add-to-list 'counsel-etags-ignore-filenames '".clang-format")
+
+;; Don't ask before rereading the TAGS files if they have changed
+(setq tags-revert-without-query t)
+;; Don't warn when TAGS files are large
+(setq large-file-warning-threshold nil)
+;; How many seconds to wait before rerunning tags for auto-update
+(setq counsel-etags-update-interval 180)
+;; Set up auto-update
+(add-hook
+ 'prog-mode-hook
+ (lambda () (add-hook
+             'after-save-hook
+             (lambda ()
+               (counsel-etags-virtual-update-tags))))
+ )
+;; Set up keyboard shortcuts for C++ mode; we want the standard
+;; M-. for ESS etc.
+(defun setup-counsel-etags ()
+  (local-set-key (kbd "M-.") 'counsel-etags-find-tag-at-point)
+  (local-set-key (kbd "M-t") 'counsel-etags-grep-symbol-at-point)
+  (local-set-key (kbd "M-s") 'counsel-etags-find-tag)
+  )
+(add-hook 'c++-mode 'setup-counsel-etags)
+
+;;;;;;;;;;;
+;; RTags ;;
+;;;;;;;;;;;
+
+(require 'rtags)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+            
 ;;;;;;;;;;;;;;
 ;; Flycheck ;;
 ;;;;;;;;;;;;;;
 
 (setq flycheck-global-modes '(c++-mode ess-mode))
 (global-flycheck-mode 1)
+(require 'flycheck-ycmd)
+(add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup)
+
+;;;;;;;;;;;;;;
+;; Spelling ;;
+;;;;;;;;;;;;;;
+
+(setq ispell-program-name "aspell")
+
+(setenv "LANG" "en_GB.UTF-8")
+(setq ispell-dictionary "en")
+
+;; general toggling between English and German
+(defun cz-toggle-dictionary ()
+  (interactive)
+  (setq the-dict ispell-dictionary)
+  (cond
+   ((string-equal the-dict "en")
+    (progn (ispell-change-dictionary "de")
+           (message "changed dictionary from English to German")))
+   ((string-equal the-dict "de")
+    (progn (ispell-change-dictionary "en")
+           (message "changed dictionary from German to English")))))
+
+;; @bind
+(global-set-key (kbd "C-c C-x l") 'cz-toggle-dictionary)
 
 ;;;;;;;;;;;
 ;; Dired ;;
@@ -327,11 +427,6 @@
 (require 'dired-quick-sort)
 (dired-quick-sort-setup)
 (setq insert-directory-program "/usr/local/bin/gls")
-(eval-after-load "dired"
-  '(progn
-    (define-key dired-mode-map (kbd "C-s") 'dired-isearch-filenames)
-    (define-key dired-mode-map (kbd "C-M-s") 'dired-isearch-filenames-regexp)
-))
 
 ;;;;;;;;;
 ;; Ivy ;;
@@ -367,7 +462,7 @@
 ;;;;;;;;;;;;;;;;
 
 ;; Mostly used for information purposes: project information in
-;; mode-line, R-sessions etc.
+;; mode-line, R-sessions etc.; also: projectile-find-file is good!
 (projectile-global-mode)
 
 ;;;;;;;;;
@@ -447,6 +542,10 @@
 (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
 ;; @bind Insert magrittr pipe to C-c m
 (define-key ess-mode-map (kbd "C-c m") 'cz-insert-magrittr-pipe)
+
+;; remove some linters from flycheck
+(setq flycheck-lintr-linters
+      "default_linters[-which(names(default_linters) %in% c(\"trailing_whitespace_linter\",\"commented_code_linter\"))]") 
 
 ;;;;;;;;;;;;;;
 ;; Polymode ;;
@@ -648,6 +747,42 @@
 (add-hook 'org-mode-hook (lambda () 
                            (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
+;;;;;;;;;;;
+;; LaTeX ;;
+;;;;;;;;;;;
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq-default TeX-PDF-mode t)
+
+(setq reftex-cite-format (quote natbib))
+(setq reftex-cite-prompt-optional-args nil)
+(setq reftex-cite-cleanup-optional-args t)
+(setq reftex-enable-partial-scans t)
+(setq reftex-save-parse-info t)
+(setq reftex-use-multiple-selection-buffers t)
+(setq reftex-plug-into-AUCTeX t)
+(setq reftex-section-levels '(("part" . 0)
+                              ("chapter" . 1)
+                              ("section" . 2)
+                              ("subsection" . 3)
+                              ("subsubsection" . 4)
+                              ("paragraph" . 5)
+                              ("subparagraph" . 6)
+                              ("frametitle" . 7)
+                              ("addchap" . -1)
+                              ("addsec" . -2)
+                              ("begin{frame}" . -3)))
+
+(setq LaTeX-verbatim-environments-local
+      '("Rcode" "bashcode" "juliacode" "cppcode" "lstlisting"))
+
+;; use ESS like R eval in TeX buffers (useful for presentations with
+;; code blocks)
+(defun r-eval-latex-hook ()
+ (local-set-key [(control return)] 'ess-eval-region-or-line-and-step))
+
+(add-hook 'LaTeX-mode-hook 'r-eval-latex-hook)
+
 ;;;;;;;;;
 ;; C++ ;;
 ;;;;;;;;;
@@ -668,16 +803,9 @@
 ;; Enable hide/show of code blocks
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
-;; TODO autocompletion
-;; TODO Tags w/o rtags server etc.
-
 ;;;;;;;;;;;;;;;;
 ;; JavaScript ;;
 ;;;;;;;;;;;;;;;;
 
 ;; TODO
 
-
-;; TODO Oblique
-
-;; TODO Spelling
