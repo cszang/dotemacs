@@ -9,7 +9,7 @@
 ;; -– Neal Stephenson, In the Beginning was the Command Line (1998)
 ;;
 ;; This config takes inspiration from other configs, most notably:
-;; - 
+;; - https://vxlabs.com/2016/04/11/step-by-step-guide-to-c-navigation-and-completion-with-emacs-and-the-clang-based-rtags/
 ;; - https://gist.github.com/nilsdeppe/7645c096d93b005458d97d6874a91ea9#file-emacs-el
 ;; - https://onze.io/emacs/c++/2017/03/16/emacs-cpp.html
 
