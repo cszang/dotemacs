@@ -13,7 +13,7 @@ brew install trash
 Get more recent org-mode from MELPA like this
 
 #+BEGIN_SRC sh
-emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"
+emacs -Q -batch -eval "(progn (require 'package) (add-to-list 'package-archives '(\"org\" . \"http://orgmode.org/elpa/\"))  (package-initialize) (package-refresh-contents) (package-install 'org-plus-contrib))"
 #+END_SRC
 
 Org-babel support for Julia is added via ob-julia.el. This uses an
@@ -60,22 +60,10 @@ git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 
 Then, checkout appropriate tag, if wanted.
 
-* ycmd
+* Rtags
 
-Install daemon and build for C++ support:
-
-#+begin_src sh
-git clone https://github.com/Valloric/ycmd.git ~/lisp/ycmd
-cd ~/lisp/ycmd
-git submodule update --init --recursive
-./build.py --clang-completer
-#+end_src
-
-* Universal ctags
-
-#+BEGIN_SRC sh
-brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-#+END_SRC
+  Open Emacs and do =M-x rtags-install=. Depending on =rtags= version,
+  customise =rtags-path= to =~/.emacs.d/rtags-VERSION/bin=.
 
 * Synctex
 
@@ -86,26 +74,3 @@ $pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
 $pdf_previewer = 'open -a skim';
 $clean_ext = 'bbl rel %R-blx.bib %R.synctex.gz';
 #+end_src
-* LLDB Support
-
-  LLDB support for built-in GUD:
-
-#+BEGIN_SRC sh
-curl http://opensource.apple.com//source/lldb/lldb-76/utils/emacs/gud.el?txt > ~/.emacs.d/lisp/gud.el
-#+END_SRC
-
-  LLDB support for realgud:
-
-#+BEGIN_SRC sh
-  git clone https://github.com/realgud/realgud-lldb.git ~/lisp/realgud-lldb
-#+END_SRC
-
-  Then, in Emacs under =~/lisp/realgud-lldb= (changing =--with-emacs
-  /usr/local/bin/emacs= as required):
-
-#+BEGIN_SRC emacs-lisp
-  (compile (format "EMACSLOADPATH=:%s:%s ./autogen.sh --with-emacs /usr/local/bin/emacs" (file-name-directory (locate-library "test-simple.elc")) (file-name-directory (locate-library "realgud.elc"))))
-#+END_SRC
-
-  It may be necessary to manually stop the compile process after a
-  while.
