@@ -20,6 +20,9 @@
 ;; Start emacs server
 (server-start)
 
+;; More security
+(setq network-security-level 'high)
+
 ;;;;;;;;;;;
 ;; Paths ;;
 ;;;;;;;;;;;
