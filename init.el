@@ -356,8 +356,6 @@
 
 (setq flycheck-global-modes '(c++-mode ess-mode))
 (global-flycheck-mode 1)
-(require 'flycheck-ycmd)
-(add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup)
 
 ;;;;;;;;;;;;;;
 ;; Spelling ;;
