@@ -94,6 +94,7 @@
     flycheck
     git-gutter
     google-c-style
+    hl-todo
     magit
     markdown-mode
     modern-cpp-font-lock
@@ -165,16 +166,9 @@
 
 ;; Three mouse-related lines in my init? Hey, this is Emacs!
 
-;; Highlight some keywords in prog-mode
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (font-lock-add-keywords
-             nil
-             '(("\\<\\(FIXME\\|TODO\\|BUG\\|DONE\\)" 1 font-lock-warning-face t)
-               )
-             )
-            )
-          )
+;; Highlight keywords and allow navigation
+(global-hl-todo-mode)
+(add-hook 'ess-mode-hook 'hl-todo-mode)
 
 ;; Set default font to Input or IBM Plex Mono
 (set-face-attribute 'default nil :height 141 :font "IBM Plex Mono")
