@@ -89,6 +89,7 @@
     default-text-scale
     deft
     dired-quick-sort
+    expand-region
     eyebrowse
     flycheck
     git-gutter
@@ -106,7 +107,6 @@
     spaceline
     swiper
     yaml-mode
-    ycmd
     zenburn-theme)
   )
 ;; fetch the list of packages available
@@ -291,6 +291,10 @@
 
 ;; Use eyebrowse for managing workspaces
 (eyebrowse-mode t)
+
+;; Expand regions with @bind
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;;;;;;;;;;;;;;;
 ;; Completion ;;
