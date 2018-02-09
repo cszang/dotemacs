@@ -84,7 +84,7 @@
     auctex
     autopair
     company
-    company-rtags
+    company-ycmd
     counsel
     default-text-scale
     deft
@@ -92,6 +92,7 @@
     expand-region
     eyebrowse
     flycheck
+    flycheck-ycmd
     git-gutter
     google-c-style
     hl-todo
@@ -108,6 +109,7 @@
     spaceline
     swiper
     yaml-mode
+    ycmd
     zenburn-theme)
   )
 ;; fetch the list of packages available
@@ -294,6 +296,18 @@
 ;; Completion ;;
 ;;;;;;;;;;;;;;;;
 
+;; ycmd setup for C++
+(require 'ycmd)
+(setq ycmd-startup-timeout 5)
+(add-hook 'c++-mode-hook #'ycmd-mode)
+(set-variable 'ycmd-server-command '("python" "/Users/christian/lisp/ycmd/ycmd"))
+(set-variable 'ycmd-global-config (expand-file-name "~/lisp/ycmd/examples/.ycm_extra_conf.py"))
+(set-variable 'ycmd-extra-conf-whitelist '("~/repos/*" "~/LPJ-GUESS/4.0.1"))
+(setq ycmd-force-semantic-completion t)
+
+;; Use eldoc info for function arguments
+(add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+
 ;; Use company for all completion
 (require 'company)
 
@@ -306,6 +320,9 @@
 ;; Activate globally
 (add-hook 'after-init-hook 'global-company-mode)
 
+(require 'company-ycmd)
+(company-ycmd-setup)
+
 ;;;;;;;;;;;
 ;; RTags ;;
 ;;;;;;;;;;;
@@ -314,19 +331,9 @@
 (setq rtags-install-path "~/.emacs.d/")
 (setq rtags-path "~/.emacs.d/rtags-2.18/bin/")
 
-;; ensure that we use only rtags checking
-;; https://github.com/Andersbakken/rtags#optional-1
-(defun setup-flycheck-rtags ()
-  (interactive)
-  (flycheck-select-checker 'rtags)
-  ;; RTags creates more accurate overlays.
-  (setq-local flycheck-highlighting-mode nil)
-  (setq-local flycheck-check-syntax-automatically nil))
-
 ;; only run this if rtags is installed
 (when (require 'rtags nil :noerror)
   ;; make sure you have company-mode installed
-  (require 'company)
   (define-key c-mode-base-map (kbd "M-.")
     (function rtags-find-symbol-at-point))
   (define-key c-mode-base-map (kbd "M-,")
@@ -334,18 +341,6 @@
   ;; install standard rtags keybindings. Do M-. on the symbol below to
   ;; jump to definition and see the keybindings.
   (rtags-enable-standard-keybindings)
-  ;; company completion setup
-  (setq rtags-autostart-diagnostics t)
-  (rtags-diagnostics)
-  (setq rtags-completions-enabled t)
-  (push 'company-rtags company-backends)
-  (setq company-rtags-begin-after-member-access t)
-  ;; (global-company-mode)
-  (define-key c-mode-base-map (kbd "<C-tab>") (function company-complete))
-  ;; use rtags flycheck mode -- clang warnings shown inline
-  (require 'flycheck-rtags)
-  ;; c-mode-common-hook is also called by c++-mode
-  (add-hook 'c-mode-common-hook #'setup-flycheck-rtags)
   (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running))
             
 ;;;;;;;;;;;;;;
@@ -354,6 +349,8 @@
 
 (setq flycheck-global-modes '(c++-mode ess-mode))
 (global-flycheck-mode 1)
+(require 'flycheck-ycmd)
+(add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup)
 
 ;;;;;;;;;;;;;;
 ;; Spelling ;;
