@@ -578,7 +578,7 @@
 (require 'ox-beamer)
 (setq org-latex-listings 'minted)
 (setq org-latex-pdf-process
-      '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+      '("latexmk -pdflatex='xelatex -shell-escape -interaction nonstopmode' -pdf -f %f"))
 (setq org-highlight-latex-and-related '(latex))
 
 ;; to allow for global image etc. settings on per-file basis
@@ -716,7 +716,25 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq-default TeX-PDF-mode t)
 
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (push
+             '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+               :help "Run latexmk on file")
+             TeX-command-list)))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+(custom-set-variables
+ '(TeX-source-correlate-method 'synctex)
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t))
+
 (setq reftex-cite-format (quote natbib))
+(setq reftex-default-bibliography "~/Desktop/ResBib/refs.bib")
 (setq reftex-cite-prompt-optional-args nil)
 (setq reftex-cite-cleanup-optional-args t)
 (setq reftex-enable-partial-scans t)
