@@ -395,7 +395,11 @@
 
 (require 'ivy)
 (ivy-mode t)
+;; uses bookmarks and recentf
 (setq ivy-use-virtual-buffers t)
+(setq ivy-height 5)
+(setq ivy-display-style 'fancy)
+(setq ivy-count-format "(%d/%d) ")
 (setq enable-recursive-minibuffers t)
 (setq ivy-wrap t)
 ;; @bind
