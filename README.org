@@ -70,10 +70,18 @@ cd ~/lisp/ycmd
 git submodule update --init --recursive
 ./build.py --clang-completer
 #+end_src
+
+Use additional config per project: install =YCM-Generator= and run
+=./config_gen.py <PROJECTBASEPATH>= to generate extra
+=.ycm_extra_conf.py=.
+
 * Rtags
 
   Open Emacs and do =M-x rtags-install=. Depending on =rtags= version,
   customise =rtags-path= to =~/.emacs.d/rtags-VERSION/bin=.
+
+  To use with project, run =cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .=
+  in source directory.
 
 * Synctex
 
