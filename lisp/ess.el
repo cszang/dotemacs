@@ -46,3 +46,16 @@
   (interactive "sHeader: ") 
   (insert (concat "```{r " header "}\n\n```")) 
   (forward-line -1))
+
+
+;; restart R (from source file)
+(defun cz-restart-R ()
+  (interactive)
+  (setq ess-project-root-dir (projectile-project-root))
+  (ess-switch-to-end-of-ESS)
+  (ess-quit)
+  (kill-buffer)
+  (switch-to-buffer ess-project-root-dir)
+  (R)
+  )
+
