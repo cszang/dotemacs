@@ -331,17 +331,15 @@
 (setq rtags-install-path "~/.emacs.d/")
 (setq rtags-path "~/.emacs.d/rtags-2.18/bin/")
 
-;; only run this if rtags is installed
-(when (require 'rtags nil :noerror)
-  ;; make sure you have company-mode installed
+(defun setup-rtags ()
   (define-key c-mode-base-map (kbd "M-.")
     (function rtags-find-symbol-at-point))
   (define-key c-mode-base-map (kbd "M-,")
     (function rtags-find-references-at-point))
-  ;; install standard rtags keybindings. Do M-. on the symbol below to
-  ;; jump to definition and see the keybindings.
+  (rtags-start-process-unless-running)
   (rtags-enable-standard-keybindings)
-  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running))
+  )
+(add-hook 'c-mode-common-hook 'setup-rtags)
             
 ;;;;;;;;;;;;;;
 ;; Flycheck ;;
