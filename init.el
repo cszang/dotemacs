@@ -100,6 +100,7 @@
     magit
     markdown-mode
     modern-cpp-font-lock
+    moody
     org
     osx-trash
     polymode
@@ -180,39 +181,25 @@
 (setq-default line-spacing 5)
 
 ;; Use the Zenburn theme
-(load-theme 'zenburn)
+(load-theme 'solarized-light t)
 
-;; Powerline setup
-(require 'powerline)
-(setq powerline-image-apple-rgb t)
+(let ((line (face-attribute 'mode-line :underline)))
+  (set-face-attribute 'mode-line-inactive nil :overline   line)
+  (set-face-attribute 'mode-line          nil :overline   line)
+  (set-face-attribute 'mode-line          nil :underline  line)
+  (set-face-attribute 'mode-line          nil :box        nil)
+  (set-face-attribute 'mode-line-inactive nil :box        nil)
+  (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9"))
+
+;; use Jonas Bernoulli' nice and clean mode-line variant
+(require 'moody)
+(setq x-underline-at-descent-line t)
+(moody-replace-mode-line-buffer-identification)
+(moody-replace-vc-mode)
 (setq ns-use-srgb-colorspace nil)
-(require 'spaceline-config)
-(display-time-mode 1)
-(setq display-time-format "%H:%M")
-(setq spaceline-window-numbers-unicode t)
-(setq spaceline-workspace-numbers-unicode t)
-(setq-default
-   powerline-default-separator 'utf-8
-   spaceline-flycheck-bullet "❖ %s"
-   spaceline-separator-dir-left '(right . right)
-   spaceline-separator-dir-right '(left . left))
-(spaceline-install
-    'main
-    '((workspace-number :face highlight-face)
-      (buffer-modified)
-      ((remote-host buffer-id) :face region)
-      (major-mode)
-      (projectile-root)
-      (process :when active))
-    '((selection-info :face region :when mark-active)
-      ((flycheck-error flycheck-warning flycheck-info) :when active)
-      (which-function)
-      (version-control :when active)
-      (line-column)
-      (global :when active)
-      (buffer-position)))
-(setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
-;; (end of Powerline setup)
+
+(require 'minions)
+(minions-mode)
 
 ;; Construct unique buffer names as name|bar/mumble
 (setq uniquify-buffer-name-style 'post-forward)
