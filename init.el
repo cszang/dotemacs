@@ -89,6 +89,7 @@
     default-text-scale
     deft
     dired-quick-sort
+    dumb-jump
     expand-region
     eyebrowse
     flycheck
@@ -323,10 +324,17 @@
 (require 'company-ycmd)
 (company-ycmd-setup)
 
-;;;;;;;;;;;
-;; RTags ;;
-;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;
+;; Navigation ;;
+;;;;;;;;;;;;;;;;
+
+;; 1. Dump-Jump
+(dumb-jump-mode)
+(setq dumb-jump-selector 'ivy)
+;; create .dumbjump file in project root to speed things up!
+
+;; 2. Rtags (for C++)
 ;; Install rtags locally from M-x install-rtags
 (setq rtags-install-path "~/.emacs.d/")
 (setq rtags-path "~/.emacs.d/rtags-2.18/bin/")
