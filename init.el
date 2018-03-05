@@ -180,16 +180,30 @@
 ;; Make line spacing a bit wider than default
 (setq-default line-spacing 5)
 
-;; Use the Zenburn theme
-(load-theme 'solarized-light t)
-
-(let ((line (face-attribute 'mode-line :underline)))
-  (set-face-attribute 'mode-line-inactive nil :overline   line)
-  (set-face-attribute 'mode-line          nil :overline   line)
-  (set-face-attribute 'mode-line          nil :underline  line)
-  (set-face-attribute 'mode-line          nil :box        nil)
-  (set-face-attribute 'mode-line-inactive nil :box        nil)
-  (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9"))
+(setq cz-theme (completing-read "Theme?" '("Solarized Light" "Zenburn")))
+(if (string= cz-theme "Zenburn")
+    (progn
+      (load-theme 'zenburn' t)
+      (zenburn-with-color-variables
+       (set-face-attribute 'mode-line-inactive nil :overline   zenburn-bg-05)
+       (set-face-attribute 'mode-line          nil :overline   zenburn-bg-1)
+       (set-face-attribute 'mode-line          nil :underline  zenburn-bg-1)
+       (set-face-attribute 'mode-line-inactive nil :underline  zenburn-bg-05)
+       (set-face-attribute 'mode-line          nil :box        nil)
+       (set-face-attribute 'mode-line-inactive nil :box        nil)
+       (set-face-attribute 'mode-line-inactive nil :background zenburn-bg+05)
+       (set-face-attribute 'mode-line          nil :background zenburn-bg-1)
+       (set-face-attribute 'mode-line          nil :foreground zenburn-blue)
+       (set-face-attribute 'mode-line-inactive nil :foreground zenburn-blue-2)))
+  (progn
+    (load-theme 'solarized-light t)
+    (let ((line (face-attribute 'mode-line :underline)))
+      (set-face-attribute 'mode-line-inactive nil :overline   line)
+      (set-face-attribute 'mode-line          nil :overline   line)
+      (set-face-attribute 'mode-line          nil :underline  line)
+      (set-face-attribute 'mode-line          nil :box        nil)
+      (set-face-attribute 'mode-line-inactive nil :box        nil)
+      (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9"))))
 
 ;; use Jonas Bernoulli' nice and clean mode-line variant
 (require 'moody)
