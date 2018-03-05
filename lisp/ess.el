@@ -59,3 +59,13 @@
   (R)
   )
 
+;; start logvogel monitoring process
+(defun cz-logvogel ()
+  (interactive)
+  (setq ess-project-root-dir (projectile-project-root))
+  (switch-to-buffer ess-project-root-dir)
+  (R)
+  (rename-buffer "*logvogel::autostatus()*")
+  (insert "logvogel::autostatus()")
+  (autopair-newline)
+  )
