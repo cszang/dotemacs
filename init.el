@@ -102,6 +102,7 @@
     modern-cpp-font-lock
     moody
     org
+    org-ref
     osx-trash
     polymode
     powerline
@@ -591,8 +592,21 @@
 (require 'ox-beamer)
 (setq org-latex-listings 'minted)
 (setq org-latex-pdf-process
-      '("latexmk -pdflatex='xelatex -shell-escape -interaction nonstopmode' -pdf -f %f"))
+      '("latexmk -pdflatex='xelatex -shell-escape -bibtex -interaction nonstopmode' -pdf -f %f"))
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 (setq org-highlight-latex-and-related '(latex))
+
+(add-to-list 'org-latex-classes
+          '("koma-book"
+             "\\documentclass{scrbook}
+             [NO-DEFAULT-PACKAGES]
+             [EXTRA]"
+             ("\\chapter{%s}" . "\\chapter*{%s}")
+             ("\\section{%s}" . "\\section*{%s}")
+             ("\\subsection{%s}" . "\\subsection*{%s}")
+             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;; to allow for global image etc. settings on per-file basis
 (setq org-export-allow-bind-keywords t)
@@ -609,6 +623,15 @@
    (js . t)
    (haskell . t)
    (ditaa . t)))
+
+;; set homebrew ditaa path
+(setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0/libexec/ditaa-0.11.0-standalone.jar")
+
+;; Org-Ref Setup
+(setq org-ref-completion-library 'org-ref-ivy-cite)
+(setq org-latex-prefer-user-labels t)
+(setq org-ref-default-bibliography "~/repos/research-bible/research-bible.bib")
+(require 'org-ref)
 
 ;; GTD setup
 (setq org-directory "~/ownCloud/Org/")
