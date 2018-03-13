@@ -564,6 +564,10 @@
 ;; Auto-fill orgmode buffers
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
+;; Save all org buffers automatically to prevent locks when switching
+;; hosts
+(run-with-idle-timer 30 t 'org-save-all-org-buffers)
+
 ;; @bind Important global orgmode bindings
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c C-+") 'org-capture)
