@@ -862,6 +862,7 @@
 (setq elpy-rpc-python-command (expand-file-name "~/miniconda3/bin/python"))
 (setq python-check-command "/Users/christian/miniconda3/bin/flake8")
 (elpy-enable)
+(add-to-list 'exec-path "/Users/christian/miniconda3/bin")
 
 ;;;;;;;;;;;;;;;;
 ;; JavaScript ;;
