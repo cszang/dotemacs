@@ -542,7 +542,10 @@
 
 ;; remove some linters from flycheck
 (setq flycheck-lintr-linters
-      "default_linters[-which(names(default_linters) %in% c(\"trailing_whitespace_linter\",\"commented_code_linter\"))]") 
+      "default_linters[-which(names(default_linters) %in% c(\"trailing_whitespace_linter\",\"commented_code_linter\"))]")
+
+;; use homebrew julia
+(setq inferior-julia-program-name "/usr/local/bin/julia")
 
 ;;;;;;;;;;;;;;
 ;; Polymode ;;
