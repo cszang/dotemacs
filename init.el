@@ -84,6 +84,7 @@
     auctex
     autopair
     company
+    company-quickhelp
     company-ycmd
     conda
     counsel
@@ -107,6 +108,7 @@
     org-ref
     osx-trash
     polymode
+    pos-tip
     powerline
     projectile
     s
@@ -330,6 +332,9 @@
 
 ;; Use company for all completion
 (require 'company)
+
+;; use pop-ups with docs
+(company-quickhelp-mode)
 
 ;; Zero delay when pressing tab
 (setq company-idle-delay 0)
