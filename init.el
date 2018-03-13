@@ -322,7 +322,7 @@
 (require 'ycmd)
 (setq ycmd-startup-timeout 5)
 (add-hook 'c++-mode-hook #'ycmd-mode)
-(set-variable 'ycmd-server-command '("python" "/Users/christian/lisp/ycmd/ycmd"))
+(set-variable 'ycmd-server-command '("/usr/bin/python" "/Users/christian/lisp/ycmd/ycmd"))
 (set-variable 'ycmd-global-config (expand-file-name "~/lisp/ycmd/examples/.ycm_extra_conf.py"))
 (set-variable 'ycmd-extra-conf-whitelist '("~/repos/*" "~/LPJ-GUESS/4.0.1"))
 (setq ycmd-force-semantic-completion t)
