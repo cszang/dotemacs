@@ -183,8 +183,10 @@
 ;; Make line spacing a bit wider than default
 (setq-default line-spacing 5)
 
-(setq cz-theme (completing-read "Theme?" '("Solarized Light" "Zenburn")))
-(if (string= cz-theme "Zenburn")
+(setq cz-theme 'solarized-light)
+
+(defun cz-apply-theme (theme)
+  (if (equal theme 'zenburn)
     (progn
       (load-theme 'zenburn' t)
       (zenburn-with-color-variables
@@ -206,7 +208,20 @@
       (set-face-attribute 'mode-line          nil :underline  line)
       (set-face-attribute 'mode-line          nil :box        nil)
       (set-face-attribute 'mode-line-inactive nil :box        nil)
-      (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9"))))
+      (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))))
+
+(cz-apply-theme cz-theme)
+
+(defun cz-toggle-theme ()
+  (interactive)
+  (if (equal cz-theme 'zenburn)
+      (progn
+        (setq cz-theme 'solarized-light)
+        (disable-theme 'zenburn))
+    (progn
+      (setq cz-theme 'zenburn)
+      (disable-theme 'solarized-light)))
+  (cz-apply-theme cz-theme))
 
 ;; use Jonas Bernoulli' nice and clean mode-line variant
 (require 'moody)
