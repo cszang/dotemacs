@@ -85,11 +85,13 @@
     autopair
     company
     company-ycmd
+    conda
     counsel
     default-text-scale
     deft
     dired-quick-sort
     dumb-jump
+    elpy
     expand-region
     eyebrowse
     flycheck
@@ -823,6 +825,19 @@
 
 ;; Enable hide/show of code blocks
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;;;;;;;;;;;;
+;; Python ;;
+;;;;;;;;;;;;
+
+(setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+(setq python-shell-interpreter (expand-file-name "~/miniconda3/bin/python"))
+(conda-env-initialize-interactive-shells)
+(conda-env-initialize-eshell)
+(conda-env-autoactivate-mode t)
+(setq elpy-rpc-python-command (expand-file-name "~/miniconda3/bin/python"))
+(setq python-check-command "/Users/christian/miniconda3/bin/flake8")
+(elpy-enable)
 
 ;;;;;;;;;;;;;;;;
 ;; JavaScript ;;
