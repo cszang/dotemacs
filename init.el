@@ -450,6 +450,13 @@
 (global-set-key (kbd "C-c g") 'counsel-git-grep)
 (global-set-key (kbd "C-c j") 'counsel-git)
 (global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-c r") 'counsel-rg)
+
+;; always use ripgrep
+(setq counsel-git-cmd "rg --files")
+(setq counsel-rg-base-command
+      "rg -i -M 120 --no-heading --line-number --color never %s .")
+
 
 ;; Show #/total when scrolling buffers
 (setq ivy-use-virtual-buffers t ivy-count-format "%d/%d ")
@@ -775,9 +782,9 @@
 
 ;; Grab links from Mail.app etc.
 (add-to-list 'org-modules 'org-mac-link)
-;; @bind org-mac-grab-link to C-c g
+;; @bind org-mac-grab-link to C-c C-g
 (add-hook 'org-mode-hook (lambda () 
-                           (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
+                           (define-key org-mode-map (kbd "C-c C-g") 'org-mac-grab-link)))
 
 ;;;;;;;;;;;
 ;; LaTeX ;;
