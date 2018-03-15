@@ -868,7 +868,6 @@
 (setq python-shell-interpreter (expand-file-name "~/miniconda3/bin/python"))
 (conda-env-initialize-interactive-shells)
 (conda-env-initialize-eshell)
-(conda-env-autoactivate-mode t)
 (setq elpy-rpc-python-command (expand-file-name "~/miniconda3/bin/python"))
 (setq python-check-command "/Users/christian/miniconda3/bin/flake8")
 (elpy-enable)
