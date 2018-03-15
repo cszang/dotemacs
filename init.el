@@ -867,8 +867,33 @@
 (elpy-enable)
 (add-to-list 'exec-path "/Users/christian/miniconda3/bin")
 
+;;;;;;;;;;;;
+;; Octave ;;
+;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '("\\.m" . octave-mode))
+(defun cz-octave-send-line-or-region (beginning end)
+  (interactive "r")
+  (if (use-region-p)
+      (octave-send-region beginning end)
+    (octave-send-line)
+))
+
+(add-hook 'octave-mode-hook 
+          '(lambda nil
+             (define-key octave-mode-map [(control return)]
+               'cz-octave-send-line-or-region)
+             (define-key octave-mode-map [(control space)]
+               'octave-complete-symbol)))
+
 ;;;;;;;;;;;;;;;;
 ;; JavaScript ;;
 ;;;;;;;;;;;;;;;;
+
+;; TODO
+
+;;;;;;;;
+;; Go ;;
+;;;;;;;;
 
 ;; TODO
