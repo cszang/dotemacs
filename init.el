@@ -699,7 +699,6 @@
 (setq org-log-into-drawer t)
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-agenda-skip-deadline-if-done t)
-(setq org-habit-preceding-days 0)
 (setq org-agenda-window-setup 'current-window)
 
 (setq org-agenda-custom-commands
@@ -784,6 +783,9 @@
 
 ;; Grab links from Mail.app etc.
 (add-to-list 'org-modules 'org-mac-link)
+(add-to-list 'org-modules 'org-habit)
+(setq org-habit-preceding-days 7)
+(setq org-habit-graph-column 70)
 ;; @bind org-mac-grab-link to C-c C-g
 (add-hook 'org-mode-hook (lambda () 
                            (define-key org-mode-map (kbd "C-c C-g") 'org-mac-grab-link)))
