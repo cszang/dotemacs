@@ -219,6 +219,8 @@
   (if (equal cz-theme 'zenburn)
       (progn
         (setq cz-theme 'solarized-light)
+        (setq solarized-scale-org-headlines nil)
+        (setq solarized-use-variable-pitch nil)
         (disable-theme 'zenburn))
     (progn
       (setq cz-theme 'zenburn)
