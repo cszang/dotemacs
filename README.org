@@ -98,3 +98,8 @@ $clean_ext = 'bbl rel %R-blx.bib %R.synctex.gz';
 pip install jedi flake8 autopep8
 
 #+end_src
+* LilyPond
+
+#+BEGIN_SRC bash
+brew cask install lilypond
+#+END_SRC

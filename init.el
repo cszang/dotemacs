@@ -907,3 +907,10 @@
 ;;;;;;;;
 
 ;; TODO
+
+;;;;;;;;;;;;;;
+;; Lilypond ;;
+;;;;;;;;;;;;;;
+
+(add-to-list 'load-path "/Applications/LilyPond.app/Contents/Resources/share/emacs/site-lisp/")
+(require 'lilypond-mode)
