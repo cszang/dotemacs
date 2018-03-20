@@ -32,7 +32,7 @@
   (interactive)
   (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
   (setq zk-link-file (ido-completing-read "Link? " zk-all-dated-files))
-  (insert (concat "§" (car (s-match "^[0-9]\\{12\\}" zk-link-file))))
+  (insert (concat "[[" (car (s-match "^[0-9]\\{12\\}" zk-link-file)) "]]"))
   )
 
 (defun flatten (mylist)
@@ -45,7 +45,7 @@
 (defun zk-match-tag-in-buffer (f)
   "append all matches of tags in a buffer to a list"
   (save-excursion
-    (setq zk-tagline-regex "^#\\+ZKTAGS:.*$")
+    (setq zk-tagline-regex "^tags:.*$")
     (setq zk-tag-regex "#\\w+")
     (find-file f)
     (setq zk-tagline (car (s-match zk-tagline-regex (buffer-string))))
@@ -74,7 +74,7 @@
   (zk-get-tag-list)
   (backward-page)
   (open-line 2)
-  (insert (concat "#+ZKTAGS: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
+  (insert (concat "tags: " (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
 (defun zk-find-similar ()
   (interactive)

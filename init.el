@@ -492,8 +492,9 @@
 (setq deft-directory "~/ownCloud/Zettelkasten")
 (setq deft-use-filename-as-title t)
 (setq deft-use-filter-string-for-filename t)
-(setq deft-extensions '("org"))
+(setq deft-extensions '("txt"))
 (global-set-key (kbd "C-c C-d") 'deft)
+(add-to-list 'auto-mode-alist '("\\.txt" . markdown-mode))
 
 ;; Use custom functions for Zettelkasten setup
 (load-file "~/.emacs.d/lisp/zettelkasten.el")
@@ -917,3 +918,9 @@
 
 (add-to-list 'load-path "/Applications/LilyPond.app/Contents/Resources/share/emacs/site-lisp/")
 (require 'lilypond-mode)
+
+;;;;;;;;;;;;;;
+;; Markdown ;;
+;;;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist "")
