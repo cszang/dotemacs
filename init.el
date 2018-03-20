@@ -78,9 +78,11 @@
 	("org" . "https://orgmode.org/elpa/")
 	))
 (package-initialize)
+
 ;; packages to install
 (defvar package-list
-  '(ag
+  '(academic-phrases
+    ag
     auctex
     autopair
     company
@@ -101,6 +103,7 @@
     google-c-style
     hl-todo
     magit
+    magit-org-todo
     markdown-mode
     modern-cpp-font-lock
     moody
