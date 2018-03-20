@@ -484,6 +484,8 @@
 (global-set-key (kbd "C-x C-g") 'git-gutter:toggle)
 (global-git-gutter-mode t)
 (setq git-gutter:update-interval 5)
+(require 'magit-org-todos)
+(magit-org-todos-autoinsert)
 
 ;;;;;;;;;;
 ;; Deft ;;
