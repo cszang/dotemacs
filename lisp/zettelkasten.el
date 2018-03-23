@@ -58,7 +58,7 @@
   (interactive)
   (setq zk-start-buffer buffer-file-name)
   (setq zk-scan-files (-remove (lambda (f) (string= zk-start-buffer f))
-                                 (directory-files deft-directory t ".org$")))
+                                 (directory-files deft-directory t ".txt$")))
   (setq zk-tag-list '(()))
   (mapc 'zk-match-tag-in-buffer zk-scan-files)
   (setq zk-tag-list (-distinct (flatten zk-tag-list)))

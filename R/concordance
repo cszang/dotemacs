@@ -4,9 +4,9 @@ args <- commandArgs(TRUE)
 
 sim_id <- paste0("id", args[1])
 
-F <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.org$",
+F <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$",
                 full.names = TRUE)
-f <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.org$")
+f <- list.files("~/ownCloud/Zettelkasten/", pattern = "\\.txt$")
 n <- length(f)
 
 strip_concord <- function(conc, id) {
@@ -24,12 +24,16 @@ strip_concord <- function(conc, id) {
 concs <- list()
 
 for (i in 1:n) {
-    ccall <- paste0("cat '", F[i],
-    "' | tr ' ' '\n' | sed 's/[^[:alpha:]]//g' | sort | uniq -c")
-    conc <- system(ccall, intern = TRUE)
-    id <- paste0("id", substr(f[i], 1, 12))
-    concs[[id]] <- strip_concord(conc, id)
+  .f <- F[i]
+  .f <- gsub("\\'", "\\'\\\\'\\'", .f)
+  ccall <- paste0("cat '", .f,
+                  "' | tr ' ' '\n' | sed 's/[^[:alpha:]]//g' | sort | uniq -c")
+  conc <- system(ccall, intern = TRUE)
+  id <- paste0("id", substr(f[i], 1, 12))
+  concs[[id]] <- strip_concord(conc, id)
 }
+
+n <- length(concs)
 
 all_words <- sort(unique(unlist(sapply(concs, function(x) x[,2]))))
 wc <- length(all_words)
@@ -48,8 +52,5 @@ d <- as.matrix(dist(W))
 id_pos <- which(ids == sim_id)
 the_row <- d[id_pos,]
 the_row <- the_row[-c(which(names(the_row) == sim_id))]
-similar <- gsub("id", "", names(the_row)[order(the_row)][1:10])
-titles <- gsub("\\.txt$", "",
-               gsub("^[0-9]{12}\\s+", "",
-                    f[substr(f, 1, 12) != args[1]]))[order(the_row)][1:10]
-cat(paste0("§", similar, " :: ", titles, "\n"))
+similar <- gsub("\\.txt$", "", f[substr(f, 1, 12) != args[1]])[order(the_row)][1:10]
+cat(paste0("[[", similar, "]]\n"))

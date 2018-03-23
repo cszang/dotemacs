@@ -887,7 +887,7 @@
 ;; Octave ;;
 ;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist '("\\.m" . octave-mode))
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 (defun cz-octave-send-line-or-region (beginning end)
   (interactive "r")
   (if (use-region-p)
@@ -925,4 +925,7 @@
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist '("\\.txt" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.txt$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-hook 'markdown-mode-hook 'visual-fill-column-mode)
+(add-hook 'markdown-mode-hook 'visual-line-mode)
