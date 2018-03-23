@@ -925,4 +925,4 @@
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist "")
+(add-to-list 'auto-mode-alist '("\\.txt" . markdown-mode))
