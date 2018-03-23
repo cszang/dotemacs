@@ -103,7 +103,7 @@
     google-c-style
     hl-todo
     magit
-    magit-org-todo
+    magit-org-todos
     markdown-mode
     modern-cpp-font-lock
     moody
