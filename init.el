@@ -765,18 +765,10 @@
          "* %^{Was?}\n  %?")
         ))
 (setq org-attach-directory "~/ownCloud/Org/Attachments")
-(setq org-refile-use-outline-path 'file)
-(setq org-refile-targets 
-      '(
-        (
-         ,(append org-agenda-files (list tech))
-         :regexp . "refile")
-        (
-         ,(append org-agenda-files (list tech))
-         :maxlevel . 1)
-        ))
-(setq org-refile-targets (quote ((org-agenda-files :todo . "PROJEKT") (org-agenda-files :todo . "LISTE") (org-agenda-files :todo . "PR_FESTGEFAHREN") (org-agenda-files :tag . "eimer"))))
-(setq org-refile-use-cache nil)
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-cache t)
+(setq org-refile-targets '((org-agenda-files :maxlevel . 4)))
 
 ;; Store captured stuff at the beginning of the file
 (setq org-reverse-note-order t)
