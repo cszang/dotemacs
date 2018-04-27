@@ -870,6 +870,9 @@
 ;; Enable hide/show of code blocks
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
+;; Show which function we're in
+(add-hook 'c-mode-common-hook 'which-function-mode)
+
 ;;;;;;;;;;;;
 ;; Python ;;
 ;;;;;;;;;;;;
