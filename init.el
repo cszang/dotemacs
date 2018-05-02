@@ -85,6 +85,7 @@
     ag
     auctex
     autopair
+    beacon
     company
     company-quickhelp
     company-ycmd
@@ -264,6 +265,9 @@
 ;; Change frame name to oblique strategy and change every 15 minutes
 (load-file "~/.emacs.d/lisp/oblique.el")
 (run-with-timer 0 900 'cz-display-oblique)
+
+;; Use beacon to show where the cursor is
+(beacon-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; General editing ;;
