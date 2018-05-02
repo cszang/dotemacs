@@ -708,7 +708,7 @@
                           (sequence "|" "STORNIERT(s@!)")
                           (sequence "HABIT" "|" "ERLEDIGT")
                           (sequence "JAHRESTAG" "|" "ERLEDIGT")
-                          (sequence "PROJEKT(p!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(g!)" "PR_STORNIERT(r@/!)")
+                          (sequence "PROJEKT(p!)" "PR_INAKTIV(i)" "|" "PR_ERLEDIGT(x!)" "PR_STORNIERT(r@/!)")
                           (sequence "LISTE(l)" "|")
                           (sequence "KONZEPT" "DRAFT" "INREVIEW" "MAJOR" "MINOR" "|" "INPRESS")
                           ))
