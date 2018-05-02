@@ -273,6 +273,21 @@
 ;; Show colour of colour strings
 (add-hook 'prog-mode-hook 'rainbow-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Window management ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use eyebrowse for managing workspaces
+(eyebrowse-mode t)
+
+;; Use builtin windmove to use Shift-Arrow keys to traverse windows
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+;; Winner mode lets me get back to a previous window config with C-c left
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; General editing ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -319,9 +334,6 @@
 ;; @bind remap M-q to fill-or-unfill
 (global-set-key [remap fill-paragraph]
                 #'endless/fill-or-unfill)
-
-;; Use eyebrowse for managing workspaces
-(eyebrowse-mode t)
 
 ;; Expand regions with @bind
 (require 'expand-region)
