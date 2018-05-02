@@ -115,6 +115,7 @@
     pos-tip
     powerline
     projectile
+    rainbow-mode
     s
     smex
     spaceline
@@ -268,6 +269,9 @@
 
 ;; Use beacon to show where the cursor is
 (beacon-mode 1)
+
+;; Show colour of colour strings
+(add-hook 'prog-mode-hook 'rainbow-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; General editing ;;
