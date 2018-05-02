@@ -943,3 +943,10 @@
 (add-to-list 'auto-mode-alist '("\\.txt$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-hook 'markdown-mode-hook 'auto-fill-mode)
+
+;;;;;;;;;;;;;;
+;; Browsing ;;
+;;;;;;;;;;;;;;
+
+;; When entering eww, use cursors to scroll without changing point
+(add-hook 'eww-mode-hook 'scroll-lock-mode)
