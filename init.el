@@ -659,11 +659,11 @@
 (setq org-latex-listings 'minted)
 (setq org-latex-pdf-process
       '("latexmk -pdflatex='xelatex -shell-escape -bibtex -interaction nonstopmode' -pdf -f %f"))
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+;; (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 (setq org-highlight-latex-and-related '(latex))
 
 (add-to-list 'org-latex-classes
-          '("koma-book"
+          '(("koma-book"
              "\\documentclass{scrbook}
              [NO-DEFAULT-PACKAGES]
              [EXTRA]"
@@ -672,7 +672,12 @@
              ("\\subsection{%s}" . "\\subsection*{%s}")
              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
              ("\\paragraph{%s}" . "\\paragraph*{%s}")
-             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(add-to-list 'org-latex-classes
+             '("koma-article"
+               "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")))
 
 ;; to allow for global image etc. settings on per-file basis
 (setq org-export-allow-bind-keywords t)
