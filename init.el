@@ -95,6 +95,8 @@
     deft
     dired-quick-sort
     dumb-jump
+    elfeed
+    elfeed-goodies
     elpy
     expand-region
     eyebrowse
@@ -950,3 +952,10 @@
 
 ;; When entering eww, use cursors to scroll without changing point
 (add-hook 'eww-mode-hook 'scroll-lock-mode)
+
+;;;;;;;;;
+;; RSS ;;
+;;;;;;;;;
+
+(load "~/.emacs.d/elfeed-feeds.el")
+(elfeed-goodies/setup)
