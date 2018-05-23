@@ -825,10 +825,14 @@
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
-            (push
-             '("latexmk" "latexmk -shell-escape -bibtex -f -pdf %s" TeX-run-TeX nil t
-               :help "Run latexmk on file")
-             TeX-command-list)))
+            (if (boundp 'pushed-latexmk)
+                nil
+              (progn
+                (setq pushed-latexmk t)
+                (push
+                 '("latexmk" "latexmk -shell-escape -bibtex -f -pdf %s" TeX-run-TeX nil t
+                   :help "Run latexmk on file")
+                 TeX-command-list)))))
 (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
 
 (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
