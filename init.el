@@ -702,7 +702,7 @@
 ;; Org-Ref Setup
 (setq org-ref-completion-library 'org-ref-ivy-cite)
 (setq org-latex-prefer-user-labels t)
-(setq org-ref-default-bibliography "~/repos/research-bible/research-bible.bib")
+(setq org-ref-default-bibliography "~/Dropbox/Bibliothek/Bibliothek.bib")
 (require 'org-ref)
 
 ;; GTD setup
@@ -841,7 +841,7 @@
  '(TeX-source-correlate-start-server t))
 
 (setq reftex-cite-format (quote natbib))
-(setq reftex-default-bibliography "~/Desktop/ResBib/refs.bib")
+(setq reftex-default-bibliography "~/Dropbox/Bibliothek/Bibliothek.bib")
 (setq reftex-cite-prompt-optional-args nil)
 (setq reftex-cite-cleanup-optional-args t)
 (setq reftex-enable-partial-scans t)
