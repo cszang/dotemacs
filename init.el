@@ -18,7 +18,7 @@
 ;;;;;;;;;;
 
 ;; Start emacs server
-(server-start)
+;; (server-start)
 
 ;; More security
 (setq network-security-level 'high)
@@ -32,7 +32,7 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq exec-path (append exec-path '("/Library/TeX/texbin")))
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups"))))
-(setq bookmark-default-file "~/ownCloud/Emacs/Lesezeichen")
+(setq bookmark-default-file "~/Dropbox/Emacs/Lesezeichen")
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; General behaviour ;;
@@ -103,6 +103,7 @@
     flycheck
     flycheck-ycmd
     git-gutter
+    go-mode
     google-c-style
     hl-todo
     magit
@@ -513,7 +514,7 @@
 ;; Deft ;;
 ;;;;;;;;;;
 
-(setq deft-directory "~/ownCloud/Zettelkasten")
+(setq deft-directory "~/Dropbox/Zettelkasten")
 (setq deft-use-filename-as-title t)
 (setq deft-use-filter-string-for-filename t)
 (setq deft-extensions '("txt"))
@@ -600,7 +601,7 @@
 (setq calendar-latitude 48.4029)
 (setq calendar-longitude 11.7412)
 (setq calendar-location-name "Freising, BY")
-(setq diary-file "~/ownCloud/Emacs/Kalender")
+(setq diary-file "~/Dropbox/Emacs/Kalender")
 
 ;;;;;;;;;
 ;; Org ;;
@@ -705,7 +706,7 @@
 (require 'org-ref)
 
 ;; GTD setup
-(setq org-directory "~/ownCloud/Org/")
+(setq org-directory "~/Dropbox/Org/")
 (setq org-inbox-file (concat org-directory "Org-Inbox.org"))
 (setq org-agenda-files ())
 (setq org-agenda-file-regexp "^Org-.*\\.org\\'")
@@ -791,7 +792,7 @@
         ("w" "Workflow" entry (file ,(concat org-directory "Workflow.org"))
          "* %^{Was?}\n  %?")
         ))
-(setq org-attach-directory "~/ownCloud/Org/Attachments")
+(setq org-attach-directory "~/Dropbox/Org/Attachments")
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-cache t)
@@ -964,3 +965,11 @@
 
 (load "~/.emacs.d/elfeed-feeds.el")
 (elfeed-goodies/setup)
+
+;;;;;;;;;;;
+;; TRAMP ;;
+;;;;;;;;;;;
+
+;; allow X11 forwarding from remote host
+(add-to-list 'tramp-remote-process-environment
+             (format "DISPLAY=%s" (getenv "DISPLAY")))
