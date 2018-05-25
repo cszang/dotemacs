@@ -112,7 +112,6 @@
     modern-cpp-font-lock
     moody
     org
-    org-ref
     osx-trash
     polymode
     pos-tip
@@ -698,12 +697,6 @@
 
 ;; set homebrew ditaa path
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0/libexec/ditaa-0.11.0-standalone.jar")
-
-;; Org-Ref Setup
-(setq org-ref-completion-library 'org-ref-ivy-cite)
-(setq org-latex-prefer-user-labels t)
-(setq org-ref-default-bibliography "~/Dropbox/Bibliothek/Bibliothek.bib")
-(require 'org-ref)
 
 ;; GTD setup
 (setq org-directory "~/Dropbox/Org/")
