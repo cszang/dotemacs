@@ -98,6 +98,7 @@
     elfeed
     elfeed-goodies
     elpy
+    emojify
     expand-region
     eyebrowse
     flycheck
@@ -688,7 +689,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (sh . t)
+   ;; (sh . t)
    (R . t)
    (python . t)
    (js . t)
@@ -808,6 +809,9 @@
 ;; @bind org-mac-grab-link to C-c C-g
 (add-hook 'org-mode-hook (lambda () 
                            (define-key org-mode-map (kbd "C-c C-g") 'org-mac-grab-link)))
+
+;; Use Emojis in Org, GitHub-style :smile:
+(add-hook 'org-mode-hook 'emojify-mode)
 
 ;;;;;;;;;;;
 ;; LaTeX ;;
