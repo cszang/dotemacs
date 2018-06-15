@@ -4,9 +4,35 @@
 
 (require 's)
 (require 'dash)
+(require 'thingatpt)
+
+(setq zk-position-list ())
+(setq zk-buffer-list ())
+(setq zk-jump-position 0)
+
+(defun zk-push-current-pos ()
+  (interactive)
+  (push (point) zk-position-list)
+  (push (buffer-name) zk-buffer-list)
+  )
+
+(defun zk-jump-back ()
+  (interactive)
+  (setq zk-jump-position (+ zk-jump-position 1))
+  (switch-to-buffer (nth zk-jump-position zk-buffer-list))
+  (goto-char (nth zk-jump-position zk-position-list))
+  )
+
+(defun zk-jump-forward ()
+  (interactive)
+  (setq zk-jump-position (- zk-jump-position 1))
+  (switch-to-buffer (nth zk-jump-position zk-buffer-list))
+  (goto-char (nth zk-jump-position zk-position-list))
+  )
 
 (defun zk-follow-internal-link ()
   (interactive)
+  (zk-push-current-pos)
   (setq zk-search-string (word-at-point))
   (deft)
   (setq deft-filter-regexp (list zk-search-string))
@@ -87,6 +113,29 @@
   (zk-mode)
   )
 
+(defun zk-zettel-reference-at-point ()
+  (interactive)
+  (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
+  (setq current-id (thing-at-point 'symbol))
+  (message (seq-find (lambda (zettel)
+                       (s-starts-with? current-id zettel))
+                     zk-all-dated-files "No matching Zettel found."))
+  )
+
+(defun zk-goto-zettel-at-point ()
+  (interactive)
+  (zk-push-current-pos)
+  (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
+  (setq current-id (thing-at-point 'symbol))
+  (setq zettel-at-point (seq-find (lambda (zettel)
+                                    (s-starts-with? current-id zettel))
+                                  zk-all-dated-files ""))
+  (if (s-equals? "" zettel-at-point)
+      (message "No matching Zettel found.")
+    (find-file (concat deft-directory "/" zettel-at-point))
+    )
+  )
+
 (define-minor-mode zk-mode
   "Some functionality described by Sascha Fast and Christian
 Tietze about their nvAlt Zettelkasten workflow."
@@ -98,9 +147,21 @@ Tietze about their nvAlt Zettelkasten workflow."
             (define-key map (kbd "C-c t") 'zk-insert-tagline)
             (define-key map (kbd "C-c #") 'zk-complete-tag)
             (define-key map (kbd "C-c s") 'zk-find-similar)
+            (define-key map (kbd "C-c i") 'zk-zettel-reference-at-point)
+            (define-key map (kbd "M-.") 'zk-goto-zettel-at-point)
+            (define-key map (kbd "M-_") 'zk-jump-back)
+            (define-key map (kbd "M-*") 'zk-jump-forward)
+            (define-key map (kbd "M-#") 'zk-push-current-pos)
             map)
   (auto-fill-mode)
   )
 
-(add-hook 'deft-mode-hook 'zk-mode)
+(defun zk-minor-mode-on ()
+  "Turn on `zk' mode."
+  (interactive)
+  (zk-mode 1))
+
+(add-hook 'markdown-mode-hook 'zk-minor-mode-on)
+
 (add-hook 'deft-mode-hook (lambda () (zk-get-tag-list)))
+(add-hook 'deft-mode-hook (lambda () (deft-refresh)))
