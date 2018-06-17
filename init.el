@@ -827,6 +827,37 @@
         ("Termine" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
         (".*" '(space . (:width (16))))))
 
+;; Use appt with org to remind me when things come up
+(require 'appt)
+(setq appt-time-msg-list nil)
+(setq appt-display-interval '10)
+(setq
+  appt-message-warning-time '10 
+  appt-display-mode-line t
+  appt-display-format 'echo)
+(appt-activate 1)     
+(display-time) 
+(org-agenda-to-appt)
+(run-at-time "24:01" 3600 'org-agenda-to-appt)
+(add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
+
+;; Have a dedicated modeline face for appt's (from Emacs Wiki)
+(defface appt-face
+  '((t (:foreground "red")))
+  "Face to indicate a current appointment."
+  :group 'appt)
+
+(defadvice appt-disp-window (before appt-hilite-more activate)
+  (when appt-mode-string
+    (put-text-property 1 (- (length appt-mode-string) 1)
+		       'face 'appt-face appt-mode-string)))
+
+(defadvice appt-check (after appt-hilite activate)
+  (when appt-mode-string
+    (put-text-property 1 (- (length appt-mode-string) 1)
+		       'face 'appt-face appt-mode-string)
+    (force-mode-line-update)))
+
 ;;;;;;;;;;;;
 ;; Emojis ;;
 ;;;;;;;;;;;;
@@ -876,6 +907,15 @@
                             (":cz-frage:" . (("name" . "Frage")
                                              ("image" . "~/.emacs.d/icons/frage-large.png")
                                              ("style" . "github")))
+                            (":cz-cz:" . (("name" . "Christian")
+                                          ("image" . "~/.emacs.d/icons/cz.png")
+                                          ("style" . "github")))
+                            (":cz-cosz:" . (("name" . "Cosmo")
+                                            ("image" . "~/.emacs.d/icons/cosz.png")
+                                            ("style" . "github")))
+                            (":cz-corz:" . (("name" . "Corin")
+                                            ("image" . "~/.emacs.d/icons/corz.png")
+                                            ("style" . "github")))
                             ))
 
 ;; If emojify is already loaded refresh emoji data
