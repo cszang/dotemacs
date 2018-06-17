@@ -836,7 +836,6 @@
   appt-display-mode-line t
   appt-display-format 'echo)
 (appt-activate 1)     
-(display-time) 
 (org-agenda-to-appt)
 (run-at-time "24:01" 3600 'org-agenda-to-appt)
 (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt)
@@ -849,12 +848,12 @@
 
 (defadvice appt-disp-window (before appt-hilite-more activate)
   (when appt-mode-string
-    (put-text-property 1 (- (length appt-mode-string) 1)
+    (put-text-property 1 (length appt-mode-string)
 		       'face 'appt-face appt-mode-string)))
 
 (defadvice appt-check (after appt-hilite activate)
   (when appt-mode-string
-    (put-text-property 1 (- (length appt-mode-string) 1)
+    (put-text-property 1 (length appt-mode-string)
 		       'face 'appt-face appt-mode-string)
     (force-mode-line-update)))
 
