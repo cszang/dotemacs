@@ -40,7 +40,6 @@
   )
 
 (defun zk-current-time ()
-  (interactive)
   (format-time-string "%Y%m%d%H%M")
   )
 
@@ -159,7 +158,6 @@
   )
 
 (defun zk-count-zettels ()
-  (interactive)
   (length (directory-files deft-directory "\\.txt\\'"))
   )
 
