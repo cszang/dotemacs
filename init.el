@@ -735,16 +735,6 @@
           (org-agenda-start-on-weekday nil)
           (org-show-context-detail 'minimal)
           (org-agenda-overriding-header "Is' was, Doc?")))
-        ("d" "Is' heute was, Doc?"
-         ((agenda ""
-                  ((org-agenda-span 1)
-                   (org-agenda-skip-function
-                    '(org-agenda-skip-entry-if 'regexp ":abends:"))
-                   (org-show-context-detail 'minimal)
-                   (org-agenda-overriding-header "Is' was tagsüber, Doc?")))
-          (tags-todo "abends"
-                     ((org-agenda-overriding-header "Is' was abends, Doc?")))
-        ))
       ))
 
 (setq org-agenda-include-diary t)
@@ -1050,13 +1040,6 @@
 ;; TODO
 
 ;;;;;;;;;;;;;;
-;; Lilypond ;;
-;;;;;;;;;;;;;;
-
-(add-to-list 'load-path "/Applications/LilyPond.app/Contents/Resources/share/emacs/site-lisp/")
-(require 'lilypond-mode)
-
-;;;;;;;;;;;;;;
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 
@@ -1085,3 +1068,4 @@
 ;; allow X11 forwarding from remote host
 (add-to-list 'tramp-remote-process-environment
              (format "DISPLAY=%s" (getenv "DISPLAY")))
+
