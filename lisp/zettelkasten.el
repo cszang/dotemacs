@@ -6,6 +6,9 @@
 (require 'dash)
 (require 'thingatpt)
 
+;; file to record Zettel statistics (currently only growth of the Zettelkasten)
+(setq zk-stats-file (concat deft-directory "/000000000000 Zettel-Stats.txt"))
+
 (setq zk-position-list ())
 (setq zk-buffer-list ())
 (setq zk-jump-position 0)
@@ -14,6 +17,12 @@
   (interactive)
   (push (point) zk-position-list)
   (push (buffer-name) zk-buffer-list)
+  )
+
+(defun zk-save-current-position ()
+  (interactive)
+  (zk-push-current-pos)
+  (message "Saved current position.")
   )
 
 (defun zk-jump-back ()
@@ -28,6 +37,11 @@
   (setq zk-jump-position (- zk-jump-position 1))
   (switch-to-buffer (nth zk-jump-position zk-buffer-list))
   (goto-char (nth zk-jump-position zk-position-list))
+  )
+
+(defun zk-current-time ()
+  (interactive)
+  (format-time-string "%Y%m%d%H%M")
   )
 
 (defun zk-follow-internal-link ()
@@ -47,7 +61,7 @@
 
 (defun zk-new-with-timestamp ()
   (interactive)
-  (setq zk-time-string (format-time-string "%Y%m%d%H%M"))
+  (setq zk-time-string (zk-current-time))
   (deft)
   (setq deft-filter-regexp (list zk-time-string))
   (deft-filter-update)
@@ -136,6 +150,24 @@
     )
   )
 
+(defun zk-insert-reference-skeleton ()
+  (interactive)
+  (insert "---")
+  (clipboard-yank)
+  (insert "---")
+  (insert "tags: #ref #todo")
+  )
+
+(defun zk-count-zettels ()
+  (interactive)
+  (length (directory-files deft-directory "\\.txt\\'"))
+  )
+
+(defun zk-write-stats ()
+  (interactive)
+  (append-to-file (concat (zk-current-time) " " (number-to-string (zk-count-zettels))) nil zk-stats-file)
+  )
+
 (define-minor-mode zk-mode
   "Some functionality described by Sascha Fast and Christian
 Tietze about their nvAlt Zettelkasten workflow."
@@ -151,7 +183,8 @@ Tietze about their nvAlt Zettelkasten workflow."
             (define-key map (kbd "M-.") 'zk-goto-zettel-at-point)
             (define-key map (kbd "M-_") 'zk-jump-back)
             (define-key map (kbd "M-*") 'zk-jump-forward)
-            (define-key map (kbd "M-#") 'zk-push-current-pos)
+            (define-key map (kbd "M-#") 'zk-save-current-position)
+            (define-key map (kbd "M-§") 'zk-insert-reference-skeleton)
             map)
   (auto-fill-mode)
   )
@@ -165,3 +198,4 @@ Tietze about their nvAlt Zettelkasten workflow."
 
 (add-hook 'deft-mode-hook (lambda () (zk-get-tag-list)))
 (add-hook 'deft-mode-hook (lambda () (deft-refresh)))
+(add-hook 'deft-mode-hook (lambda () (zk-write-stats)))
