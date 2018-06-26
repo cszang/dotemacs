@@ -173,8 +173,7 @@
   )
 
 (define-minor-mode zk-mode
-  "Some functionality described by Sascha Fast and Christian
-Tietze about their nvAlt Zettelkasten workflow."
+  "Some functionality to provide a decent Zettelkasten-Workflow for Deft."
   :lighter " zk"
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "C-c o") 'zk-follow-internal-link)
@@ -184,11 +183,11 @@ Tietze about their nvAlt Zettelkasten workflow."
             (define-key map (kbd "C-c #") 'zk-complete-tag)
             (define-key map (kbd "C-c s") 'zk-find-similar)
             (define-key map (kbd "C-c i") 'zk-zettel-reference-at-point)
-            (define-key map (kbd "M-.") 'zk-goto-zettel-at-point)
-            (define-key map (kbd "M-_") 'zk-jump-back)
-            (define-key map (kbd "M-*") 'zk-jump-forward)
-            (define-key map (kbd "M-#") 'zk-save-current-position)
-            (define-key map (kbd "M-§") 'zk-insert-reference-skeleton)
+            (define-key map (kbd "M-.")   'zk-goto-zettel-at-point)
+            (define-key map (kbd "C-c _") 'zk-jump-back)
+            (define-key map (kbd "C-c *") 'zk-jump-forward)
+            (define-key map (kbd "C-c .") 'zk-save-current-position)
+            (define-key map (kbd "C-c §") 'zk-insert-reference-skeleton)
             map)
   (auto-fill-mode)
   )
