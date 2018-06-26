@@ -74,6 +74,14 @@
   (insert (concat "[[" (car (s-match "^[0-9]\\{12\\}" zk-link-file)) "]]"))
   )
 
+(defun zk-insert-org-link-to-zettel ()
+  (interactive)
+  (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
+  (setq zk-link-file (ido-completing-read "Link? " zk-all-dated-files))
+  (insert (org-make-link-string (concat "file:" deft-directory "/" zk-link-file)
+                                (concat "Zettel:" (car (s-match "^[0-9]\\{12\\}" zk-link-file)))))
+  )
+
 (defun flatten (mylist)
   (cond
    ((null mylist) nil)
