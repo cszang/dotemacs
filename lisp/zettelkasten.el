@@ -198,6 +198,13 @@
             (define-key map (kbd "C-c §") 'zk-insert-reference-skeleton)
             map)
   (auto-fill-mode)
+  (font-lock-add-keywords 'markdown-mode
+                          '(("\\(\\[\\[\\)\\(.*\\)\\(\\]\\]\\)"
+                             (1 font-lock-comment-face)
+                             (2 font-lock-doc-face)
+                             (3 font-lock-comment-face))
+                            ("#[a-z0-9_]*" . font-lock-keyword-face)
+                            ))
   )
 
 (defun zk-minor-mode-on ()
