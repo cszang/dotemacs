@@ -177,7 +177,7 @@
 
 (defun zk-write-stats ()
   (interactive)
-  (append-to-file (concat (zk-current-time) " " (number-to-string (zk-count-zettels))) nil zk-stats-file)
+  (append-to-file (concat (zk-current-time) " " (number-to-string (zk-count-zettels)) "\n") nil zk-stats-file)
   )
 
 (define-minor-mode zk-mode
