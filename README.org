@@ -60,25 +60,21 @@ git clone https://github.com/emacs-ess/ESS.git ~/lisp/ess
 
 Then, checkout appropriate tag, if wanted.
 
-* ycmd
 
-Install daemon and build for C++ support:
+* LSP
 
-#+begin_src sh
-git clone https://github.com/Valloric/ycmd.git ~/lisp/ycmd
-cd ~/lisp/ycmd
-git submodule update --init --recursive
-./build.py --clang-completer
-#+end_src
+** Install LSP
 
-Use additional config per project: install =YCM-Generator= and run
-=./config_gen.py <PROJECTBASEPATH>= to generate extra
-=.ycm_extra_conf.py=.
+#+BEGIN_SRC sh
+cd ~/lisp
+git clone https://github.com/cquery-project/cquery --single-branch --depth=1
+cd cquery
+git submodule update --init && ./waf configure build
+#+END_SRC
 
-* Rtags
 
-  Open Emacs and do =M-x rtags-install=. Depending on =rtags= version,
-  customise =rtags-path= to =~/.emacs.d/rtags-VERSION/bin=.
+
+** Generate =compile_commands.json=
 
   To use with project, run =cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .=
   in source directory.

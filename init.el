@@ -87,10 +87,11 @@
     autopair
     beacon
     company
+    company-lsp
     company-quickhelp
-    company-ycmd
     conda
     counsel
+    cquery
     default-text-scale
     deft
     dired-quick-sort
@@ -108,6 +109,10 @@
     go-mode
     google-c-style
     hl-todo
+    ivy
+    ivy-xref
+    lsp-mode
+    lsp-ui
     magit
     magit-org-todos
     markdown-mode
@@ -125,7 +130,6 @@
     spaceline
     swiper
     yaml-mode
-    ycmd
     zenburn-theme)
   )
 ;; fetch the list of packages available
@@ -347,17 +351,22 @@
 ;; Completion ;;
 ;;;;;;;;;;;;;;;;
 
-;; ycmd setup for C++
-(require 'ycmd)
-(setq ycmd-startup-timeout 5)
-(add-hook 'c++-mode-hook #'ycmd-mode)
-(set-variable 'ycmd-server-command '("/usr/bin/python" "/Users/christian/lisp/ycmd/ycmd"))
-(set-variable 'ycmd-global-config (expand-file-name "~/lisp/ycmd/examples/.ycm_extra_conf.py"))
-(set-variable 'ycmd-extra-conf-whitelist '("~/repos/*" "~/LPJ-GUESS/4.0.1"))
-(setq ycmd-force-semantic-completion t)
+;; company-lsp for C++
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+;; disabling client-side cache and sorting because the server does a
+;; better job
+(setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
 
-;; Use eldoc info for function arguments
-(add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+;; Type #i" (or #include ") for quote-style includes and #i< (or
+;; #include <) for system headers.
+
+;; See
+;; https://github.com/cquery-project/cquery/pull/391#issuecomment-362872732
+;; for an alternative view (contextual parent as detail, signature as
+;; label)
+
+;; (setq cquery-extra-init-params '(:completion (:detailedLabel t)))
 
 ;; Use company for all completion
 (require 'company)
@@ -374,10 +383,6 @@
 ;; Activate globally
 (add-hook 'after-init-hook 'global-company-mode)
 
-(require 'company-ycmd)
-(company-ycmd-setup)
-
-
 ;;;;;;;;;;;;;;;;
 ;; Navigation ;;
 ;;;;;;;;;;;;;;;;
@@ -387,29 +392,33 @@
 (setq dumb-jump-selector 'ivy)
 ;; create .dumbjump file in project root to speed things up!
 
-;; 2. Rtags (for C++)
-;; Install rtags locally from M-x install-rtags
-(setq rtags-install-path "~/.emacs.d/")
-(setq rtags-path "~/.emacs.d/rtags-2.18/bin/")
+;; 2. cquery (for C++)
+(require 'cquery)
+(setq cquery-executable "~/lisp/cquery/build/release/bin/cquery")
+;; we need compile_commands.json per project root
 
-(defun setup-rtags ()
-  (define-key c-mode-base-map (kbd "M-.")
-    (function rtags-find-symbol-at-point))
-  (define-key c-mode-base-map (kbd "M-,")
-    (function rtags-find-references-at-point))
-  (rtags-start-process-unless-running)
-  (rtags-enable-standard-keybindings)
-  )
-(add-hook 'c-mode-common-hook 'setup-rtags)
-            
+;;;;;;;;;
+;; LSP ;;
+;;;;;;;;;
+
+(add-hook 'c-mode-common-hook 'lsp-cquery-enable)
+
+(require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+(setq cquery-sem-highlight-method 'font-lock)
+;; alternatively, (setq cquery-sem-highlight-method 'overlay)
+
+;; For rainbow semantic highlighting
+(cquery-use-default-rainbow-sem-highlight)
+
 ;;;;;;;;;;;;;;
 ;; Flycheck ;;
 ;;;;;;;;;;;;;;
 
 (setq flycheck-global-modes '(c++-mode ess-mode))
 (global-flycheck-mode 1)
-(require 'flycheck-ycmd)
-(add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup)
+(add-hook 'c++-mode-hook 'flycheck-mode)
 
 ;;;;;;;;;;;;;;
 ;; Spelling ;;
@@ -465,6 +474,9 @@
 (setq ivy-wrap t)
 ;; @bind
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
+
+(require 'ivy-xref)
+(setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
 
 (require 'swiper)
 ;; @bind
