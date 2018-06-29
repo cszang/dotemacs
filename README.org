@@ -23,6 +23,13 @@ external repository:
 git clone https://github.com/gjkerns/ob-julia.git ~/lisp/ob-julia
 #+end_src
 
+* Mail
+
+#+BEGIN_SRC sh
+EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs brew install mu --with-emacs
+brew install offlineimap
+#+END_SRC
+
 * Spellchecking
 
 Spell checking is done using =aspell= which has to be installed
