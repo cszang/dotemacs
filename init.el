@@ -104,6 +104,7 @@
     flycheck
     flycheck-ycmd
     git-gutter
+    git-timemachine
     go-mode
     google-c-style
     hl-todo
