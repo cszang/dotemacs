@@ -162,7 +162,6 @@
   (insert "---")
   (newline)
   (clipboard-yank)
-  (newline)
   (insert "---")
   (newline)
   (insert "tags: #ref #todo")
