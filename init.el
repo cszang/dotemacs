@@ -280,6 +280,7 @@
 
 ;; Show colour of colour strings
 (add-hook 'prog-mode-hook 'rainbow-mode)
+(add-hook 'ess-mode-hook 'rainbow-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; Window management ;;
