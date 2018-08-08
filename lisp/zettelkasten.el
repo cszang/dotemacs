@@ -213,6 +213,14 @@
 
 (add-hook 'markdown-mode-hook 'zk-minor-mode-on)
 
+;; use other face in markdown buffers
+(defun zk-set-buffer-face ()
+   "Sets a fixed width (monospace) font in current buffer"
+   (interactive)
+   (setq buffer-face-mode-face '(:family "Fira Mono" :height 180))
+   (buffer-face-mode))
+(add-hook 'markdown-mode-hook (lambda() (zk-set-buffer-face)))
+
 (add-hook 'deft-mode-hook (lambda () (zk-get-tag-list)))
 (add-hook 'deft-mode-hook (lambda () (deft-refresh)))
 (add-hook 'deft-mode-hook (lambda () (zk-write-stats)))
