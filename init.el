@@ -766,7 +766,10 @@
          (file+datetree ,(concat org-directory "Labnotebook.org"))
          "** %^{Überschrift}")
         ("x" "Lesezeichen" entry (file ,(concat org-directory "Lesezeichen.org"))
-         "* %c\n%U\n%i\n" :empty-lines 1)
+         "* %c\n%U\n%i\n")
+        ("j" "Journal" entry
+         (file+datetree ,(concat org-directory "Journal.org"))
+         "** %^{Überschrift}")
         ("t" "Termin" entry
          (file+datetree+prompt ,(concat org-directory "Org-Termine.org"))
          "* %^{Bezeichnung}\n<%(org-read-date nil nil org-read-date-final-answer)>\n%i\n%?\n")
@@ -783,7 +786,7 @@
         ("p" "Phrase" plain (file ,(concat org-directory "Phrasen.org"))
          "\n\n%?\n")
         ("b" "Buch" entry (file ,(concat org-directory "Buecher.org"))
-         "* LESEN %?\n  %U\n")
+         "** LESEN %?\n  %U\n")
         ("o" "Motto" entry (file ,(concat org-directory "Mottos.org"))
          "* %?")
         ("n" "Notiz" entry (file ,(concat org-directory "Notizen.org"))
