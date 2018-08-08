@@ -159,6 +159,9 @@
 ;; Appearance ;;
 ;;;;;;;;;;;;;;;;
 
+;; Let titlebar appear in background colour of theme
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+
 ;; Disable the menu bar except for macOS GUI Emacs, where it does
 ;; waste additional screen real estate
 (when (and (not (eq system-type 'darwin)) (fboundp 'menu-bar-mode))
@@ -234,10 +237,12 @@
         (setq cz-theme 'solarized-light)
         (setq solarized-scale-org-headlines nil)
         (setq solarized-use-variable-pitch nil)
+        (add-to-list 'default-frame-alist '(ns-appearance . nil))
         (disable-theme 'zenburn))
     (progn
       (setq cz-theme 'zenburn)
-      (disable-theme 'solarized-light)))
+      (disable-theme 'solarized-light)
+      (add-to-list 'default-frame-alist '(ns-appearance . dark))))
   (cz-apply-theme cz-theme))
 
 ;; use Jonas Bernoulli' nice and clean mode-line variant
