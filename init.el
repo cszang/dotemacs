@@ -515,6 +515,7 @@
 ;; Mostly used for information purposes: project information in
 ;; mode-line, R-sessions etc.; also: projectile-find-file is good!
 (projectile-global-mode)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;;;;;;;;;
 ;; Git ;;
