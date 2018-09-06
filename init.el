@@ -23,6 +23,12 @@
 ;; More security
 (setq network-security-level 'high)
 
+;;;;;;;;;;;;
+;; Locale ;;
+;;;;;;;;;;;;
+
+(setq system-time-locale "C") 
+
 ;;;;;;;;;;;
 ;; Paths ;;
 ;;;;;;;;;;;
