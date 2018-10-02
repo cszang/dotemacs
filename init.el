@@ -687,6 +687,7 @@
 (require 'ox-latex)
 (require 'ox-beamer)
 (setq org-latex-listings 'minted)
+(add-to-list 'org-latex-packages-alist '("newfloat" "minted"))
 (setq org-latex-pdf-process
       '("latexmk -pdflatex='xelatex -shell-escape -bibtex -interaction nonstopmode' -pdf -f %f"))
 ;; (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
