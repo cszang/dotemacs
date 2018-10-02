@@ -127,6 +127,7 @@
     org
     osx-trash
     polymode
+    poly-R
     pos-tip
     powerline
     projectile
