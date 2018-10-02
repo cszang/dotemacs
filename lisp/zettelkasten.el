@@ -217,7 +217,7 @@
 (defun zk-set-buffer-face ()
    "Sets a fixed width (monospace) font in current buffer"
    (interactive)
-   (setq buffer-face-mode-face '(:family "Fira Mono" :height 180))
+   (setq buffer-face-mode-face '(:family "SF Mono" :height 160))
    (buffer-face-mode))
 (add-hook 'markdown-mode-hook (lambda() (zk-set-buffer-face)))
 
