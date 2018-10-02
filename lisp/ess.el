@@ -39,6 +39,14 @@
   (just-one-space)
   )
 
+;; insert fridge::freeze infix symbol
+(defun cz-insert-fridge-infix ()
+  (interactive)
+  (just-one-space)
+  (insert "%<f-%")
+  (just-one-space)
+  )
+
 ;; insert Rmd code chunk; from
 ;; http://emacs.stackexchange.com/questions/27405/insert-code-chunk-in-r-markdown-with-yasnippet-and-polymode
 (defun cz-insert-r-chunk (header) 

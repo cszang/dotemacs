@@ -604,6 +604,8 @@
 (define-key ess-mode-map (kbd "C-c =") 'cz-occur-R-sections)
 ;; @bind Insert magrittr pipe to C-c m
 (define-key ess-mode-map (kbd "C-c m") 'cz-insert-magrittr-pipe)
+;; @bind Insert fridge::freeze infix to C-c f
+(define-key ess-mode-map (kbd "C-c f") 'cz-insert-fridge-infix)
 
 ;; remove some linters from flycheck
 (setq flycheck-lintr-linters
