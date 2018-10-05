@@ -8,6 +8,7 @@
 
 ;; file to record Zettel statistics (currently only growth of the Zettelkasten)
 (setq zk-stats-file (concat deft-directory "/000000000000 Zettel-Stats.txt"))
+(setq zetteltags-file "~/.emacs.d/zetteltags")
 
 (setq zk-position-list ())
 (setq zk-buffer-list ())
@@ -82,38 +83,19 @@
                                 (concat "Zettel:" (car (s-match "^[0-9]\\{12\\}" zk-link-file)))))
   )
 
-(defun flatten (mylist)
-  (cond
-   ((null mylist) nil)
-   ((atom mylist) (list mylist))
-   (t
-    (append (flatten (car mylist)) (flatten (cdr mylist))))))
-
-(defun zk-match-tag-in-buffer (f)
-  "append all matches of tags in a buffer to a list"
-  (save-excursion
-    (setq zk-tagline-regex "^tags:.*$")
-    (setq zk-tag-regex "#\\w+")
-    (find-file f)
-    (setq zk-tagline (car (s-match zk-tagline-regex (buffer-string))))
-    (setq zk-tags-in-note (s-match-strings-all zk-tag-regex zk-tagline))
-    (setq zk-tag-list (append zk-tag-list zk-tags-in-note))
-    (kill-buffer (current-buffer))))
-
 (defun zk-get-tag-list ()
-  "gets all tags from all notes"
+  "gets all tags from all notes in fast way"
   (interactive)
-  (setq zk-start-buffer buffer-file-name)
-  (setq zk-scan-files (-remove (lambda (f) (string= zk-start-buffer f))
-                                 (directory-files deft-directory t ".txt$")))
-  (setq zk-tag-list '(()))
-  (mapc 'zk-match-tag-in-buffer zk-scan-files)
-  (setq zk-tag-list (-distinct (flatten zk-tag-list)))
+  (shell-command (concat "grep -rhE '^tags:' " deft-directory
+                         " | tr -s \" \" \"\012\" | grep \"#\" | sort | uniq > "
+                         zetteltags-file))
+  (setq zk-tag-list (s-split "\n" (f-read zetteltags-file)))
   )
 
 (defun zk-complete-tag ()
   "completes tags from all previously used tags"
   (interactive)
+  (zk-get-tag-list)
   (insert (concat (ido-completing-read "Schlagwort? " zk-tag-list) " " )))
 
 (defun zk-insert-tagline ()
