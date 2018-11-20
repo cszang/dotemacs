@@ -27,7 +27,13 @@
 ;; Locale ;;
 ;;;;;;;;;;;;
 
-(setq system-time-locale "C") 
+(setq system-time-locale "C")
+(setq inhibit-compacting-font-caches t)
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 
 ;;;;;;;;;;;
 ;; Paths ;;
@@ -203,7 +209,7 @@
 (add-hook 'ess-mode-hook 'hl-todo-mode)
 
 ;; Set default font to Input or IBM Plex Mono
-(set-face-attribute 'default nil :height 141 :font "IBM Plex Mono")
+(set-face-attribute 'default nil :height 111 :font "IBM Plex Mono")
 
 ;; Make line spacing a bit wider than default
 (setq-default line-spacing 5)
@@ -468,9 +474,9 @@
 (setq-default dired-omit-files-p t) ; Buffer-local variable
 (setq dired-omit-files (concat dired-omit-files "\\|^\\.DS_Store$\\|^\\.Rhistory"))
 (setq dired-listing-switches "-lah")
-(require 'dired-quick-sort)
-(dired-quick-sort-setup)
-(setq insert-directory-program "/usr/local/bin/gls")
+;; (require 'dired-quick-sort)
+;; (dired-quick-sort-setup)
+;; (setq insert-directory-program "/usr/local/bin/gls")
 
 ;;;;;;;;;
 ;; Ivy ;;
@@ -541,7 +547,7 @@
 ;; Deft ;;
 ;;;;;;;;;;
 
-(setq deft-directory "~/Dropbox/Zettelkasten")
+(setq deft-directory "C:/Users/chris/Dropbox/Zettelkasten")
 (setq deft-use-filename-as-title t)
 (setq deft-use-filter-string-for-filename t)
 (setq deft-extensions '("txt"))
@@ -558,6 +564,7 @@
 ;; Setup; using version from Git instead of MELPA
 (add-to-list 'load-path "~/lisp/ess/lisp/")
 (load "ess-site")
+(setq inferior-R-program-name "c:/Program Files/R/R-3.5.1/bin/x64/Rterm.exe")
 
 ;; Use R, not S
 (setq ess-language "R")
@@ -630,7 +637,7 @@
 (setq calendar-latitude 48.4029)
 (setq calendar-longitude 11.7412)
 (setq calendar-location-name "Freising, BY")
-(setq diary-file "~/Dropbox/Emacs/Kalender")
+(setq diary-file "C:/Users/chris/Dropbox/Emacs/Kalender")
 
 ;;;;;;;;;
 ;; Org ;;
@@ -730,7 +737,7 @@
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0/libexec/ditaa-0.11.0-standalone.jar")
 
 ;; GTD setup
-(setq org-directory "~/Dropbox/Org/")
+(setq org-directory "C:/Users/chris/Dropbox/Org/")
 (setq org-inbox-file (concat org-directory "Org-Inbox.org"))
 (setq org-agenda-files ())
 (setq org-agenda-file-regexp "^Org-.*\\.org\\'")
@@ -809,7 +816,7 @@
         ("w" "Workflow" entry (file ,(concat org-directory "Workflow.org"))
          "* %^{Was?}\n  %?")
         ))
-(setq org-attach-directory "~/Dropbox/Org/Attachments")
+(setq org-attach-directory "C:/Users/chris/Dropbox/Org/Attachments")
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-cache t)
@@ -848,6 +855,11 @@
         ("Proposals" "~/.emacs.d/icons/proposals.png" nil nil :ascent center)
         ("Manage" "~/.emacs.d/icons/manager.png" nil nil :ascent center)
         ("Termine" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
+        ("Eimer" "~/.emacs.d/icons/eimer.png" nil nil :ascent center)
+        ("Privat" "~/.emacs.d/icons/haus.png" nil nil :ascent center)
+        ("Lehre" "~/.emacs.d/icons/lehre.png" nil nil :ascent center)
+        ("Supervision" "~/.emacs.d/icons/supervision.png" nil nil :ascent center)
+        ("Talks" "~/.emacs.d/icons/talks.png" nil nil :ascent center)
         (".*" '(space . (:width (16))))))
 
 ;; Use appt with org to remind me when things come up
@@ -929,6 +941,9 @@
                             (":cz-frage:" . (("name" . "Frage")
                                              ("image" . "~/.emacs.d/icons/frage-large.png")
                                              ("style" . "github")))
+                            (":cz-supervision:" . (("name" . "Supervision")
+                                             ("image" . "~/.emacs.d/icons/supervision-large.png")
+                                             ("style" . "github")))
                             (":cz-cz:" . (("name" . "Christian")
                                           ("image" . "~/.emacs.d/icons/cz.png")
                                           ("style" . "github")))
@@ -976,7 +991,7 @@
  '(TeX-source-correlate-start-server t))
 
 (setq reftex-cite-format (quote natbib))
-(setq reftex-default-bibliography "~/Dropbox/Bibliothek/Bibliothek.bib")
+(setq reftex-default-bibliography "C:/Users/chris/Dropbox/Bibliothek/Bibliothek.bib")
 (setq reftex-cite-prompt-optional-args nil)
 (setq reftex-cite-cleanup-optional-args t)
 (setq reftex-enable-partial-scans t)
