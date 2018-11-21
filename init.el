@@ -777,7 +777,7 @@
          (file+datetree ,(concat org-directory "Labnotebook.org"))
          "** %^{Überschrift}")
         ("x" "Lesezeichen" entry (file ,(concat org-directory "Lesezeichen.org"))
-         "* %c\n%U\n%i\n")
+         "* [[%c][%?]]\n%U\n")
         ("j" "Journal" entry
          (file+datetree ,(concat org-directory "Journal.org"))
          "** %^{Überschrift}")
