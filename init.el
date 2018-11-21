@@ -842,16 +842,17 @@
         ("Fussi" "~/.emacs.d/icons/soccer.png" nil nil :ascent center)
         ("Müll" "~/.emacs.d/icons/muell.png" nil nil :ascent center)
         ("Habits" "~/.emacs.d/icons/guru.png" nil nil :ascent center)
-        ("Talks" "~/.emacs.d/icons/talks.png" nil nil :ascent center)
-        ("Eimer" "~/.emacs.d/icons/eimer.png" nil nil :ascent center)
-        ("Lehre" "~/.emacs.d/icons/lehre.png" nil nil :ascent center)
         ("Diary" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
-        ("Privat" "~/.emacs.d/icons/haus.png" nil nil :ascent center)
         ("Dev" "~/.emacs.d/icons/code.png" nil nil :ascent center)
         ("Papers" "~/.emacs.d/icons/papers.png" nil nil :ascent center)
         ("Proposals" "~/.emacs.d/icons/proposals.png" nil nil :ascent center)
         ("Manage" "~/.emacs.d/icons/manager.png" nil nil :ascent center)
         ("Termine" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
+        ("Eimer" "~/.emacs.d/icons/eimer.png" nil nil :ascent center)
+        ("Privat" "~/.emacs.d/icons/haus.png" nil nil :ascent center)
+        ("Lehre" "~/.emacs.d/icons/lehre.png" nil nil :ascent center)
+        ("Supervision" "~/.emacs.d/icons/supervision.png" nil nil :ascent center)
+        ("Talks" "~/.emacs.d/icons/talks.png" nil nil :ascent center)
         (".*" '(space . (:width (16))))))
 
 ;; Use appt with org to remind me when things come up
@@ -887,7 +888,6 @@
 ;;;;;;;;;;;;
 ;; Emojis ;;
 ;;;;;;;;;;;;
-
 (setq emojify-user-emojis '((":neckbeard:" . (("name" . "Neckbeard")
                                               ("image" . "~/.emacs.d/icons/neckbeard.png")
                                               ("style" . "github")))
@@ -932,6 +932,9 @@
                                                 ("style" . "github")))
                             (":cz-frage:" . (("name" . "Frage")
                                              ("image" . "~/.emacs.d/icons/frage-large.png")
+                                             ("style" . "github")))
+                            (":cz-supervision:" . (("name" . "Supervision")
+                                             ("image" . "~/.emacs.d/icons/supervision-large.png")
                                              ("style" . "github")))
                             (":cz-cz:" . (("name" . "Christian")
                                           ("image" . "~/.emacs.d/icons/cz.png")
