@@ -75,6 +75,13 @@
   (insert (concat "[[" (car (s-match "^[0-9]\\{12\\}" zk-link-file)) "]]"))
   )
 
+(defun zk-insert-full-internal-link ()
+  (interactive)
+  (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
+  (setq zk-link-file (ido-completing-read "Link? " zk-all-dated-files))
+  (insert (concat "[[" (file-name-sans-extension zk-link-file) "]]"))
+  )
+
 (defun zk-insert-org-link-to-zettel ()
   (interactive)
   (setq zk-all-dated-files (directory-files deft-directory nil "^[0-9]\\{12\\}\\.*"))
@@ -168,6 +175,7 @@
             (define-key map (kbd "C-c o") 'zk-follow-internal-link)
             (define-key map (kbd "C-c d") 'zk-new-with-timestamp)
             (define-key map (kbd "C-c l") 'zk-insert-timestamp-for-internal-link)
+            (define-key map (kbd "C-c [") 'zk-insert-timestamp-for-internal-link)
             (define-key map (kbd "C-c t") 'zk-insert-tagline)
             (define-key map (kbd "C-c #") 'zk-complete-tag)
             (define-key map (kbd "C-c s") 'zk-find-similar)
