@@ -175,7 +175,7 @@
             (define-key map (kbd "C-c o") 'zk-follow-internal-link)
             (define-key map (kbd "C-c d") 'zk-new-with-timestamp)
             (define-key map (kbd "C-c l") 'zk-insert-timestamp-for-internal-link)
-            (define-key map (kbd "C-c [") 'zk-insert-timestamp-for-internal-link)
+            (define-key map (kbd "C-c [") 'zk-insert-full-internal-link)
             (define-key map (kbd "C-c t") 'zk-insert-tagline)
             (define-key map (kbd "C-c #") 'zk-complete-tag)
             (define-key map (kbd "C-c s") 'zk-find-similar)
@@ -188,7 +188,7 @@
             map)
   (auto-fill-mode)
   (font-lock-add-keywords 'markdown-mode
-                          '(("\\(\\[\\[\\)\\(.*\\)\\(\\]\\]\\)"
+                          '(("\\(\\[\\[\\)\\(\\(.*\n\\)*.*\\)\\(\\]\\]\\)"
                              (1 font-lock-comment-face)
                              (2 font-lock-doc-face)
                              (3 font-lock-comment-face))
