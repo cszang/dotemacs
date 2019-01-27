@@ -17,8 +17,15 @@
 ;; Meta ;;
 ;;;;;;;;;;
 
-;; Start emacs server
-;; (server-start)
+;; Start emacs server, but allow second instance to be launched,
+;; making very clear what this second instance is! credits:
+;; http://mbork.pl/2019-01-06_Emacs_server_and_other_Emacs_instances
+(require 'server)
+(if (server-running-p)
+    (load-theme 'adwaita t)
+  (setq confirm-kill-emacs #'yes-or-no-p)
+  (server-start)
+  (global-set-key (kbd "C-x C-3") 'server-edit))
 
 ;; More security
 (setq network-security-level 'high)
@@ -105,7 +112,6 @@
     elfeed
     elfeed-goodies
     elpy
-    emojify
     expand-region
     eyebrowse
     flycheck
@@ -168,6 +174,7 @@
 
 ;; Let titlebar appear in background colour of theme
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 ;; Disable the menu bar except for macOS GUI Emacs, where it does
 ;; waste additional screen real estate
@@ -208,7 +215,7 @@
 ;; Make line spacing a bit wider than default
 (setq-default line-spacing 5)
 
-(setq cz-theme 'solarized-light)
+(setq cz-theme 'zenburn)
 
 (defun cz-apply-theme (theme)
   (if (equal theme 'zenburn)
@@ -833,28 +840,6 @@
 (add-hook 'org-mode-hook (lambda () 
                            (define-key org-mode-map (kbd "C-c C-g") 'org-mac-grab-link)))
 
-(setq org-agenda-category-icon-alist
-      '(("GTD" "~/.emacs.d/icons/einhorn.png" nil nil :ascent center)
-        ("Gesundheit" "~/.emacs.d/icons/gesundheit.png" nil nil :ascent center)
-        ("Anniv" "~/.emacs.d/icons/anniv.png" nil nil :ascent center)
-        ("Schule" "~/.emacs.d/icons/schule.png" nil nil :ascent center)
-        ("Maintain" "~/.emacs.d/icons/haus.png" nil nil :ascent center)
-        ("Fussi" "~/.emacs.d/icons/soccer.png" nil nil :ascent center)
-        ("Müll" "~/.emacs.d/icons/muell.png" nil nil :ascent center)
-        ("Habits" "~/.emacs.d/icons/guru.png" nil nil :ascent center)
-        ("Diary" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
-        ("Dev" "~/.emacs.d/icons/code.png" nil nil :ascent center)
-        ("Papers" "~/.emacs.d/icons/papers.png" nil nil :ascent center)
-        ("Proposals" "~/.emacs.d/icons/proposals.png" nil nil :ascent center)
-        ("Manage" "~/.emacs.d/icons/manager.png" nil nil :ascent center)
-        ("Termine" "~/.emacs.d/icons/kalender.png" nil nil :ascent center)
-        ("Eimer" "~/.emacs.d/icons/eimer.png" nil nil :ascent center)
-        ("Privat" "~/.emacs.d/icons/haus.png" nil nil :ascent center)
-        ("Lehre" "~/.emacs.d/icons/lehre.png" nil nil :ascent center)
-        ("Supervision" "~/.emacs.d/icons/supervision.png" nil nil :ascent center)
-        ("Talks" "~/.emacs.d/icons/talks.png" nil nil :ascent center)
-        (".*" '(space . (:width (16))))))
-
 ;; Use appt with org to remind me when things come up
 (require 'appt)
 (setq appt-time-msg-list nil)
@@ -884,75 +869,6 @@
     (put-text-property 1 (length appt-mode-string)
 		       'face 'appt-face appt-mode-string)
     (force-mode-line-update)))
-
-;;;;;;;;;;;;
-;; Emojis ;;
-;;;;;;;;;;;;
-(setq emojify-user-emojis '((":neckbeard:" . (("name" . "Neckbeard")
-                                              ("image" . "~/.emacs.d/icons/neckbeard.png")
-                                              ("style" . "github")))
-                            (":cz-proposals:" . (("name" . "Proposals")
-                                                 ("image" . "~/.emacs.d/icons/proposals-large.png")
-                                                 ("style" . "github")))
-                            (":cz-haus:" . (("name" . "Haus")
-                                            ("image" . "~/.emacs.d/icons/haus-large.png")
-                                            ("style" . "github")))
-                            (":cz-muell:" . (("name" . "Müll")
-                                             ("image" . "~/.emacs.d/icons/muell-large.png")
-                                             ("style" . "github")))
-                            (":cz-papers:" . (("name" . "Papers")
-                                              ("image" . "~/.emacs.d/icons/papers-large.png")
-                                              ("style" . "github")))
-                            (":cz-manage:" . (("name" . "Manage")
-                                              ("image" . "~/.emacs.d/icons/manager-large.png")
-                                              ("style" . "github")))
-                            (":cz-habil:" . (("name" . "Habilitation")
-                                             ("image" . "~/.emacs.d/icons/habil-large.png")
-                                             ("style" . "github")))
-                            (":cz-talks:" . (("name" . "Talks")
-                                             ("image" . "~/.emacs.d/icons/talks-large.png")
-                                             ("style" . "github")))
-                            (":cz-eimer:" . (("name" . "Eimer")
-                                             ("image" . "~/.emacs.d/icons/eimer-large.png")
-                                             ("style" . "github")))
-                            (":cz-code:" . (("name" . "Code")
-                                            ("image" . "~/.emacs.d/icons/code-large.png")
-                                            ("style" . "github")))
-                            (":cz-lehre:" . (("name" . "Lehre")
-                                             ("image" . "~/.emacs.d/icons/lehre-large.png")
-                                             ("style" . "github")))
-                            (":cz-ninja:" . (("name" . "Ninja")
-                                             ("image" . "~/.emacs.d/icons/ninja-large.png")
-                                             ("style" . "github")))
-                            (":cz-review:" . (("name" . "Review")
-                                              ("image" . "~/.emacs.d/icons/review-large.png")
-                                              ("style" . "github")))
-                            (":cz-computer:" . (("name" . "Computer")
-                                                ("image" . "~/.emacs.d/icons/computer-large.png")
-                                                ("style" . "github")))
-                            (":cz-frage:" . (("name" . "Frage")
-                                             ("image" . "~/.emacs.d/icons/frage-large.png")
-                                             ("style" . "github")))
-                            (":cz-supervision:" . (("name" . "Supervision")
-                                             ("image" . "~/.emacs.d/icons/supervision-large.png")
-                                             ("style" . "github")))
-                            (":cz-cz:" . (("name" . "Christian")
-                                          ("image" . "~/.emacs.d/icons/cz.png")
-                                          ("style" . "github")))
-                            (":cz-cosz:" . (("name" . "Cosmo")
-                                            ("image" . "~/.emacs.d/icons/cosz.png")
-                                            ("style" . "github")))
-                            (":cz-corz:" . (("name" . "Corin")
-                                            ("image" . "~/.emacs.d/icons/corz.png")
-                                            ("style" . "github")))
-                            ))
-
-;; If emojify is already loaded refresh emoji data
-(when (featurep 'emojify)
-  (emojify-set-emoji-data))
-
-;; Use Emojis in Org, GitHub-style :smile:
-(add-hook 'org-mode-hook 'emojify-mode)
 
 ;;;;;;;;;;;
 ;; LaTeX ;;
