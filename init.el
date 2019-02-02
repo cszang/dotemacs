@@ -95,6 +95,7 @@
 ;; packages to install
 (defvar package-list
   '(academic-phrases
+    ace-window
     ag
     auctex
     autopair
@@ -316,6 +317,9 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
+;; Use ace-window for more complex layouts
+(global-set-key (kbd "M-o") 'ace-window)
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; General editing ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -380,6 +384,7 @@
 
 ;; Type #i" (or #include ") for quote-style includes and #i< (or
 ;; #include <) for system headers.
+;; (lsp-ui-sideline-mode 0)
 
 ;; See
 ;; https://github.com/cquery-project/cquery/pull/391#issuecomment-362872732
@@ -726,7 +731,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   ;; (sh . t)
+   (shell . t)
    (R . t)
    (python . t)
    (js . t)
